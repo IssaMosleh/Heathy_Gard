@@ -1,0 +1,64 @@
+name: tess
+description: "A new Flutter project."
+publish_to: 'none'
+version: 0.1.0
+
+environment:
+  sdk: ^3.5.3
+
+dependencies:
+  flutter:
+    sdk: flutter
+  font_awesome_flutter: 10.7.0
+  intl: ^0.19.0
+  url_launcher: 6.3.1
+  file_picker: 4.0.0
+  glassmorphism: 2.0.1
+  flutter_masked_text2: 0.9.1
+  decimal: 3.0.2
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_lints: ^4.0.0
+  
+
+flutter:
+  uses-material-design: true
+  assets:
+    - images/Vector.png
+    - images/logo.png
+    - images/password.png
+    - images/Vector2.png
+    - images/person.jpg
+    - images/MedicalRecord.png
+    - images/Aspirin.jpg
+    - images/Ibuprofen.jpg
+    - images/VitamenC.jpg
+    - images/appointment.png
+    - images/Claims.png
+    - images/FamilyMembers.png
+    - images/Insurance.png
+    - images/Medications.png
+    - images/info.png
+    - images/icon1.png
+    - images/icon2.png
+    - images/icon3.png
+    - images/icon4.png
+    - images/father.jpg
+    - images/mother.jpg
+    - images/son.jpg
+    - images/Hospital.png
+    - images/Online.png
+    - images/hospital_image.png
+    - images/search.png
+    - images/settings.png
+    - images/doctors.jpg
+    - images/Vector3.png
+    - images/panadol.png
+    - images/personalinfo.png
+    - images/history.png
+    - images/labreports.png
+    - images/radiology.png
+    - images/patient1.jpg
+    - images/patient2.jpg
