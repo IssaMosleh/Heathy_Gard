@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_choosedoctor.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_selecthospital.dart';
 
 
@@ -22,23 +23,21 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   final TextEditingController _searchController = TextEditingController();
   // Simulate dynamic data; replace this with data fetched from your database
-  final List<Map<String, String>> hospitals = [
-    {
-      "name": "Jordan Hospital",
-      "location": "Shmeisani",
-      "image": "images/hospital_image.png" // Replace with your image path
-    },
-    {
-      "name": "Specialty Hospital",
-      "location": "Amman",
-      "image": "images/hospital_image.png" // Replace with your image path
-    },
-    {
-      "name": "Al Khalidi Hospital",
-      "location": "Jabal Amman",
-      "image": "images/hospital_image.png" // Replace with your image path
-    },
+    final List<Map<String, String>> hospitals = [
+    {"name": "Jordan Hospital", "location": "Amman", "image": "images/hospital_image.png"},
+    {"name": "Specialty Hospital", "location": "Amman", "image": "images/hospital_image.png"},
+    {"name": "Al Khalidi Hospital", "location": "Jabal Amman", "image": "images/hospital_image.png"},
+    {"name": "Zarqa Governmental Hospital", "location": "Zarqa", "image": "images/hospital_image.png"},
+    {"name": "King Abdullah University Hospital", "location": "Irbid", "image": "images/hospital_image.png"},
+    {"name": "Ajloun Governmental Hospital", "location": "Ajloun", "image": "images/hospital_image.png"},
+    {"name": "Al Karak Hospital", "location": "Karak", "image": "images/hospital_image.png"},
+    {"name": "Aqaba Hospital", "location": "Aqaba", "image": "images/hospital_image.png"},
+    {"name": "Madaba Governmental Hospital", "location": "Madaba", "image": "images/hospital_image.png"},
+    {"name": "Jerash Hospital", "location": "Jerash", "image": "images/hospital_image.png"},
+    {"name": "Salt Hospital", "location": "Salt", "image": "images/hospital_image.png"},
+    {"name": "Mafraq Hospital", "location": "Mafraq", "image": "images/hospital_image.png"},
   ];
+
   final List<String> recentSearches = [];
   List<Map<String, String>> searchResults = [];
 
@@ -101,8 +100,10 @@ class _SearchScreenState extends State<SearchScreen> {
   }
 
   void _onCardTap(Map<String, String> hospital) {
-    // Handle the onTap action here
-    // You can navigate to another page or display details about the selected hospital
+    Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => patient_appointment_choosedoctor()),
+        );
     print("Tapped on ${hospital['name']}");
   }
 
@@ -134,7 +135,7 @@ class _SearchScreenState extends State<SearchScreen> {
             onPressed: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => patient_appointment_selecthospital()),
+                  MaterialPageRoute(builder: (context) => PatientAppointmentSelectHospital()),
             );
             },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.black),

@@ -82,7 +82,7 @@ class _MainAppState extends State<Patient_Screen> {
         );
         break;
       case "Appointment":
-        Navigator.push(
+        Navigator.push( 
           context,
           MaterialPageRoute(builder: (context) => patient_appointment_introduction()),
         );

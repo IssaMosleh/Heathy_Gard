@@ -1,37 +1,63 @@
 import 'package:flutter/material.dart';
 import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_choosedoctor.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_selecthospital_search.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_typeofvist.dart';
 
-class patient_appointment_selecthospital extends StatelessWidget {
-  const patient_appointment_selecthospital({Key? key}) : super(key: key);
+class PatientAppointmentSelectHospital extends StatefulWidget {
+  const PatientAppointmentSelectHospital({Key? key}) : super(key: key);
+
+  @override
+  _PatientAppointmentSelectHospitalState createState() => _PatientAppointmentSelectHospitalState();
+}
+
+class _PatientAppointmentSelectHospitalState extends State<PatientAppointmentSelectHospital> {
+  String? selectedLocation;
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: HospitalListScreen(),
+      home: HospitalListScreen(selectedLocation: selectedLocation),
     );
   }
 }
 
-class HospitalListScreen extends StatelessWidget {
-  final List<Map<String, String>> hospitals = [
-    {
-      "name": "Jordan Hospital",
-      "location": "Shmeisani",
-      "image": "images/hospital_image.png"
-    },
-    {
-      "name": "Specialty Hospital",
-      "location": "Amman",
-      "image": "images/hospital_image.png"
-    },
-    {
-      "name": "Al Khalidi Hospital",
-      "location": "Jabal Amman",
-      "image": "images/hospital_image.png"
-    },
+class HospitalListScreen extends StatefulWidget {
+  final String? selectedLocation;
+
+  const HospitalListScreen({Key? key, this.selectedLocation}) : super(key: key);
+
+  @override
+  _HospitalListScreenState createState() => _HospitalListScreenState();
+}
+
+class _HospitalListScreenState extends State<HospitalListScreen> {
+  String? selectedLocation;
+  final List<Map<String, String>> allHospitals = [
+    {"name": "Jordan Hospital", "location": "Amman", "image": "images/hospital_image.png"},
+    {"name": "Specialty Hospital", "location": "Amman", "image": "images/hospital_image.png"},
+    {"name": "Al Khalidi Hospital", "location": "Jabal Amman", "image": "images/hospital_image.png"},
+    {"name": "Zarqa Governmental Hospital", "location": "Zarqa", "image": "images/hospital_image.png"},
+    {"name": "King Abdullah University Hospital", "location": "Irbid", "image": "images/hospital_image.png"},
+    {"name": "Ajloun Governmental Hospital", "location": "Ajloun", "image": "images/hospital_image.png"},
+    {"name": "Al Karak Hospital", "location": "Karak", "image": "images/hospital_image.png"},
+    {"name": "Aqaba Hospital", "location": "Aqaba", "image": "images/hospital_image.png"},
+    {"name": "Madaba Governmental Hospital", "location": "Madaba", "image": "images/hospital_image.png"},
+    {"name": "Jerash Hospital", "location": "Jerash", "image": "images/hospital_image.png"},
+    {"name": "Salt Hospital", "location": "Salt", "image": "images/hospital_image.png"},
+    {"name": "Mafraq Hospital", "location": "Mafraq", "image": "images/hospital_image.png"},
   ];
+
+  List<Map<String, String>> get hospitals {
+    if (selectedLocation == null) return allHospitals;
+    return allHospitals.where((hospital) => hospital["location"] == selectedLocation).toList();
+  }
+
+  void updateLocation(String? location) {
+    setState(() {
+      selectedLocation = location;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -69,11 +95,14 @@ class HospitalListScreen extends StatelessWidget {
           actions: [
             IconButton(
               onPressed: () {
-                showFilterBottomSheet(context);
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Patient_Screen()),
+                );
               },
               icon: Padding(
                 padding: const EdgeInsets.only(right: 16.0),
-                child: Image.asset('images/settings.png'),
+                child: Image.asset('images/icon1.png'),
               ),
             ),
           ],
@@ -136,7 +165,10 @@ class HospitalListScreen extends StatelessWidget {
                   final hospital = hospitals[index];
                   return GestureDetector(
                     onTap: () {
-                      print("${hospital['name']} clicked");
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context) => patient_appointment_choosedoctor()),
+                      );
                     },
                     child: Card(
                       shape: RoundedRectangleBorder(
@@ -186,88 +218,120 @@ class HospitalListScreen extends StatelessWidget {
       ),
     );
   }
+
+  void showFilterBottomSheet(BuildContext context) {
+    showModalBottomSheet(
+      context: context,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+      ),
+      builder: (context) {
+        return Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: FilterButtons(
+            onLocationSelected: (location) {
+              updateLocation(location);
+            },
+            selectedLocation: selectedLocation,
+          ),
+        );
+      },
+    );
+  }
 }
 
-void showFilterBottomSheet(BuildContext context) {
-  showModalBottomSheet(
-    context: context,
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
-    ),
-    builder: (context) {
-      return Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+class FilterButtons extends StatefulWidget {
+  final String? selectedLocation;
+  final Function(String?) onLocationSelected;
+
+  const FilterButtons({Key? key, this.selectedLocation, required this.onLocationSelected}) : super(key: key);
+
+  @override
+  _FilterButtonsState createState() => _FilterButtonsState();
+}
+
+class _FilterButtonsState extends State<FilterButtons> {
+  String? selectedButton;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedButton = widget.selectedLocation;
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final locations = [
+      "Amman", "Zarqa", "Irbid", "Ajloun", "Karak", "Aqaba", "Madaba",
+      "Jerash", "Salt", "Mafraq", "Ma'an", "Tafilah"
+    ];
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text(
-                  "Filter (Hospital)",
-                  style: TextStyle(
-                    fontSize: 20,
-                    fontWeight: FontWeight.bold,
-                  ),
-                ),
-                IconButton(
-                  icon: Icon(Icons.close),
-                  onPressed: () {
-                    Navigator.pop(context);
-                  },
-                ),
-              ],
+            Text(
+              "Filter (Hospital)",
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+              ),
             ),
-            Wrap(
-              spacing: 10,
-              runSpacing: 10,
-              children: [
-                _buildFilterButton("Zarqa"),
-                _buildFilterButton("Amman"),
-                _buildFilterButton("Irbid"),
-                _buildFilterButton("Ajloun"),
-                _buildFilterButton("Karak"),
-                _buildFilterButton("Aqaba"),
-                _buildFilterButton("Madaba"),
-                _buildFilterButton("Jerash"),
-                _buildFilterButton("Salt"),
-                _buildFilterButton("Mafraq"),
-                _buildFilterButton("Ma'an"),
-                _buildFilterButton("Tafilah"),
-              ],
-            ),
-            const SizedBox(height: 20),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text("10km"),
-                Text("20km"),
-                Text("30km"),
-              ],
-            ),
-            Slider(
-              value: 20,
-              min: 10,
-              max: 30,
-              divisions: 2,
-              label: "20km",
-              onChanged: (double value) {},
+            IconButton(
+              icon: Icon(Icons.close),
+              onPressed: () {
+                Navigator.pop(context);
+              },
             ),
           ],
         ),
-      );
-    },
-  );
-}
+        const SizedBox(height: 16),
+        GridView.count(
+          shrinkWrap: true,
+          crossAxisCount: 3,
+          mainAxisSpacing: 10,
+          crossAxisSpacing: 10,
+          childAspectRatio: 2.5,
+          children: locations.map((location) => _buildFilterButton(location)).toList(),
+        ),
+      ],
+    );
+  }
 
-Widget _buildFilterButton(String text) {
-  return OutlinedButton(
-    onPressed: () {},
-    child: Text(text),
-    style: OutlinedButton.styleFrom(
-      backgroundColor: Colors.blue.shade50,
-      foregroundColor: Colors.blue,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(20)),
-    ),
-  );
+  Widget _buildFilterButton(String text) {
+    final isSelected = selectedButton == text;
+
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selectedButton = text;
+        });
+        widget.onLocationSelected(text);
+      },
+      child: Container(
+        decoration: BoxDecoration(
+          gradient: isSelected
+              ? LinearGradient(
+                  colors: [Colors.blue, Colors.purple],
+                  begin: Alignment.topLeft,
+                  end: Alignment.bottomRight,
+                )
+              : null,
+          color: isSelected ? null : Colors.white,
+          borderRadius: BorderRadius.circular(20),
+          border: Border.all(color: Colors.grey.shade300),
+        ),
+        alignment: Alignment.center,
+        child: Text(
+          text,
+          style: TextStyle(
+            color: isSelected ? Colors.white : Colors.black,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+      ),
+    );
+  }
 }

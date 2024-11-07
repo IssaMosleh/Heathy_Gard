@@ -94,7 +94,7 @@ class patient_appointment_typeofvist extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => patient_appointment_selecthospital()),
+                        MaterialPageRoute(builder: (context) => PatientAppointmentSelectHospital()),
                         );
                       },
                     ),
@@ -105,7 +105,7 @@ class patient_appointment_typeofvist extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => patient_appointment_selecthospital()),
+                        MaterialPageRoute(builder: (context) => PatientAppointmentSelectHospital()),
                         );
                       },
                     ),
