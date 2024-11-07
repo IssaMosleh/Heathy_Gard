@@ -1,11 +1,6 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-
 import 'package:tess/doctor_screen/main.dart';
-
-void main() {
-  runApp(const My_Info_Doctor());
-}
 
 class My_Info_Doctor extends StatelessWidget {
   const My_Info_Doctor({Key? key}) : super(key: key);
@@ -13,7 +8,8 @@ class My_Info_Doctor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: "Doctor's Portal",
+      debugShowCheckedModeBanner: false,
+      title: "My Info",
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -75,27 +71,32 @@ class DoctorScreen extends StatefulWidget {
 
 class _DoctorScreenState extends State<DoctorScreen> {
   // Doctor's information as variables
-  String doctorName = "";
-  String doctorID = "";
-  String gender = "";
-  String dateOfBirth = "";
-  String specialization = "";
-  String yearsOfExperience = "";
-  String contactNumber = "";
-  String email = "";
-  String languagesSpoken = "";
-  String medicalSchool = "";
-  String residency = "";
-  String boardCertification = "";
-  String specialtyCertification = "";
-  String? topDoctorAward;
-  String? researchPublications;
+  String doctorName = "Dr. Jane Smith";
+  String doctorID = "D123456";
+  String gender = "Female";
+  String dateOfBirth = "January 1, 1980";
+  String specialization = "Cardiology";
+  String yearsOfExperience = "15 years";
+  String contactNumber = "+962795716049";
+  String email = "jane.smith@hospital.com";
+  String languagesSpoken = "English, Spanish";
+  String medicalSchool = "Harvard Medical School";
+  String residency = "Cardiology, Massachusetts General Hospital";
+  String boardCertification = "American Board of Internal Medicine";
+  String specialtyCertification = "American Board of Cardiology";
+  String? topDoctorAward = "2018, 2020";
+  String? researchPublications = "15 peer-reviewed articles in cardiology";
 
   double availableBalance = 0;
   double targetBalance = 30000;
   int totalVisits = 0;
   int visitsThisYear = 0;
-  int targetVisitsThisYear = 200; // Target number of visits this year
+  int targetVisitsThisYear = 200;
+
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController phoneController = TextEditingController();
+
+  final _formKey = GlobalKey<FormState>();
 
   @override
   void initState() {
@@ -107,24 +108,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
   // Simulate fetching data for doctor's information from a database
   Future<void> fetchDoctorData() async {
     await Future.delayed(Duration(seconds: 2)); // Simulate network delay
-
-    setState(() {
-      doctorName = "Dr. Jane Smith";
-      doctorID = "D123456";
-      gender = "Female";
-      dateOfBirth = "January 1, 1980";
-      specialization = "Cardiology";
-      yearsOfExperience = "15 years";
-      contactNumber = "+1 123 456 789";
-      email = "jane.smith@hospital.com";
-      languagesSpoken = "English, Spanish";
-      medicalSchool = "Harvard Medical School";
-      residency = "Cardiology, Massachusetts General Hospital";
-      boardCertification = "American Board of Internal Medicine";
-      specialtyCertification = "American Board of Cardiology";
-      topDoctorAward = "2018, 2020";
-      researchPublications = "15 peer-reviewed articles in cardiology";
-    });
+    setState(() {});
   }
 
   // Simulate aggregating data from multiple sources
@@ -155,6 +139,76 @@ class _DoctorScreenState extends State<DoctorScreen> {
     return [10000.0, 8000.0, 5000.0]; // Simulated earnings from different clinics
   }
 
+  void openEditDialog() {
+    // Set initial values for the controllers
+    emailController.text = email;
+    phoneController.text = contactNumber;
+
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text("Edit Information"),
+          content: Form(
+            key: _formKey,
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                TextFormField(
+                  controller: emailController,
+                  decoration: InputDecoration(labelText: "Email"),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter an email';
+                    }
+                    final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+                    if (!emailRegex.hasMatch(value)) {
+                      return 'Please enter a valid email';
+                    }
+                    return null;
+                  },
+                ),
+                TextFormField(
+                  controller: phoneController,
+                  decoration: InputDecoration(labelText: "Phone Number"),
+                  validator: (value) {
+                    if (value == null || value.isEmpty) {
+                      return 'Please enter a phone number';
+                    }
+                    final phoneRegex = RegExp(r'^\+962\d{9}$');
+                    if (!phoneRegex.hasMatch(value)) {
+                      return 'Phone number must start with +962 and contain 9 digits';
+                    }
+                    return null;
+                  },
+                  keyboardType: TextInputType.phone,
+                ),
+              ],
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () => Navigator.of(context).pop(),
+              child: Text("Cancel"),
+            ),
+            TextButton(
+              onPressed: () {
+                if (_formKey.currentState!.validate()) {
+                  setState(() {
+                    email = emailController.text;
+                    contactNumber = phoneController.text;
+                  });
+                  Navigator.of(context).pop();
+                }
+              },
+              child: Text("Save"),
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     double balancePercentage = (availableBalance / targetBalance) * 100;
@@ -178,7 +232,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
           MaterialPageRoute(builder: (context) => const Doctor_Screen()),
         );
           },
-          icon: const Icon(Icons.arrow_back_outlined, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -301,6 +355,43 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 if (researchPublications != null)
                   infoRow('Research Publications', researchPublications!, icon: Icons.book),
               ],
+            ),
+            const SizedBox(height: 20),
+            // New Edit Button
+            SizedBox(
+              width: double.infinity,
+              child: ElevatedButton(
+                onPressed: openEditDialog,
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  padding: EdgeInsets.zero,
+                  elevation: 5,
+                ),
+                child: Ink(
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)], // Improved gradient colors
+                      begin: Alignment.centerLeft,
+                      end: Alignment.centerRight,
+                    ),
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Container(
+                    alignment: Alignment.center,
+                    constraints: BoxConstraints(minHeight: 50, minWidth: 150),
+                    child: const Text(
+                      "Edit",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 18,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         ),

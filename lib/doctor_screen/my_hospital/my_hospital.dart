@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tess/doctor_screen/my_info/my_info_doctor.dart';
+import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/my_hospital/FacilityDetailScreen.dart';
 
-void main() {
-  runApp(const MyHospital());
-}
+
 
 class MyHospital extends StatelessWidget {
   const MyHospital({Key? key}) : super(key: key);
@@ -11,6 +10,7 @@ class MyHospital extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: "Doctor's Portal",
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -50,18 +50,14 @@ class _MyHospitalsScreenState extends State<MyHospitalsScreen> {
           "My Hospitals",
           style: TextStyle(color: Colors.white),
         ),
-        leading: Builder(
-          builder: (BuildContext context) {
-            return IconButton(
-              onPressed: () {
-                Navigator.push(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => DoctorScreen()),
+          MaterialPageRoute(builder: (context) => Doctor_Screen()),
         );
-              },
-              icon: const Icon(Icons.arrow_back_outlined, color: Colors.white),
-            );
           },
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -87,7 +83,13 @@ class _MyHospitalsScreenState extends State<MyHospitalsScreen> {
                   subtitle: facility['subtitle']!,
                   type: facility['type']!,
                   onTap: () {
-                    debugPrint("Tapped on ${facility['title']} (${facility['type']})");
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => FacilityDetailScreen(
+                        ),
+                      ),
+                    );
                   },
                 ),
                 const SizedBox(height: 20),

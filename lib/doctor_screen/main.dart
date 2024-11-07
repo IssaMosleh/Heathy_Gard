@@ -1,7 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:tess/doctor_screen/accepted_appointments/accepted_appointments.dart';
+import 'package:tess/doctor_screen/appointment_doctor.dart';
+import 'package:tess/doctor_screen/history/history_visits.dart';
+import 'package:tess/doctor_screen/money/DoctorMoneyScreen.dart';
 import 'package:tess/doctor_screen/my_hospital/my_hospital.dart';
-import 'package:tess/doctor_screen/my_info/my_info_doctor.dart'; // Import for date formatting
+import 'package:tess/doctor_screen/my_info/my_info_doctor.dart';
+import 'package:tess/doctor_screen/notification_doctor.dart';
+import 'package:tess/doctor_screen/patient_portal/patient_portal_Introduction.dart';
+import 'package:tess/doctor_screen/settings_doctor.dart'; // Import for date formatting
 
 void main() {
   runApp(const Doctor_Screen());
@@ -21,7 +28,7 @@ class _MainAppState extends State<Doctor_Screen> {
     "My Hospitals",
     "Accepted Appointments",
     "My Info",
-    "Patient Records",
+    "Patient Portal",
     "History",
     "Money",
   ];
@@ -30,8 +37,8 @@ class _MainAppState extends State<Doctor_Screen> {
     "images/Insurance.png",
     "images/appointment.png",
     "images/MedicalRecord.png",
-    "images/FamilyMembers.png",
-    "images/Medications.png",
+    "images/PatientPortal.png",
+    "images/history.png",
     "images/Claims.png",
   ];
 
@@ -78,37 +85,37 @@ class _MainAppState extends State<Doctor_Screen> {
       case "My Hospitals":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => MyHospital()),
+          MaterialPageRoute(builder: (context) => const MyHospital()),
         );
         break;
       case "Accepted Appointments":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => AppointmentScreen()),
+          MaterialPageRoute(builder: (context) => const AcceptedAppointment()),
         );
         break;
       case "My Info":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => My_Info_Doctor()),
+          MaterialPageRoute(builder: (context) => const My_Info_Doctor()),
         );
         break;
-      case "Patient Records":
+      case "Patient Portal":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => FamilyMembersScreen()),
+          MaterialPageRoute(builder: (context) => patient_portal_Introduction()),
         );
         break;
       case "History":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => MedicationScreen()),
+          MaterialPageRoute(builder: (context) => history_visits()),
         );
         break;
       case "Money":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ClaimsScreen()),
+          MaterialPageRoute(builder: (context) => DoctorMoneyScreen()),
         );
         break;
     }
@@ -117,6 +124,7 @@ class _MainAppState extends State<Doctor_Screen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         bottomNavigationBar: Container(
           padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -137,19 +145,37 @@ class _MainAppState extends State<Doctor_Screen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Doctor_Screen()),
+            );
+                },
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => appointment_doctor()),
+            );
+                },
                 icon: Image.asset('images/icon2.png', width: 30, height: 30),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => notification_doctor()),
+            );},
                 icon: Image.asset('images/icon3.png', width: 30, height: 30),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => settings_doctor()),
+            );
+                },
                 icon: Image.asset('images/icon4.png', width: 30, height: 30),
               ),
             ],
@@ -375,67 +401,6 @@ class _MainAppState extends State<Doctor_Screen> {
           ],
         ),
       ),
-    );
-  }
-}
-
-// Screens
-class InsuranceScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Insurance")),
-      body: Center(child: Text("Insurance Screen")),
-    );
-  }
-}
-
-class AppointmentScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Appointment")),
-      body: Center(child: Text("Appointment Screen")),
-    );
-  }
-}
-
-class MedicalRecordScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Medical Record")),
-      body: Center(child: Text("Medical Record Screen")),
-    );
-  }
-}
-
-class FamilyMembersScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Family Members")),
-      body: Center(child: Text("Family Members Screen")),
-    );
-  }
-}
-
-class MedicationScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Medication")),
-      body: Center(child: Text("Medication Screen")),
-    );
-  }
-}
-
-class ClaimsScreen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(title: Text("Claims")),
-      body: Center(child: Text("Claims Screen")),
     );
   }
 }
