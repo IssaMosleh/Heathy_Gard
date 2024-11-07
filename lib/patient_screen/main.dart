@@ -1,121 +1,114 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tess/doctor_screen/accepted_appointments/accepted_appointments.dart';
-import 'package:tess/doctor_screen/appointment_doctor.dart';
-import 'package:tess/doctor_screen/history/history_visits.dart';
-import 'package:tess/doctor_screen/money/DoctorMoneyScreen.dart';
-import 'package:tess/doctor_screen/my_hospital/my_hospital.dart';
-import 'package:tess/doctor_screen/my_info/my_info_doctor.dart';
-import 'package:tess/doctor_screen/notification_doctor.dart';
-import 'package:tess/doctor_screen/patient_portal/patient_portal_Introduction.dart';
-import 'package:tess/doctor_screen/settings_doctor.dart'; // Import for date formatting
-
+import 'package:tess/patient_screen/family_members/family_members.dart';
+import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_introduction.dart';
+import 'package:tess/patient_screen/patient_insurance/patient_insurance.dart';
 void main() {
-  runApp(const Doctor_Screen());
+  runApp(MaterialApp(home:Patient_Screen()));
 }
 
-class Doctor_Screen extends StatefulWidget {
-  const Doctor_Screen({Key? key}) : super(key: key);
+class Patient_Screen extends StatefulWidget {
+  const Patient_Screen({Key? key}) : super(key: key);
 
   @override
-  State<Doctor_Screen> createState() => _MainAppState();
+  State<Patient_Screen> createState() => _MainAppState();
 }
 
-class _MainAppState extends State<Doctor_Screen> {
+class _MainAppState extends State<Patient_Screen> {
   final double imageSize = 50.0; // Fixed image size for icons
   final double fontSize = 12.0; // Fixed font size for text labels
   final List<String> labels = [
-    "My Hospitals",
-    "Accepted Appointments",
-    "My Info",
-    "Patient Portal",
-    "History",
-    "Money",
+    "Insurance",
+    "Appointment",
+    "Medical Record",
+    "Family Members",
+    "Medication",
+    "Claims",
   ];
 
   final List<String> images = [
     "images/Insurance.png",
     "images/appointment.png",
     "images/MedicalRecord.png",
-    "images/PatientPortal.png",
-    "images/history.png",
+    "images/FamilyMembers.png",
+    "images/Medications.png",
     "images/Claims.png",
   ];
 
-  // Sample dynamic appointment data for cards
-  final List<Map<String, String>> appointments = [
+  // Sample dynamic medicine data for cards
+  final List<Map<String, String>> medicines = [
     {
-      'doctorName': 'Ali Ahmed',
-      'date': '2024-12-01',
-      'time': '10:00 AM',
-      'imagePath': 'images/patient1.jpg', // Path to the doctor's image
+      'name': 'Aspirin',
+      'dosage': '1x daily',
+      'endDate': '2024-12-31',
+      'imagePath': 'images/Aspirin.jpg', // Path to the medicine image
     },
     {
-      'doctorName': 'Sara Khalil',
-      'date': '2024-11-20',
-      'time': '1:30 PM',
-      'imagePath': 'images/patient2.jpg',
+      'name': 'Ibuprofen',
+      'dosage': '2x daily',
+      'endDate': '2024-11-15',
+      'imagePath': 'images/Ibuprofen.jpg',
     },
     {
-      'doctorName': 'John Smith',
-      'date': '2024-11-15',
-      'time': '9:00 AM',
-      'imagePath': 'images/DoctorJohn.jpg',
+      'name': 'Vitamin C',
+      'dosage': '1x daily',
+      'endDate': '2024-10-20',
+      'imagePath': 'images/VitamenC.jpg',
     },
     {
-      'doctorName': 'Fatima Noor',
-      'date': '2024-11-10',
-      'time': '3:00 PM',
-      'imagePath': 'images/DoctorFatima.jpg',
+      'name': 'Antibiotic',
+      'dosage': '3x daily',
+      'endDate': '2024-10-30',
+      'imagePath': 'images/antibiotic.png',
     },
     {
-      'doctorName': 'Omar Yasin',
-      'date': '2024-12-05',
-      'time': '8:00 AM',
-      'imagePath': 'images/DoctorOmar.jpg',
+      'name': 'Pain Relief',
+      'dosage': '1x at night',
+      'endDate': '2025-01-01',
+      'imagePath': 'images/pain_relief.png',
     },
   ];
 
   // Define a date formatter
   final DateFormat dateFormat = DateFormat('MMM d, yyyy');
 
-  // Function to handle onTap events with context
-  void handleOnTap(String label, BuildContext context) {
+  // Function to handle onTap events
+  void handleOnTap(String label) {
     switch (label) {
-      case "My Hospitals":
+      case "Insurance":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const MyHospital()),
+          MaterialPageRoute(builder: (context) => patient_insurance()),
         );
         break;
-      case "Accepted Appointments":
+      case "Appointment":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const AcceptedAppointment()),
+          MaterialPageRoute(builder: (context) => patient_appointment_introduction()),
         );
         break;
-      case "My Info":
+      case "Medical Record":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const My_Info_Doctor()),
+          MaterialPageRoute(builder: (context) => MedicalRecordScreen()),
         );
         break;
-      case "Patient Portal":
+      case "Family Members":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const patient_portal_Introduction()),
+          MaterialPageRoute(builder: (context) => family_members()),
         );
         break;
-      case "History":
+      case "Medication":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const history_visits()),
+          MaterialPageRoute(builder: (context) => MedicationScreen()),
         );
         break;
-      case "Money":
+      case "Claims":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => const DoctorMoneyScreen()),
+          MaterialPageRoute(builder: (context) => ClaimsScreen()),
         );
         break;
     }
@@ -124,7 +117,6 @@ class _MainAppState extends State<Doctor_Screen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
       home: Scaffold(
         bottomNavigationBar: Container(
           padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -137,7 +129,7 @@ class _MainAppState extends State<Doctor_Screen> {
                 color: Colors.grey.withOpacity(0.2),
                 spreadRadius: 5,
                 blurRadius: 10,
-                offset: const Offset(0, 3),
+                offset: Offset(0, 3),
               ),
             ],
           ),
@@ -145,37 +137,19 @@ class _MainAppState extends State<Doctor_Screen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                onPressed: () {
-                  Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => const Doctor_Screen()),
-            );
-                },
+                onPressed: () {},
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
               ),
               IconButton(
-                onPressed: () {
-                  Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const appointment_doctor()),
-            );
-                },
+                onPressed: () {},
                 icon: Image.asset('images/icon2.png', width: 30, height: 30),
               ),
               IconButton(
-                onPressed: () {Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const notification_doctor()),
-            );},
+                onPressed: () {},
                 icon: Image.asset('images/icon3.png', width: 30, height: 30),
               ),
               IconButton(
-                onPressed: () {
-                  Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const settings_doctor()),
-            );
-                },
+                onPressed: () {},
                 icon: Image.asset('images/icon4.png', width: 30, height: 30),
               ),
             ],
@@ -204,7 +178,7 @@ class _MainAppState extends State<Doctor_Screen> {
                                 Container(
                                   height: 75, // Profile image size
                                   width: 75,
-                                  decoration: const BoxDecoration(
+                                  decoration: BoxDecoration(
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                       image: AssetImage("images/person.jpg"),
@@ -213,11 +187,11 @@ class _MainAppState extends State<Doctor_Screen> {
                                   ),
                                 ),
                                 const SizedBox(width: 8.0),
-                                const Column(
+                                Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: [
+                                  children: const [
                                     Text(
-                                      "Hi Dr. Deyya,",
+                                      "Hi Deyya,",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 18,
@@ -239,7 +213,7 @@ class _MainAppState extends State<Doctor_Screen> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Container(
-                                constraints: const BoxConstraints(maxWidth: 500),
+                                constraints: BoxConstraints(maxWidth: 500),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(24.0),
@@ -261,35 +235,30 @@ class _MainAppState extends State<Doctor_Screen> {
                                                 height: 80,
                                               ),
                                             Expanded(
-                                              child: Builder(
-                                                builder: (BuildContext innerContext) {
-                                                  return InkWell(
-                                                    onTap: () => handleOnTap(
-                                                        labels[(row * 3) + col], innerContext),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                      children: [
-                                                        Container(
-                                                          height: imageSize,
-                                                          width: imageSize,
-                                                          child: Image.asset(
-                                                            images[(row * 3) + col],
-                                                            fit: BoxFit.contain,
-                                                          ),
-                                                        ),
-                                                        const SizedBox(height: 6),
-                                                        Text(
-                                                          labels[(row * 3) + col],
-                                                          textAlign: TextAlign.center,
-                                                          style: TextStyle(
-                                                            fontSize: fontSize,
-                                                            color: Colors.black,
-                                                          ),
-                                                        ),
-                                                      ],
+                                              child: InkWell(
+                                                onTap: () => handleOnTap(labels[(row * 3) + col]),
+                                                child: Column(
+                                                  mainAxisAlignment: MainAxisAlignment.center,
+                                                  children: [
+                                                    Container(
+                                                      height: imageSize,
+                                                      width: imageSize,
+                                                      child: Image.asset(
+                                                        images[(row * 3) + col],
+                                                        fit: BoxFit.contain,
+                                                      ),
                                                     ),
-                                                  );
-                                                },
+                                                    const SizedBox(height: 6),
+                                                    Text(
+                                                      labels[(row * 3) + col],
+                                                      textAlign: TextAlign.center,
+                                                      style: TextStyle(
+                                                        fontSize: fontSize,
+                                                        color: Colors.black,
+                                                      ),
+                                                    ),
+                                                  ],
+                                                ),
                                               ),
                                             ),
                                           ],
@@ -307,9 +276,71 @@ class _MainAppState extends State<Doctor_Screen> {
                   ),
                   const SizedBox(height: 20),
                   Center(
+                    child: Padding(
+                      padding: const EdgeInsets.all(16.0),
+                      child: Container(
+                        constraints: BoxConstraints(maxWidth: 500),
+                        padding: const EdgeInsets.all(16.0),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(16.0),
+                          border: Border.all(color: Colors.grey[300]!, width: 1),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.2),
+                              spreadRadius: 2,
+                              blurRadius: 6,
+                              offset: Offset(0, 2),
+                            ),
+                          ],
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              "Latest News",
+                              style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.black,
+                              ),
+                            ),
+                            const SizedBox(height: 12),
+                            Row(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Container(
+                                  constraints: BoxConstraints(maxHeight: 30, maxWidth: 30),
+                                  decoration: BoxDecoration(shape: BoxShape.circle),
+                                  child: Center(
+                                    child: Image.asset(
+                                      "images/info.png",
+                                      fit: BoxFit.contain,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Expanded(
+                                  child: Text(
+                                    "A new Health Insurance Application has launched in Jordan, be ready for a better health experience.",
+                                    style: TextStyle(
+                                      fontSize: 14,
+                                      color: Colors.black87,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(height: 10),
+                  Center(
                     child: Container(
                       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                      constraints: const BoxConstraints(maxWidth: 500),
+                      constraints: BoxConstraints(maxWidth: 500),
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: Colors.white,
@@ -320,15 +351,15 @@ class _MainAppState extends State<Doctor_Screen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const Text(
-                            "Incoming Appointments",
+                            "Active Medicines",
                             style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                           ),
                           const SizedBox(height: 16),
                           SingleChildScrollView(
                             scrollDirection: Axis.horizontal,
                             child: Row(
-                              children: appointments.map((appointment) {
-                                DateTime appointmentDate = DateTime.parse(appointment['date']!);
+                              children: medicines.map((medicine) {
+                                DateTime endDate = DateTime.parse(medicine['endDate']!);
                                 return Padding(
                                   padding: const EdgeInsets.only(right: 12.0),
                                   child: Container(
@@ -350,18 +381,15 @@ class _MainAppState extends State<Doctor_Screen> {
                                     child: Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        ClipRRect(
-                                          borderRadius: BorderRadius.circular(8.0),
-                                          child: Image.asset(
-                                            appointment['imagePath']!,
-                                            height: 80,
-                                            width: 120,
-                                            fit: BoxFit.contain,
-                                          ),
+                                        Image.asset(
+                                          medicine['imagePath']!,
+                                          height: 60,
+                                          width: 60,
+                                          fit: BoxFit.contain,
                                         ),
                                         const SizedBox(height: 12),
                                         Text(
-                                          appointment['doctorName']!,
+                                          medicine['name']!,
                                           style: TextStyle(
                                             fontSize: 16,
                                             fontWeight: FontWeight.bold,
@@ -370,7 +398,7 @@ class _MainAppState extends State<Doctor_Screen> {
                                         ),
                                         const SizedBox(height: 8),
                                         Text(
-                                          "Date: ${dateFormat.format(appointmentDate)}",
+                                          medicine['dosage']!,
                                           style: TextStyle(
                                             fontSize: 14,
                                             color: Colors.grey[800],
@@ -378,7 +406,7 @@ class _MainAppState extends State<Doctor_Screen> {
                                         ),
                                         const SizedBox(height: 4),
                                         Text(
-                                          "Time: ${appointment['time']}",
+                                          "End: ${dateFormat.format(endDate)}",
                                           style: TextStyle(
                                             fontSize: 14,
                                             color: Colors.grey[600],
@@ -401,6 +429,67 @@ class _MainAppState extends State<Doctor_Screen> {
           ],
         ),
       ),
+    );
+  }
+}
+
+// Screens
+class InsuranceScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Insurance")),
+      body: Center(child: Text("Insurance Screen")),
+    );
+  }
+}
+
+class AppointmentScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Appointment")),
+      body: Center(child: Text("Appointment Screen")),
+    );
+  }
+}
+
+class MedicalRecordScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Medical Record")),
+      body: Center(child: Text("Medical Record Screen")),
+    );
+  }
+}
+
+class FamilyMembersScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Family Members")),
+      body: Center(child: Text("Family Members Screen")),
+    );
+  }
+}
+
+class MedicationScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Medication")),
+      body: Center(child: Text("Medication Screen")),
+    );
+  }
+}
+
+class ClaimsScreen extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(title: Text("Claims")),
+      body: Center(child: Text("Claims Screen")),
     );
   }
 }
