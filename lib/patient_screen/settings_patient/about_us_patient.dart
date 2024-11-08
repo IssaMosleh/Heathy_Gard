@@ -33,7 +33,7 @@ class AboutUsScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => settings_patient()),
                     ); 
             },
-            icon: const Icon(Icons.arrow_back_outlined, color: Colors.white),
+            icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           ),
           flexibleSpace: Container(
             decoration: const BoxDecoration(

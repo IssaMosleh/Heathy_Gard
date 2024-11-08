@@ -3,6 +3,11 @@ import 'package:tess/patient_screen/appointment_main_patient.dart';
 import 'package:tess/patient_screen/main.dart';
 import 'package:tess/patient_screen/notification_patient.dart';
 import 'package:tess/patient_screen/settings_patient/about_us_patient.dart';
+import 'package:tess/patient_screen/settings_patient/help_and_support_patient.dart';
+import 'package:tess/patient_screen/settings_patient/our_partners_patient.dart';
+import 'package:tess/patient_screen/settings_patient/privacy_policy_patient.dart';
+import 'package:tess/patient_screen/settings_patient/promotions_patient.dart';
+import 'package:tess/patient_screen/settings_patient/terms_and_service_patient.dart';
 
 class settings_patient extends StatelessWidget {
   const settings_patient({Key? key}) : super(key: key);
@@ -68,7 +73,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'Promotions',
             iconColor: Colors.green,
             onTap: () {
-              // Navigate to Promotions page
+               Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => promotions_patient()),
+                    ); 
             },
           ),
           SettingsTile(
@@ -76,7 +84,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'Our Partners',
             iconColor: Colors.purple,
             onTap: () {
-              // Navigate to Our Partners page
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => our_partners_patient()),
+                    ); 
             },
           ),
           SettingsTile(
@@ -84,7 +95,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'Privacy Policy',
             iconColor: Colors.indigo,
             onTap: () {
-              // Navigate to Privacy Policy page
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => privacy_policy_patient()),
+                    ); 
             },
           ),
           SettingsTile(
@@ -92,7 +106,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'Terms of Service',
             iconColor: Colors.teal,
             onTap: () {
-              // Navigate to Terms of Service page
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => terms_and_service_patient()),
+                    ); 
             },
           ),
           SettingsTile(
@@ -113,15 +130,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'Help & Support',
             iconColor: Colors.blueGrey,
             onTap: () {
-              // Navigate to Help & Support page
-            },
-          ),
-          SettingsTile(
-            icon: Icons.phone,
-            title: 'Call Us',
-            iconColor: Colors.orange,
-            onTap: () {
-              // Call Us action
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => help_and_support_patient()),
+                    ); 
             },
           ),
           SettingsTile(
