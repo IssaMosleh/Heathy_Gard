@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tess/doctor_screen/patient_portal/patient_portal_payment.dart';
-import 'package:tess/doctor_screen/patient_portal/patient_portal_show_doctor_profile.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_choosedoctor_search.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_payment.dart';
 

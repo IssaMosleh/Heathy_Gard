@@ -81,7 +81,7 @@ class ConfirmAppointmentScreen extends StatelessWidget {
                     MaterialPageRoute(builder: (context) => patient_appointment_payment(doctorSpecialty: 'Dermatologist',)),
                     );
             },
-            icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+            icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
           ),
         ),
       ),
