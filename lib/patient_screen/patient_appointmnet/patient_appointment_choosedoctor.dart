@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_choosedoctor_search.dart';
+import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_pick_date.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_selecthospital.dart';
-import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_selecthospital_search.dart';
+import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_viewdoctorprofile.dart';
 
 class patient_appointment_choosedoctor extends StatefulWidget {
   const patient_appointment_choosedoctor({Key? key}) : super(key: key);
@@ -108,14 +110,19 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
               Row(
                 children: [
                   const Text(
-                    "Doctor List",
+                    "Most Booked Doctors",
                     style: TextStyle(
-                      fontSize: 24,
+                      fontSize: 22,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                   Spacer(),
-                  IconButton(onPressed: () {}, icon: Image.asset("images/search.png")),
+                  IconButton(onPressed: () {
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => patient_appointment_choosedoctor_search()),
+                    );
+                  }, icon: Image.asset("images/search.png")),
                 ],
               ),
               const SizedBox(height: 4),
@@ -174,8 +181,10 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
                             children: [
                               TextButton(
                                 onPressed: () {
-                                  // Navigate to the View Profile screen for this doctor
-                                  print("View Profile for ${doctor['name']} clicked");
+                                  Navigator.push(
+                                  context,
+                                  MaterialPageRoute(builder: (context) => patient_appointment_viewdoctorprofile()),
+                                  );
                                 },
                                 child: const Text(
                                   "View Profile",
@@ -184,8 +193,10 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
                               ),
                               TextButton(
                                 onPressed: () {
-                                  // Navigate to the Book Appointment screen for this doctor
-                                  print("Book Appointment for ${doctor['name']} clicked");
+                                   Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => patient_appointment_pick_date()),
+                                    );
                                 },
                                 child: const Text(
                                   "Book Appointment",
