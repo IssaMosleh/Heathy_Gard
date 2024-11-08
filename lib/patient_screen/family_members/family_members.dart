@@ -7,15 +7,29 @@ class family_members extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: FamilyMembersScreen(familyId: 'FAMILY123'), // Pass the familyId here
+      home: FamilyMembersScreen(familyId: 'FAMILY123', isSpecialUser: true), // Pass familyId and user privilege
     );
   }
 }
 
-class FamilyMembersScreen extends StatelessWidget {
+class FamilyMembersScreen extends StatefulWidget {
   final String familyId;
+  final bool isSpecialUser;
 
-  const FamilyMembersScreen({Key? key, required this.familyId}) : super(key: key);
+  const FamilyMembersScreen({Key? key, required this.familyId, required this.isSpecialUser}) : super(key: key);
+
+  @override
+  _FamilyMembersScreenState createState() => _FamilyMembersScreenState();
+}
+
+class _FamilyMembersScreenState extends State<FamilyMembersScreen> {
+  late Future<List<Map<String, String>>> familyMembers;
+
+  @override
+  void initState() {
+    super.initState();
+    familyMembers = fetchFamilyMembers(widget.familyId);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,9 +45,9 @@ class FamilyMembersScreen extends StatelessWidget {
           leading: IconButton(
             onPressed: () {
               Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => Patient_Screen()),
-            );
+                context,
+                MaterialPageRoute(builder: (context) => Patient_Screen()),
+              );
             },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           ),
@@ -48,84 +62,95 @@ class FamilyMembersScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: FutureBuilder<List<Map<String, String>>>(
-        future: fetchFamilyMembers(familyId), // Fetch data based on familyId
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: CircularProgressIndicator());
-          } else if (snapshot.hasError) {
-            return Center(child: Text("Error: ${snapshot.error}"));
-          } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return const Center(child: Text("No family members found"));
-          } else {
-            // Display the list of family members
-            return ListView.builder(
-              padding: const EdgeInsets.all(16.0),
-              itemCount: snapshot.data!.length,
-              itemBuilder: (context, index) {
-                final member = snapshot.data![index];
-                return Card(
-                  margin: const EdgeInsets.only(bottom: 16.0),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12.0),
-                  ),
-                  elevation: 4.0,
-                  child: Padding(
+      body: widget.isSpecialUser
+          ? FutureBuilder<List<Map<String, String>>>(
+              future: familyMembers,
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.waiting) {
+                  return const Center(child: CircularProgressIndicator());
+                } else if (snapshot.hasError) {
+                  return Center(child: Text("Error: ${snapshot.error}"));
+                } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                  return const Center(child: Text("No family members found"));
+                } else {
+                  // Display the list of family members
+                  return ListView.builder(
                     padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        CircleAvatar(
-                          radius: 40,
-                          backgroundImage: AssetImage(member['image']!),
-                        ),
-                        const SizedBox(width: 16),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                member['name']!,
-                                style: const TextStyle(
-                                  fontSize: 18,
-                                  fontWeight: FontWeight.bold,
+                    itemCount: snapshot.data!.length,
+                    itemBuilder: (context, index) {
+                      final member = snapshot.data![index];
+                      return GestureDetector(
+                        onTap: () {
+                          // Action when card is tapped
+                          print("Clicked on ${member['name']}");
+                        },
+                        child: Card(
+                          margin: const EdgeInsets.only(bottom: 16.0),
+                          shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(12.0),
+                          ),
+                          elevation: 4.0,
+                          child: Padding(
+                            padding: const EdgeInsets.all(16.0),
+                            child: Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                CircleAvatar(
+                                  radius: 40,
+                                  backgroundImage: AssetImage(member['image']!),
                                 ),
-                              ),
-                              const SizedBox(height: 4),
-                              Text(
-                                "Relationship: ${member['relationship']}",
-                                style: const TextStyle(fontSize: 14, color: Colors.black54),
-                              ),
-                              Text(
-                                "Age: ${member['age']}",
-                                style: const TextStyle(fontSize: 14, color: Colors.black54),
-                              ),
-                              Text(
-                                "Member ID: ${member['memberId']}",
-                                style: const TextStyle(fontSize: 14, color: Colors.black54),
-                              ),
-                            ],
+                                const SizedBox(width: 16),
+                                Expanded(
+                                  child: Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Text(
+                                        member['name']!,
+                                        style: const TextStyle(
+                                          fontSize: 18,
+                                          fontWeight: FontWeight.bold,
+                                        ),
+                                      ),
+                                      const SizedBox(height: 4),
+                                      Text(
+                                        "Relationship: ${member['relationship']}",
+                                        style: const TextStyle(fontSize: 14, color: Colors.black54),
+                                      ),
+                                      Text(
+                                        "Age: ${member['age']}",
+                                        style: const TextStyle(fontSize: 14, color: Colors.black54),
+                                      ),
+                                      Text(
+                                        "Member ID: ${member['memberId']}",
+                                        style: const TextStyle(fontSize: 14, color: Colors.black54),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
-                      ],
-                    ),
-                  ),
-                );
+                      );
+                    },
+                  );
+                }
               },
-            );
-          }
-        },
-      ),
+            )
+          : Center(
+              child: Container(
+                padding: const EdgeInsets.all(16.0),
+                child: const Text(
+                  "No data available",
+                  style: TextStyle(fontSize: 18, color: Colors.black54),
+                ),
+              ),
+            ),
     );
   }
 
   Future<List<Map<String, String>>> fetchFamilyMembers(String familyId) async {
-    // Simulate network delay
     await Future.delayed(const Duration(seconds: 2));
-
-    // Here, you can replace this with an actual API call or database query
-    // For example, you could use http package or Firebase to fetch data based on familyId
-    // For now, this is mock data
 
     if (familyId == 'FAMILY123') {
       return [
@@ -152,7 +177,6 @@ class FamilyMembersScreen extends StatelessWidget {
         },
       ];
     } else {
-      // Return an empty list if no members are found
       return [];
     }
   }
