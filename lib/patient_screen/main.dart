@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:tess/patient_screen/appointment_main_patient.dart';
 import 'package:tess/patient_screen/claim_screen/claim_patient_infroduction.dart';
 import 'package:tess/patient_screen/family_members/family_members.dart';
 import 'package:tess/patient_screen/medical_history/medical_history_patient_main.dart';
 import 'package:tess/patient_screen/medication_patient/medication_patient_main.dart';
+import 'package:tess/patient_screen/notification_patient.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_introduction.dart';
 import 'package:tess/patient_screen/patient_insurance/patient_insurance.dart';
+import 'package:tess/patient_screen/settings_patient.dart';
 void main() {
   runApp(MaterialApp(home:Patient_Screen()));
 }
@@ -149,15 +152,30 @@ class _MainAppState extends State<Patient_Screen> {
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                   Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => appointment_main_patient()),
+                    );         
+                },
                 icon: Image.asset('images/icon2.png', width: 30, height: 30),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                   Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => notification_patient()),
+                    );         
+                },
                 icon: Image.asset('images/icon3.png', width: 30, height: 30),
               ),
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                   Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => settings_patient()),
+                    );         
+                },
                 icon: Image.asset('images/icon4.png', width: 30, height: 30),
               ),
             ],
