@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tess/patient_screen/appointment_main_patient.dart';
 import 'package:tess/patient_screen/main.dart';
 import 'package:tess/patient_screen/notification_patient.dart';
+import 'package:tess/patient_screen/settings_patient/about_us_patient.dart';
 
 class settings_patient extends StatelessWidget {
   const settings_patient({Key? key}) : super(key: key);
@@ -56,7 +57,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'About Us',
             iconColor: Colors.blue,
             onTap: () {
-              // Navigate to About Us page
+               Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => about_us_patient()),
+                    ); 
             },
           ),
           SettingsTile(
