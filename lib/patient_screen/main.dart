@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:tess/patient_screen/claim_screen/claim_paatient_main.dart';
+import 'package:tess/patient_screen/claim_screen/claim_patient_infroduction.dart';
 import 'package:tess/patient_screen/family_members/family_members.dart';
 import 'package:tess/patient_screen/medical_history/medical_history_patient_main.dart';
 import 'package:tess/patient_screen/medication_patient/medication_patient_main.dart';
@@ -110,7 +112,7 @@ class _MainAppState extends State<Patient_Screen> {
       case "Claims":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => ClaimsScreen()),
+          MaterialPageRoute(builder: (context) => claim_patient_infroduction()),
         );
         break;
     }
