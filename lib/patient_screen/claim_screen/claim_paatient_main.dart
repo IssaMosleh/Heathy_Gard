@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:tess/patient_screen/claim_screen/claim_patient_infroduction.dart';
-import 'package:tess/patient_screen/main.dart';
 
 class claim_paatient_main extends StatelessWidget {
   const claim_paatient_main({Key? key}) : super(key: key);
