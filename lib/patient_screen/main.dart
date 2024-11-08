@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tess/patient_screen/claim_screen/claim_paatient_main.dart';
 import 'package:tess/patient_screen/claim_screen/claim_patient_infroduction.dart';
 import 'package:tess/patient_screen/family_members/family_members.dart';
 import 'package:tess/patient_screen/medical_history/medical_history_patient_main.dart';
@@ -141,7 +140,12 @@ class _MainAppState extends State<Patient_Screen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               IconButton(
-                onPressed: () {},
+                onPressed: () {
+                   Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => Patient_Screen()),
+                    );         
+                },
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
               ),
               IconButton(

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tess/patient_screen/claim_screen/claim_patient_add_claim.dart';
 import 'package:tess/patient_screen/claim_screen/claim_patient_infroduction.dart';
 
 class claim_paatient_main extends StatelessWidget {
@@ -21,9 +22,10 @@ class ClaimCenterScreen extends StatefulWidget {
 
 class _ClaimCenterScreenState extends State<ClaimCenterScreen> {
   void _addNewClaim() {
-    // Placeholder function for adding a new claim
-    print("Add New Claim button pressed");
-    // You can replace this with navigation to a form or screen to add a new claim
+     Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => claim_patient_add_claim()),
+                    );         
   }
 
   @override
