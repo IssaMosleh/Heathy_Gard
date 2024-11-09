@@ -63,3 +63,6 @@ flutter:
     - images/patient1.jpg
     - images/patient2.jpg
     - images/PatientPortal.png
+    - images/my_info.png
+    - images/money_history.png
+    - images/order_history.png
