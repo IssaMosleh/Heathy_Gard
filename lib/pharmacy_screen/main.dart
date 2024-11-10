@@ -99,10 +99,6 @@ class _PharmacyScreenState extends State<PharmacyScreen> {
             ),
             IconButton(
               onPressed: () {},
-              icon: Image.asset('images/icon2.png'), // Replace with desired icon
-            ),
-            IconButton(
-              onPressed: () {},
               icon: Image.asset('images/icon3.png'), // Replace with desired icon
             ),
             IconButton(
