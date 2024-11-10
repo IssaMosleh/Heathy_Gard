@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:tess/pharmacy_screen/main.dart';
-import 'package:tess/pharmacy_screen/my_hospital/my_hospital_pharmacy_main.dart';
+import 'package:tess/pharmacy_screen/order_pharmacy/changehistory.dart';
 import 'package:tess/pharmacy_screen/order_pharmacy/completed_orders.dart';
 import 'package:tess/pharmacy_screen/order_pharmacy/pending_order_introduction.dart';
-import 'package:tess/pharmacy_screen/order_pharmacy/pending_orders.dart';
 
 class PharmacyOrderScreen extends StatefulWidget {
   const PharmacyOrderScreen({Key? key}) : super(key: key);
@@ -28,11 +27,12 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
 
   List<Map<String, dynamic>> activeOrders = [];
   List<Map<String, dynamic>> orderHistory = [];
+  List<Map<String, dynamic>> changeHistory = []; // Data for Change History
 
   @override
   void initState() {
     super.initState();
-    _tabController = TabController(length: 2, vsync: this);
+    _tabController = TabController(length: 3, vsync: this); // 3 tabs now
     _searchController.addListener(() {
       setState(() {
         _searchText = _searchController.text.toLowerCase();
@@ -44,34 +44,48 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
   Future<void> _fetchOrders() async {
     await Future.delayed(Duration(seconds: 2)); // Simulate network delay
     setState(() {
-      activeOrders = [
-        {
-          "orderId": "DOC12345",
+      activeOrders = List.generate(10, (index) {
+        return {
+          "orderId": "DOC${10000 + index}",
           "orderType": "Doctor Order",
           "status": "Pending",
           "doctor": "Dr. John Doe",
           "specialty": "Cardiology",
-          "patient": "Alice Johnson",
+          "patient": "Patient ${index + 1}",
           "medications": ["JTN123", "JTN456"],
           "date": "10 November 2023",
-        },
-      ];
-      orderHistory = [
-  {
-    "orderId": "DOC12344",
-    "orderType": "Doctor Order",
-    "status": "Completed",
-    "doctor": "Dr. Jane Smith",
-    "specialty": "Pediatrics",
-    "patient": "John Doe",
-    "medications": ["JTN789", "JTN012"],
-    "date": "08 November 2023",
-    "completedDate": "09 November 2023",
-    "pharmacyDoctorId": "DOC678",
-    "pharmacyDoctorName": "Dr. Adam Brown",
-    "moneyPaid": "100 JOD", // Add this field
-  },
-];
+        };
+      });
+
+      orderHistory = List.generate(10, (index) {
+        return {
+          "orderId": "DOC${20000 + index}",
+          "orderType": "Completed Order",
+          "status": "Completed",
+          "doctor": "Dr. Jane Smith",
+          "specialty": "Pediatrics",
+          "patient": "John Doe ${index + 1}",
+          "medications": ["JTN789", "JTN012"],
+          "date": "08 November 2023",
+          "completedDate": "09 November 2023",
+          "pharmacyDoctorId": "DOC678",
+          "pharmacyDoctorName": "Dr. Adam Brown",
+          "moneyPaid": "100 JOD",
+        };
+      });
+
+      // Sample Change History with order type
+      changeHistory = List.generate(10, (index) {
+        return {
+          "orderId": "DOC${30000 + index}",
+          "status": "Change Meds",
+          "orderType": "Change Meds", // Replaced reason with order type
+          "doctor": "Dr. Smith",
+          "patient": "Alice Johnson ${index + 1}",
+          "medications": ["JTN123", "JTN456"],
+          "date": "12 November 2023",
+        };
+      });
     });
   }
 
@@ -98,7 +112,8 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
     return orders.where((order) {
       final orderId = order["orderId"].toString().toLowerCase();
       final patient = order["patient"].toString().toLowerCase();
-      final matchesSearch = orderId.contains(_searchText) || patient.contains(_searchText);
+      final orderType = order["orderType"].toString().toLowerCase();
+      final matchesSearch = orderId.contains(_searchText) || patient.contains(_searchText) || orderType.contains(_searchText);
       final matchesOrderType = _orderTypeFilter == "All" || order["orderType"] == _orderTypeFilter;
       return matchesSearch && matchesOrderType;
     }).toList();
@@ -117,7 +132,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
           onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => Pharmacy_Screen()),
-            )
+            ),
         ),
         title: const Text(
           "Pharmacy Orders",
@@ -146,6 +161,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
           tabs: const [
             Tab(text: 'Active Orders'),
             Tab(text: 'Order History'),
+            Tab(text: 'Change History'), // New Tab
           ],
         ),
       ),
@@ -156,7 +172,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
             child: TextField(
               controller: _searchController,
               decoration: InputDecoration(
-                hintText: "Search by Order ID or Patient Name",
+                hintText: "Search by Order ID, Patient Name, or Order Type",
                 prefixIcon: Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
@@ -170,6 +186,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
               children: [
                 _buildScrollableOrderList(_filterOrders(activeOrders)),
                 _buildScrollableOrderList(_filterOrders(orderHistory), isHistory: true),
+                _buildChangeHistoryList(_filterOrders(changeHistory)), // Apply filter to Change History too
               ],
             ),
           ),
@@ -180,7 +197,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
 
   Widget _buildScrollableOrderList(List<Map<String, dynamic>> orders, {bool isHistory = false}) {
     return SingleChildScrollView(
-      padding: const EdgeInsets.all(16.0),
+      padding: const EdgeInsets.only(bottom: 16.0),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: orders.map((order) {
@@ -211,7 +228,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
               highlightColor: Colors.grey.withOpacity(0.1),
               child: Container(
                 width: double.infinity,
-                margin: const EdgeInsets.only(bottom: 12),
+                margin: const EdgeInsets.only(bottom: 16), // Added margin for space between cards
                 padding: const EdgeInsets.all(16),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(12),
@@ -235,14 +252,6 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    if (order["orderType"] == "Doctor Order")
-                      Text(
-                        "Doctor: ${order["doctor"]}",
-                        style: const TextStyle(
-                          fontSize: 14,
-                          color: Colors.grey,
-                        ),
-                      ),
                     Text(
                       "Patient: ${order["patient"]}",
                       style: const TextStyle(
@@ -257,38 +266,80 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
                         color: Colors.grey,
                       ),
                     ),
-                    if (isHistory && order.containsKey("completedDate"))
+                  ],
+                ),
+              ),
+            ),
+          );
+        }).toList(),
+      ),
+    );
+  }
+
+  Widget _buildChangeHistoryList(List<Map<String, dynamic>> orders) {
+    return SingleChildScrollView(
+      padding: const EdgeInsets.all(16.0),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: orders.map((order) {
+          return Padding(
+            padding: const EdgeInsets.only(bottom: 16.0), // Adds space between each card
+            child: Material(
+              color: Colors.white,
+              elevation: 2,
+              borderRadius: BorderRadius.circular(12),
+              child: InkWell(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => ChangeHistoryScreen()), // Navigate to Change History Screen
+                  );
+                },
+                borderRadius: BorderRadius.circular(12),
+                splashColor: Colors.grey.withOpacity(0.2),
+                highlightColor: Colors.grey.withOpacity(0.1),
+                child: Container(
+                  width: double.infinity,
+                  margin: const EdgeInsets.only(bottom: 12),
+                  padding: const EdgeInsets.all(16),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
                       Text(
-                        "Completed Date: ${order["completedDate"]}",
+                        "Order ID: ${order["orderId"]}",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        "Order Type: ${order["orderType"]}",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                      Text(
+                        "Patient: ${order["patient"]}",
                         style: const TextStyle(
                           fontSize: 14,
                           color: Colors.grey,
                         ),
                       ),
-                    const SizedBox(height: 4),
-                    Text(
-                      "Status: ${order["status"]}",
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.bold,
-                        color: order["status"] == "Pending" ? Colors.orange : Colors.green,
+                      Text(
+                        "Date: ${order["date"]}",
+                        style: const TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                        ),
                       ),
-                    ),
-                    const SizedBox(height: 8),
-                    const Text(
-                      "Medications:",
-                      style: TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
-                    ),
-                    ...order["medications"].asMap().entries.map<Widget>((entry) {
-                      int index = entry.key;
-                      String jtnCode = entry.value;
-                      String medicineName = getMedicineName(jtnCode);
-                      return Padding(
-                        padding: const EdgeInsets.only(left: 8.0, top: 4.0),
-                        child: Text("- Med ${index + 1}: $medicineName (JTN Code: $jtnCode)", style: TextStyle(fontSize: 14)),
-                      );
-                    }).toList(),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -299,9 +350,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
   }
 }
 
-
 // Filter Dialog for Order Type
-
 class FilterDialog extends StatefulWidget {
   final String initialFilter;
   const FilterDialog({required this.initialFilter, Key? key}) : super(key: key);
@@ -371,3 +420,4 @@ class _FilterDialogState extends State<FilterDialog> {
     );
   }
 }
+
