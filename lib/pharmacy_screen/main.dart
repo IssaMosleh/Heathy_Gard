@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tess/pharmacy_screen/money_pharmacy/pharmacy_money.dart';
 import 'package:tess/pharmacy_screen/my_hospital/my_hospital_pharmacy_main.dart';
 import 'package:tess/pharmacy_screen/my_info/my_info_pharmacy.dart';
+import 'package:tess/pharmacy_screen/order_pharmacy/order_pharmacy.dart';
 
 void main() {
   runApp(const Pharmacy_Screen());
@@ -61,7 +62,12 @@ class _PharmacyScreenState extends State<PharmacyScreen> {
                     );
         break;
       case "Order History":
-        // Add functionality
+        Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => PharmacyOrderScreen(),
+                      ),
+                    );
         break;
     }
   }
