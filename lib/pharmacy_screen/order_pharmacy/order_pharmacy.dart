@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tess/pharmacy_screen/main.dart';
+import 'package:tess/pharmacy_screen/my_hospital/my_hospital_pharmacy_main.dart';
 import 'package:tess/pharmacy_screen/order_pharmacy/completed_orders.dart';
+import 'package:tess/pharmacy_screen/order_pharmacy/pending_order_introduction.dart';
+import 'package:tess/pharmacy_screen/order_pharmacy/pending_orders.dart';
 
 class PharmacyOrderScreen extends StatefulWidget {
   const PharmacyOrderScreen({Key? key}) : super(key: key);
@@ -108,6 +112,13 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white), // iOS-style back arrow icon
+          onPressed: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Pharmacy_Screen()),
+            )
+        ),
         title: const Text(
           "Pharmacy Orders",
           style: TextStyle(color: Colors.white),
@@ -183,7 +194,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PendingOrderScreen(order: order, getMedicineName: getMedicineName),
+                      builder: (context) => PharmacyDispenseIntroduction(),
                     ),
                   );
                 } else if (order["status"] == "Completed") {
@@ -288,87 +299,6 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
   }
 }
 
-// Completed Order Details Screen with Doctor ID and Accepted Doctor Name
-
-
-// Pending Order Details Screen
-
-class PendingOrderScreen extends StatelessWidget {
-  final Map<String, dynamic> order;
-  final String Function(String) getMedicineName;
-
-  const PendingOrderScreen({Key? key, required this.order, required this.getMedicineName}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        flexibleSpace: Container(
-          decoration: const BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
-        ),
-        title: Text("Pending Order Details"),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            _buildReadOnlyTextField(label: "Order ID", value: order["orderId"], icon: Icons.confirmation_number),
-            _buildReadOnlyTextField(label: "Order Type", value: order["orderType"], icon: Icons.assignment),
-            _buildReadOnlyTextField(label: "Doctor", value: order["doctor"], icon: Icons.person),
-            _buildReadOnlyTextField(label: "Specialty", value: order["specialty"], icon: Icons.local_hospital),
-            _buildReadOnlyTextField(label: "Patient", value: order["patient"], icon: Icons.person_outline),
-            _buildReadOnlyTextField(label: "Date", value: order["date"], icon: Icons.date_range),
-            const SizedBox(height: 16),
-            const Text(
-              "Medications:",
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
-            ),
-            ...order["medications"].asMap().entries.map<Widget>((entry) {
-              int index = entry.key;
-              String jtnCode = entry.value;
-              String medicineName = getMedicineName(jtnCode);
-              return _buildReadOnlyTextField(
-                label: "Med ${index + 1}: $medicineName",
-                value: "JTN Code: $jtnCode",
-                icon: Icons.local_pharmacy,
-              );
-            }).toList(),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildReadOnlyTextField({
-    required String label,
-    required String value,
-    IconData? icon,
-  }) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 4.0),
-      child: TextFormField(
-        readOnly: true,
-        initialValue: value,
-        decoration: InputDecoration(
-          labelText: label,
-          prefixIcon: icon != null ? Icon(icon) : null,
-          border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(8.0),
-          ),
-          isDense: true,
-          contentPadding: EdgeInsets.all(8),
-        ),
-      ),
-    );
-  }
-}
 
 // Filter Dialog for Order Type
 
