@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tess/pharmacy_screen/money_pharmacy/pharmacy_money.dart';
 import 'package:tess/pharmacy_screen/my_hospital/my_hospital_pharmacy_main.dart';
 import 'package:tess/pharmacy_screen/my_info/my_info_pharmacy.dart';
+import 'package:tess/pharmacy_screen/notification_screen_pharmacy.dart';
 import 'package:tess/pharmacy_screen/order_pharmacy/order_pharmacy.dart';
 
 void main() {
@@ -94,11 +95,21 @@ class _PharmacyScreenState extends State<PharmacyScreen> {
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => Pharmacy_Screen()),
+            );
+              },
               icon: Image.asset('images/icon1.png'), // Replace with desired icon
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PharmacyNotificationScreen()),
+            );
+              },
               icon: Image.asset('images/icon3.png'), // Replace with desired icon
             ),
             IconButton(
