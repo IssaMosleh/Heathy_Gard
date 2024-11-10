@@ -61,6 +61,7 @@ class PharmacyNotificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
      appBar: AppBar(
+      automaticallyImplyLeading: false,
       title: const Text('Pharmacy Notifications', style: TextStyle(color: Colors.white)),
       flexibleSpace: Container(
       decoration: const BoxDecoration(

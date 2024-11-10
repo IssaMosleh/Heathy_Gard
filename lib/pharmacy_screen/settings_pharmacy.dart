@@ -3,7 +3,6 @@ import 'package:tess/pharmacy_screen/main.dart';
 import 'package:tess/pharmacy_screen/notification_screen_pharmacy.dart';
 import 'package:tess/pharmacy_screen/settings/about_us_pharmacy.dart';
 import 'package:tess/pharmacy_screen/settings/help_support_pharmacy.dart';
-import 'package:tess/pharmacy_screen/settings/our_partners_pharmacy.dart';
 import 'package:tess/pharmacy_screen/settings/privacy_policy_pharmacy.dart';
 import 'package:tess/pharmacy_screen/settings/terms_of_service_pharmacy.dart';
 
@@ -64,17 +63,6 @@ class _SettingsScreenState extends State<SettingsScreen> {
                Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => AboutUsScreen()),
-                    ); 
-            },
-          ),
-          SettingsTile(
-            icon: Icons.business,
-            title: 'Our Partners',
-            iconColor: Colors.purple,
-            onTap: () {
-              Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => PharmacyPartnersScreen()),
                     ); 
             },
           ),

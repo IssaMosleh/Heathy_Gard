@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tess/doctor_screen/settings_doctor.dart';
 import 'package:tess/pharmacy_screen/settings_pharmacy.dart';
 
 class AboutUsPharmacy extends StatelessWidget {
@@ -31,8 +32,8 @@ class AboutUsScreen extends StatelessWidget {
               Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => settings_pharmacy()),
-              );
-            }, // Navigate back to the settings screen
+            );// Navigate back to the previous screen
+            },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           ),
           flexibleSpace: Container(
@@ -71,7 +72,7 @@ class AboutUsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               const Text(
-                "We are a pharmacy dedicated to providing high-quality medications and services to our community. Our focus is on enhancing healthcare accessibility, delivering medications, and supporting our patients with care and attention.",
+                "We are final-year Computer Engineering students at The Hashemite University, dedicated to making healthcare more accessible and efficient. Our journey led us to develop an Electronic Health System (EHS) tailored specifically to support health insurance needs in a university setting.",
                 style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 20),
@@ -81,31 +82,31 @@ class AboutUsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               const Text(
-                "Our vision is to make healthcare services and medication management accessible to everyone. We aim to create a seamless experience where patients, doctors, and pharmacists can connect easily through a single platform.",
+                "Our primary focus is on health insurance management, allowing patients, doctors, pharmacies, labs, and radiology departments to seamlessly interact within a single platform. We aim to enhance the healthcare experience by integrating digital solutions that streamline access to medical records, medication refills, lab reports, radiology images, and insurance claims.",
                 style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 20),
               const Text(
-                "Key Services",
+                "Key Features",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
               const Text(
-                "• Prescription medication delivery and refills.\n"
-                "• Medication counseling and advice.\n"
-                "• Health checks and personalized pharmacy services.\n"
-                "• Insurance processing for prescribed medications.\n"
-                "• Pharmacist consultations and patient education.",
+                "• Patients: Easily access personal medical records, track medication refills, view lab results, radiology images, and manage appointments.\n"
+                "• Doctors: View patient history, manage prescriptions, access lab and radiology reports, and communicate with patients effectively.\n"
+                "• Pharmacies: Process medication refill requests and keep track of patients' prescribed medications.\n"
+                "• Laboratories: Provide patients and doctors with lab results and health reports directly within the app.\n"
+                "• Radiology: Upload and manage radiology images, allowing patients and doctors to review imaging results securely.",
                 style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 20),
               const Text(
-                "Why Choose Our Pharmacy?",
+                "Why Choose Our App?",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
               const SizedBox(height: 10),
               const Text(
-                "Our pharmacy is committed to making the process of managing health and medications easier for patients. By integrating the latest technology, we ensure fast service, reliability, and safety in all our processes.",
+                "Our EHS application is designed with the needs of a university healthcare environment in mind. By consolidating health services and insurance management in a single platform, we hope to reduce the administrative burden and improve healthcare accessibility and efficiency.",
                 style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 20),
@@ -115,13 +116,13 @@ class AboutUsScreen extends StatelessWidget {
               ),
               const SizedBox(height: 10),
               const Text(
-                "We strive to provide the highest level of service and care to our patients. With a customer-first approach, we are always working to improve our services, ensuring our patients have access to the medications and healthcare services they need.",
+                "As aspiring engineers, we are committed to developing a reliable, secure, and user-friendly platform that addresses the challenges of modern healthcare. We believe in using technology to create a positive impact in healthcare, and this project is our first step toward achieving that goal.",
                 style: TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 20),
-              const Center(
-                child: Text(
-                  "Thank you for trusting us with your healthcare needs!",
+              Center(
+                child: const Text(
+                  "Thank you for trusting us!",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
               ),
