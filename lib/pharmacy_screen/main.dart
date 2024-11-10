@@ -4,6 +4,7 @@ import 'package:tess/pharmacy_screen/my_hospital/my_hospital_pharmacy_main.dart'
 import 'package:tess/pharmacy_screen/my_info/my_info_pharmacy.dart';
 import 'package:tess/pharmacy_screen/notification_screen_pharmacy.dart';
 import 'package:tess/pharmacy_screen/order_pharmacy/order_pharmacy.dart';
+import 'package:tess/pharmacy_screen/settings_pharmacy.dart';
 
 void main() {
   runApp(const Pharmacy_Screen());
@@ -113,7 +114,12 @@ class _PharmacyScreenState extends State<PharmacyScreen> {
               icon: Image.asset('images/icon3.png'), // Replace with desired icon
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => settings_pharmacy()),
+            );
+              },
               icon: Image.asset('images/icon4.png'), // Replace with desired icon
             ),
           ],
