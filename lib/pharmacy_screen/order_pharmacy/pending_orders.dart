@@ -18,14 +18,13 @@ class _MedicationDispenseScreenState extends State<MedicationDispenseScreen> {
   final TextEditingController _insuranceCompanyController = TextEditingController();
   final TextEditingController _insuranceIdController = TextEditingController();
   final TextEditingController _medicationStatusController = TextEditingController();
-  final TextEditingController _jtnCodesController = TextEditingController();
+  final TextEditingController _gtinCodesController = TextEditingController();
 
+  // List of medications with GTIN codes, medication names, and doses
   List<Map<String, String>> medications = [
-    {"jtnCode": "JTN123", "dose": "Take 2 tablets daily"},
-    {"jtnCode": "JTN456", "dose": "Take 1 tablet every 8 hours"}
+    {"gtinCode": "GTIN123456789012", "medicationName": "Ibuprofen 200mg", "dose": "Take 2 tablets daily"},
+    {"gtinCode": "GTIN987654321098", "medicationName": "Amoxicillin 500mg", "dose": "Take 1 tablet every 8 hours"}
   ];
-
-  bool isConfirmDisabled = false;
 
   @override
   void initState() {
@@ -41,13 +40,10 @@ class _MedicationDispenseScreenState extends State<MedicationDispenseScreen> {
     _insuranceCompanyController.text = "Global Insurance";
     _insuranceIdController.text = "INS4567";
     _medicationStatusController.text = "Medication has been dispensed";
-    _jtnCodesController.text = "JTN123, JTN456"; // Example JTN codes
+    _gtinCodesController.text = "GTIN123456789012, GTIN987654321098"; // Example GTIN codes
   }
 
   void _requestMedicationChange() {
-    setState(() {
-      isConfirmDisabled = true; // Disable Confirm Dispense button
-    });
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(content: Text("Medication change request sent. Patient needs to revisit doctor.")),
     );
@@ -60,17 +56,15 @@ class _MedicationDispenseScreenState extends State<MedicationDispenseScreen> {
   }
 
   void _confirmDispense() {
-    if (!isConfirmDisabled) {
-      ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(content: Text("Medication dispensing confirmed.")),
-      );
-      
-      // Navigate to the PendingOrderIntroduction screen to finalize the dispense
-      Navigator.push(
-        context,
-        MaterialPageRoute(builder: (context) => Pharmacy_Screen()),
-      );
-    }
+    ScaffoldMessenger.of(context).showSnackBar(
+      SnackBar(content: Text("Medication dispensing confirmed.")),
+    );
+    
+    // Navigate to the PendingOrderIntroduction screen to finalize the dispense
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => Pharmacy_Screen()),
+    );
   }
 
   @override
@@ -119,16 +113,17 @@ class _MedicationDispenseScreenState extends State<MedicationDispenseScreen> {
             SizedBox(height: 12),
             _buildReadOnlyTextField("Medication Status", _medicationStatusController, hintText: "Medication has been dispensed"),
             SizedBox(height: 12),
-            _buildReadOnlyTextField("JTN Codes", _jtnCodesController, hintText: "JTN123, JTN456"),
+            _buildReadOnlyTextField("GTIN Codes", _gtinCodesController, hintText: "GTIN123456789012, GTIN987654321098"),
             SizedBox(height: 24),
 
-            // Display each medication and its dose
+            // Display each medication with GTIN code, medication name, and dose
             Text("Medications:", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             ...medications.map((medication) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Medication: ${medication['jtnCode']}"),
+                  Text("GTIN: ${medication['gtinCode']}"),
+                  Text("Medication: ${medication['medicationName']}"),
                   Text("Dose: ${medication['dose']}"),
                   SizedBox(height: 12),
                 ],
@@ -148,7 +143,7 @@ class _MedicationDispenseScreenState extends State<MedicationDispenseScreen> {
                   child: Text("Change Medication", style: TextStyle(color: Colors.white)),
                 ),
                 ElevatedButton(
-                  onPressed: isConfirmDisabled ? null : _confirmDispense,
+                  onPressed: _confirmDispense,
                   style: ElevatedButton.styleFrom(
                     padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
                     backgroundColor: Colors.green,

@@ -29,8 +29,6 @@ class _MyPharmaciesScreenState extends State<MyPharmaciesScreen> {
   final List<Map<String, String>> facilities = [
     {'title': "City Pharmacy", 'subtitle': "Downtown", 'type': "pharmacy"},
     {'title': "HealthPlus Pharmacy", 'subtitle': "West End", 'type': "pharmacy"},
-    {'title': "Medico Pharmacy", 'subtitle': "East Park", 'type': "pharmacy"},
-    {'title': "Wellness Pharmacy", 'subtitle': "Green Lane", 'type': "pharmacy"},
   ];
 
   Widget getIcon(String type) {

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tess/doctor_screen/settings_doctor.dart';
 import 'package:tess/pharmacy_screen/settings_pharmacy.dart';
 
 class AboutUsPharmacy extends StatelessWidget {
