@@ -22,8 +22,8 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
   final List<String> labels = [
     "Claims Management",
     "Reports",
-    "Approvals",
-    "Policy Overview",
+    "My Info",
+    "Hospitals",
     "Premium Processing",
     "Support Requests",
   ];
@@ -53,13 +53,13 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
           MaterialPageRoute(builder: (context) => AdvancedReportsScreen()),
         );
         break;
-      case "Approvals":
+      case "My Info":
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => My_Info_insurance()),
         );
         break;
-      case "Policy Overview":
+      case "Hospitals":
         Navigator.push(
           context,
           MaterialPageRoute(builder: (context) => insurance_hospital_search()),

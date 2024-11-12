@@ -54,7 +54,8 @@ class ApprovedClaimScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Approved Claim Details')),
+      appBar: AppBar(
+      title: Text('Approved Claim Details')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
