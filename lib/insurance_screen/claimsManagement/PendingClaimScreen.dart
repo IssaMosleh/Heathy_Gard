@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tess/insurance_screen/claimsManagement/ClaimsManagement.dart';
 import 'package:tess/insurance_screen/claimsManagement/Reject_Screen.dart';
-import 'package:tess/insurance_screen/main.dart';
 
 class PendingClaimScreen extends StatefulWidget {
   final Map<String, dynamic> claim;
@@ -207,7 +206,23 @@ class _PendingClaimScreenState extends State<PendingClaimScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Pending Claim Details')),
+      appBar: AppBar(
+        leading: IconButton(onPressed: (){
+           Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ClaimsManagementScreen()),
+        );
+        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue, Colors.purple],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        title: Text('Pending Claim Details',style: TextStyle(color: Colors.white),)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(

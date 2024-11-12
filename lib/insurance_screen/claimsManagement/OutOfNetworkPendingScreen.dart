@@ -14,7 +14,22 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
 
     return Scaffold(
       appBar: AppBar(
-        title: Text('Out-of-Network Claim Details'),
+        leading: IconButton(onPressed: (){
+           Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ClaimsManagementScreen()),
+        );
+        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue, Colors.purple],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        title: Text('Out-of-Network Claim Details',style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.blueAccent,
       ),
       body: Padding(

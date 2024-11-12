@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tess/insurance_screen/claimsManagement/ClaimsManagement.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class RejectedOutOfNetworkScreen extends StatelessWidget {
@@ -13,7 +14,22 @@ class RejectedOutOfNetworkScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Out-of-Network Rejected Claim Details'),
+        leading: IconButton(onPressed: (){
+           Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ClaimsManagementScreen()),
+        );
+        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue, Colors.purple],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        title: Text('Out-of-Network Rejected Claim Details',style:TextStyle(color: Colors.white),),
         backgroundColor: Colors.blueAccent,
       ),
       body: Padding(

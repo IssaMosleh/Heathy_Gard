@@ -5,6 +5,7 @@ import 'package:tess/insurance_screen/claimsManagement/OutOfNetworkPendingScreen
 import 'package:tess/insurance_screen/claimsManagement/PendingClaimScreen.dart';
 import 'package:tess/insurance_screen/claimsManagement/RejectedClaimScreen.dart';
 import 'package:tess/insurance_screen/claimsManagement/RejectedOutOfNetworkScreen.dart';
+import 'package:tess/insurance_screen/main.dart';
 
 class ClaimsManagementScreen extends StatefulWidget {
   @override
@@ -145,10 +146,26 @@ class _ClaimsManagementScreenState extends State<ClaimsManagementScreen> with Si
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Claims Management'),
+        leading: IconButton(onPressed: (){
+           Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => InsuranceRep_Screen()),
+        );
+        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue, Colors.purple],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+        title: Text('Claims Management',style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.blueAccent,
         bottom: TabBar(
           controller: _tabController,
+          labelColor: Colors.white,
           tabs: [
             Tab(text: 'Pending'),
             Tab(text: 'Approved'),

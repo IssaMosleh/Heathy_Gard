@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tess/insurance_screen/claimsManagement/ClaimsManagement.dart';
 
 class ApprovedClaimScreen extends StatelessWidget {
   final Map<String, dynamic> claim;
@@ -55,7 +56,22 @@ class ApprovedClaimScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-      title: Text('Approved Claim Details')),
+        leading: IconButton(onPressed: (){
+           Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => ClaimsManagementScreen()),
+        );
+        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        flexibleSpace: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              colors: [Colors.blue, Colors.purple],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
+      title: Text('Approved Claim Details',style: TextStyle(color: Colors.white),)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(

@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tess/insurance_screen/Hospitals/hospitals_insurance.dart';
+import 'package:tess/insurance_screen/Patients/patients_insurance.dart';
 import 'package:tess/insurance_screen/Report/report.dart';
 import 'package:tess/insurance_screen/claimsManagement/ClaimsManagement.dart';
 import 'package:tess/insurance_screen/my_info/My_Info_insurance.dart';
+import 'package:tess/insurance_screen/notification_insurance.dart';
+import 'package:tess/insurance_screen/settings_insurance.dart';
 
 void main() {
   runApp(MaterialApp(home: InsuranceRep_Screen()));
@@ -24,20 +27,16 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
     "Reports",
     "My Info",
     "Hospitals",
-    "Premium Processing",
-    "Support Requests",
+    "Patients",
   ];
 
   final List<String> images = [
-    "images/ClaimsManagement.png",
-    "images/Reports.png",
-    "images/Approvals.png",
-    "images/PolicyOverview.png",
-    "images/PremiumProcessing.png",
-    "images/SupportRequests.png",
+    "images/Claims.png",
+    "images/history.png",
+    "images/my_info.png",
+    "images/Hospital.png",
+    "images/FamilyMembers.png",
   ];
-
-  final DateFormat dateFormat = DateFormat('MMM d, yyyy');
 
   void handleOnTap(String label) {
     switch (label) {
@@ -65,16 +64,11 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
           MaterialPageRoute(builder: (context) => insurance_hospital_search()),
         );
         break;
-      case "Premium Processing":
+      case "Patients":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => premium_processing_screen()),
-        );
-        break;
-      case "Support Requests":
-        Navigator.push(
-          context,
-          MaterialPageRoute(builder: (context) => support_requests_screen()),
+          MaterialPageRoute(
+              builder: (context) => PatientsInsurance(insuranceName: 'HealthFirst',)),
         );
         break;
     }
@@ -106,8 +100,9 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => InsuranceRep_Screen()),
-                  );         
+                    MaterialPageRoute(
+                        builder: (context) => InsuranceRep_Screen()),
+                  );
                 },
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
               ),
@@ -115,17 +110,9 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => claims_management_screen()),
-                  );         
-                },
-                icon: Image.asset('images/icon2.png', width: 30, height: 30),
-              ),
-              IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => reports_screen()),
-                  );         
+                    MaterialPageRoute(
+                        builder: (context) => InsuranceNotificationScreen()),
+                  );
                 },
                 icon: Image.asset('images/icon3.png', width: 30, height: 30),
               ),
@@ -133,8 +120,9 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => settings_screen()),
-                  );         
+                    MaterialPageRoute(
+                        builder: (context) => settings_insurance()),
+                  );
                 },
                 icon: Image.asset('images/icon4.png', width: 30, height: 30),
               ),
@@ -158,11 +146,12 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                       Column(
                         children: [
                           Padding(
-                            padding: const EdgeInsets.fromLTRB(16.0, 60.0, 16.0, 20.0),
+                            padding:
+                                const EdgeInsets.fromLTRB(16.0, 60.0, 16.0, 20.0),
                             child: Row(
                               children: [
                                 Container(
-                                  height: 75, 
+                                  height: 75,
                                   width: 75,
                                   decoration: BoxDecoration(
                                     shape: BoxShape.circle,
@@ -177,7 +166,7 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: const [
                                     Text(
-                                      "Hello,",
+                                      "Hello, Mr. Deyaa",
                                       style: TextStyle(
                                         color: Colors.white,
                                         fontSize: 18,
@@ -197,56 +186,59 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                           const SizedBox(height: 16.0),
                           Center(
                             child: Padding(
-                              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Container(
                                 constraints: BoxConstraints(maxWidth: 500),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(24.0),
-                                  border: Border.all(color: Colors.grey[300]!, width: 1),
+                                  border:
+                                      Border.all(color: Colors.grey[300]!, width: 1),
                                 ),
                                 padding: const EdgeInsets.all(12.0),
                                 child: Column(
                                   children: [
-                                    for (int row = 0; row < 2; row++) ...[
+                                    for (int row = 0; row < (labels.length + 2) ~/ 3; row++) ...[
                                       if (row > 0)
                                         const Divider(color: Colors.grey, thickness: 1),
                                       Row(
                                         children: [
                                           for (int col = 0; col < 3; col++) ...[
-                                            if (col > 0)
+                                            if ((row * 3 + col) < labels.length)
+                                              Expanded(
+                                                child: InkWell(
+                                                  onTap: () => handleOnTap(labels[(row * 3) + col]),
+                                                  child: Column(
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+                                                      Container(
+                                                        height: imageSize,
+                                                        width: imageSize,
+                                                        child: Image.asset(
+                                                          images[(row * 3) + col],
+                                                          fit: BoxFit.contain,
+                                                        ),
+                                                      ),
+                                                      const SizedBox(height: 6),
+                                                      Text(
+                                                        labels[(row * 3) + col],
+                                                        textAlign: TextAlign.center,
+                                                        style: TextStyle(
+                                                          fontSize: fontSize,
+                                                          color: Colors.black,
+                                                        ),
+                                                      ),
+                                                    ],
+                                                  ),
+                                                ),
+                                              ),
+                                            if (col < 2 && (row * 3 + col + 1) < labels.length)
                                               Container(
                                                 width: 1,
                                                 color: Colors.grey[300],
                                                 height: 80,
                                               ),
-                                            Expanded(
-                                              child: InkWell(
-                                                onTap: () => handleOnTap(labels[(row * 3) + col]),
-                                                child: Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    Container(
-                                                      height: imageSize,
-                                                      width: imageSize,
-                                                      child: Image.asset(
-                                                        images[(row * 3) + col],
-                                                        fit: BoxFit.contain,
-                                                      ),
-                                                    ),
-                                                    const SizedBox(height: 6),
-                                                    Text(
-                                                      labels[(row * 3) + col],
-                                                      textAlign: TextAlign.center,
-                                                      style: TextStyle(
-                                                        fontSize: fontSize,
-                                                        color: Colors.black,
-                                                      ),
-                                                    ),
-                                                  ],
-                                                ),
-                                              ),
-                                            ),
                                           ],
                                         ],
                                       ),
@@ -296,7 +288,8 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  constraints: BoxConstraints(maxHeight: 30, maxWidth: 30),
+                                  constraints:
+                                      BoxConstraints(maxHeight: 30, maxWidth: 30),
                                   decoration: BoxDecoration(shape: BoxShape.circle),
                                   child: Center(
                                     child: Image.asset(
@@ -329,55 +322,5 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
         ),
       ),
     );
-  }
-}
-
-// Dummy screen classes for navigation
-class claims_management_screen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("Claims Management Screen")));
-  }
-}
-
-class reports_screen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("Reports Screen")));
-  }
-}
-
-class approvals_screen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("Approvals Screen")));
-  }
-}
-
-class policy_overview_screen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("Policy Overview Screen")));
-  }
-}
-
-class premium_processing_screen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("Premium Processing Screen")));
-  }
-}
-
-class support_requests_screen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("Support Requests Screen")));
-  }
-}
-
-class settings_screen extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(body: Center(child: Text("Settings Screen")));
   }
 }
