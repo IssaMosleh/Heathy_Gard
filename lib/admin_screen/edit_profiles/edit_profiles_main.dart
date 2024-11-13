@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:tess/admin_screen/edit_profiles/doctor/doctor_insurance_main.dart';
 import 'package:tess/admin_screen/edit_profiles/hospital/edit_hospital.dart';
 import 'package:tess/admin_screen/edit_profiles/insurance/edit_insurance.dart';
 import 'package:tess/admin_screen/edit_profiles/patient/patient_insirance_main.dart';
@@ -126,7 +127,12 @@ class edit_profiles_main extends StatelessWidget {
                       context,
                       'Doctor',
                       'images/doctorss.png', // Replace with your new image path
-                      onTap: onDoctorTap,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const DoctorSearchScreen()),
+                        );
+                      },
                     ),
                   ],
                 ),
@@ -138,17 +144,6 @@ class edit_profiles_main extends StatelessWidget {
     );
   }
 
-  void onOnlineTap() {
-    // Handle Patient tap
-  }
-
-  void onClinicTap() {
-    // Handle Insurance tap
-  }
-
-  void onDoctorTap() {
-    // Handle Doctor tap
-  }
 
   Widget _buildOptionCard(
     BuildContext context,

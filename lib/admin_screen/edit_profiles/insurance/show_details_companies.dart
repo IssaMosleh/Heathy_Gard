@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:image_picker/image_picker.dart';
 import 'dart:io';
 
+import 'package:tess/admin_screen/edit_profiles/insurance/edit_insurance.dart';
+
 class InsuranceCompanyDetails extends StatelessWidget {
   const InsuranceCompanyDetails({Key? key}) : super(key: key);
 
@@ -90,6 +92,12 @@ class _InsuranceDetailScreenState extends State<InsuranceDetailScreen> {
         ScaffoldMessenger.of(context).showSnackBar(
           const SnackBar(content: Text("Changes saved successfully")),
         );
+         Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => InsuranceCompanySearchScreen(),
+                          ),
+                        );
       });
     }
   }
@@ -103,7 +111,12 @@ class _InsuranceDetailScreenState extends State<InsuranceDetailScreen> {
         centerTitle: true,
         title: const Text("Insurance Company Details", style: TextStyle(color: Colors.white)),
         leading: IconButton(
-          onPressed: () => Navigator.pop(context),
+          onPressed: () =>  Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => InsuranceCompanySearchScreen(),
+                          ),
+                        ),
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         flexibleSpace: Container(
