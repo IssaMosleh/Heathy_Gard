@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:tess/admin_screen/add_new_users/add_new_main.dart';
 import 'package:tess/admin_screen/edit_profiles/doctor/doctor_insurance_main.dart';
 
-class doctor_insurance_showdetails extends StatelessWidget {
-  const doctor_insurance_showdetails({Key? key}) : super(key: key);
+class doctor_add_new extends StatelessWidget {
+  const doctor_add_new({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -25,27 +26,27 @@ class DoctorScreen extends StatefulWidget {
 class _DoctorScreenState extends State<DoctorScreen> {
   final _formKey = GlobalKey<FormState>();
 
-  final TextEditingController doctorNameController = TextEditingController(text: "Dr. Jane Smith");
-  final TextEditingController doctorIDController = TextEditingController(text: "D123456");
-  final TextEditingController genderController = TextEditingController(text: "Female");
-  final TextEditingController dobController = TextEditingController(text: "January 1, 1980");
-  final TextEditingController experienceController = TextEditingController(text: "15 years");
-  final TextEditingController contactController = TextEditingController(text: "+962795716049");
-  final TextEditingController emailController = TextEditingController(text: "jane.smith@hospital.com");
-  final TextEditingController languagesController = TextEditingController(text: "English, Spanish");
-  final TextEditingController medicalSchoolController = TextEditingController(text: "Harvard Medical School");
-  final TextEditingController residencyController = TextEditingController(text: "Cardiology, Massachusetts General Hospital");
+  final TextEditingController doctorNameController = TextEditingController();
+  final TextEditingController doctorIDController = TextEditingController();
+  final TextEditingController genderController = TextEditingController();
+  final TextEditingController dobController = TextEditingController();
+  final TextEditingController experienceController = TextEditingController();
+  final TextEditingController contactController = TextEditingController();
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController languagesController = TextEditingController();
+  final TextEditingController medicalSchoolController = TextEditingController();
+  final TextEditingController residencyController = TextEditingController();
 
-  List<TextEditingController> certificationsControllers = [TextEditingController(text: "American Board of Internal Medicine")];
-  List<TextEditingController> achievementsControllers = [TextEditingController(text: "Top Doctor Award 2018, 2020")];
+  List<TextEditingController> certificationsControllers = [TextEditingController()];
+  List<TextEditingController> achievementsControllers = [TextEditingController()];
 
   final List<String> specializations = ["Cardiology", "Dermatology", "Pediatrics", "Radiology"];
   final List<String> hospitals = ["Massachusetts General Hospital", "Mayo Clinic", "Johns Hopkins"];
   final List<String> insuranceCompanies = ["Allianz", "Cigna", "MetLife", "Blue Cross"];
 
-  String selectedSpecialization = "Cardiology";
-  List<String> affiliatedHospitals = ["Massachusetts General Hospital"];
-  List<String> affiliatedInsurances = ["Allianz"];
+  String selectedSpecialization = "";
+  List<String> affiliatedHospitals = [""];
+  List<String> affiliatedInsurances = [""];
 
   void addCertification() {
     setState(() {
@@ -99,12 +100,15 @@ class _DoctorScreenState extends State<DoctorScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        leading: IconButton(onPressed: (){
-          Navigator.push(
+        leading: IconButton(
+          onPressed: () {
+            Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => const DoctorSearchScreen()),
+              MaterialPageRoute(builder: (context) => const add_new_main()),
             );
-        }, icon: Icon(Icons.arrow_back_ios),color: Colors.white,),
+          },
+          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+        ),
         centerTitle: true,
         title: const Text(
           "Doctor's Portal",
@@ -220,13 +224,13 @@ class _DoctorScreenState extends State<DoctorScreen> {
                         children: [
                           Expanded(
                             child: DropdownButtonFormField<String>(
-                              value: value,
+                              value: value.isEmpty ? null : value,
                               items: hospitals
                                   .map((hospital) => DropdownMenuItem(
                                         value: hospital,
                                         child: Text(
                                           hospital,
-                                          overflow: TextOverflow.ellipsis, // Truncates long text
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                       ))
                                   .toList(),
@@ -272,13 +276,13 @@ class _DoctorScreenState extends State<DoctorScreen> {
                         children: [
                           Expanded(
                             child: DropdownButtonFormField<String>(
-                              value: value,
+                              value: value.isEmpty ? null : value,
                               items: insuranceCompanies
                                   .map((company) => DropdownMenuItem(
                                         value: company,
                                         child: Text(
                                           company,
-                                          overflow: TextOverflow.ellipsis, // Truncates long text
+                                          overflow: TextOverflow.ellipsis,
                                         ),
                                       ))
                                   .toList(),
@@ -320,6 +324,10 @@ class _DoctorScreenState extends State<DoctorScreen> {
                       ScaffoldMessenger.of(context).showSnackBar(
                         SnackBar(content: Text("Information saved successfully!")),
                       );
+                      Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const add_new_main()),
+                  );
                     }
                   },
                   child: const Text("Save Changes"),
@@ -353,7 +361,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: DropdownButtonFormField<String>(
-        value: value,
+        value: value.isEmpty ? null : value,
         onChanged: onChanged,
         decoration: InputDecoration(
           labelText: label,
@@ -363,7 +371,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
           value: item,
           child: Text(
             item,
-            overflow: TextOverflow.ellipsis, // Truncates long text
+            overflow: TextOverflow.ellipsis,
           ),
         )).toList(),
       ),
@@ -371,12 +379,17 @@ class _DoctorScreenState extends State<DoctorScreen> {
   }
 }
 
-class InfoContainer extends StatelessWidget {
+class InfoContainer extends StatefulWidget {
   final String title;
   final List<Widget> children;
 
   const InfoContainer({Key? key, required this.title, required this.children}) : super(key: key);
 
+  @override
+  _InfoContainerState createState() => _InfoContainerState();
+}
+
+class _InfoContainerState extends State<InfoContainer> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -399,7 +412,7 @@ class InfoContainer extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
-            title,
+            widget.title,
             style: const TextStyle(
               fontSize: 16,
               fontWeight: FontWeight.bold,
@@ -408,7 +421,7 @@ class InfoContainer extends StatelessWidget {
           ),
           const Divider(color: Colors.grey, thickness: 0.5),
           const SizedBox(height: 10),
-          ...children,
+          ...widget.children,
         ],
       ),
     );

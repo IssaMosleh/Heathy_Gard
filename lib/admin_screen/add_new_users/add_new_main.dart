@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:tess/admin_screen/edit_profiles/doctor/doctor_insurance_main.dart';
-import 'package:tess/admin_screen/edit_profiles/hospital/edit_hospital.dart';
-import 'package:tess/admin_screen/edit_profiles/insurance/edit_insurance.dart';
-import 'package:tess/admin_screen/edit_profiles/insurance_represenitive/insurance_represenitive_main.dart';
-import 'package:tess/admin_screen/edit_profiles/patient/patient_insirance_main.dart';
+import 'package:tess/admin_screen/add_new_users/doctor/doctor_add_new.dart';
+import 'package:tess/admin_screen/add_new_users/hospital/new_hospital.dart';
+import 'package:tess/admin_screen/add_new_users/insurance/insurance_add.dart';
+import 'package:tess/admin_screen/add_new_users/insurance_represenitive/insurance_represenitive_add.dart';
+import 'package:tess/admin_screen/add_new_users/patient/patient_add.dart';
 import 'package:tess/admin_screen/main.dart';
 
-class edit_profiles_main extends StatelessWidget {
-  const edit_profiles_main({Key? key}) : super(key: key);
+class add_new_main extends StatelessWidget {
+  const add_new_main({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -97,7 +97,7 @@ class edit_profiles_main extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const EditHospital()),
+                          MaterialPageRoute(builder: (context) => const new_hospital()),
                         );
                       },
                     ),
@@ -108,7 +108,7 @@ class edit_profiles_main extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const PatientSearchScreen()),
+                          MaterialPageRoute(builder: (context) => const patient_add()),
                         );
                       },
                     ),
@@ -119,7 +119,7 @@ class edit_profiles_main extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const InsuranceCompanySearchScreen()),
+                          MaterialPageRoute(builder: (context) => const insurance_add()),
                         );
                       },
                     ),
@@ -130,7 +130,7 @@ class edit_profiles_main extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const DoctorSearchScreen()),
+                          MaterialPageRoute(builder: (context) => const doctor_add_new()),
                         );
                       },
                     ),
@@ -141,7 +141,7 @@ class edit_profiles_main extends StatelessWidget {
                       onTap: () {
                          Navigator.push(
                           context,
-                          MaterialPageRoute(builder: (context) => const InsuranceRepSearchScreen()),
+                          MaterialPageRoute(builder: (context) => const insurance_represenitive_add()),
                         );
                       },
                     ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
+import 'package:tess/admin_screen/add_new_users/add_new_main.dart';
 import 'package:tess/admin_screen/edit_profiles/edit_profiles_main.dart';
 
 
@@ -50,7 +51,10 @@ class _AdminScreenState extends State<AdminScreen> {
                   );
         break;
       case "Add New Entry":
-
+      Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const add_new_main()),
+                  );
         break;
       case "Add Patient":
   
