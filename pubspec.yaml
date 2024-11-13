@@ -18,6 +18,7 @@ dependencies:
   shared_preferences: 2.3.3
   fl_chart: 0.69.0
   file_picker: 4.0.0
+  image_picker: 1.1.2 
 
 dev_dependencies:
   flutter_test:
@@ -69,3 +70,4 @@ flutter:
     - images/money_history.png
     - images/order_history.png
     - images/healthinsurance.png
+    - images/doctorss.png

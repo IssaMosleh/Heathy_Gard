@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:tess/admin_screen/edit_profiles/edit_hospital.dart';
+import 'package:tess/admin_screen/edit_profiles/hospital/edit_hospital.dart';
+import 'package:tess/admin_screen/edit_profiles/insurance/edit_insurance.dart';
+import 'package:tess/admin_screen/edit_profiles/patient/patient_insirance_main.dart';
 import 'package:tess/admin_screen/main.dart';
 
 class edit_profiles_main extends StatelessWidget {
@@ -32,10 +34,10 @@ class edit_profiles_main extends StatelessWidget {
             ),
             leading: IconButton(
               onPressed: () {
-                 Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const AdminScreen()),
-                  );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const AdminScreen()),
+                );
               },
               icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
             ),
@@ -45,9 +47,9 @@ class edit_profiles_main extends StatelessWidget {
                 child: IconButton(
                   onPressed: () {
                     Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const AdminScreen()),
-                  );
+                      context,
+                      MaterialPageRoute(builder: (context) => const AdminScreen()),
+                    );
                   },
                   icon: Image.asset(
                     'images/icon1.png', // Replace with your icon path
@@ -90,22 +92,41 @@ class edit_profiles_main extends StatelessWidget {
                       context,
                       'Hospital',
                       'images/Hospital.png', // Replace with your image path
-                      onTap: (){ Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const EditHospital()),
-                  );},
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const EditHospital()),
+                        );
+                      },
                     ),
                     _buildOptionCard(
                       context,
                       'Patient',
                       'images/personalinfo.png', // Replace with your image path
-                      onTap: onOnlineTap,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const PatientSearchScreen()),
+                        );
+                      },
                     ),
                     _buildOptionCard(
                       context,
                       'Insurance',
                       'images/healthinsurance.png', // Replace with your image path
-                      onTap: onClinicTap,
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => const InsuranceCompanySearchScreen()),
+                        );
+                      },
+                    ),
+                    // Fourth button added
+                    _buildOptionCard(
+                      context,
+                      'Doctor',
+                      'images/doctorss.png', // Replace with your new image path
+                      onTap: onDoctorTap,
                     ),
                   ],
                 ),
@@ -117,14 +138,16 @@ class edit_profiles_main extends StatelessWidget {
     );
   }
 
-
-
   void onOnlineTap() {
-    // Handle Online tap
+    // Handle Patient tap
   }
 
   void onClinicTap() {
-    // Handle Clinic tap
+    // Handle Insurance tap
+  }
+
+  void onDoctorTap() {
+    // Handle Doctor tap
   }
 
   Widget _buildOptionCard(

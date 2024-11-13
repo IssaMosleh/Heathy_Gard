@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:tess/admin_screen/edit_profiles/edit_profiles_main.dart';
-import 'package:tess/insurance_screen/Hospitals/hospital_info.dart';
+import 'package:tess/admin_screen/edit_profiles/hospital/hospital_show_details.dart';
 
 class EditHospital extends StatelessWidget {
   const EditHospital({Key? key}) : super(key: key);
@@ -104,15 +104,7 @@ class _SearchScreenState extends State<SearchScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => HospitalStatsScreen(
-          hospitalName: "Jordan Hospital",
-          totalClaims: 120,
-          approvedClaims: 90,
-          rejectedClaims: 30,
-          totalBookings: 200,
-          totalDoctors: 50,
-          totalMoneySpent: 150000.0,
-        ),
+        builder: (context) => HospitalShowDetails()
       ),
     );
     print("Tapped on ${hospital['name']}");
