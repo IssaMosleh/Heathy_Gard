@@ -7,6 +7,7 @@ class family_members extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: FamilyMembersScreen(familyId: 'FAMILY123', isSpecialUser: true), // Pass familyId and user privilege
     );
   }

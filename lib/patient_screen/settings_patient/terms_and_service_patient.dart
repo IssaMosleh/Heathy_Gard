@@ -7,6 +7,7 @@ class terms_and_service_patient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: TermsOfServiceScreen(),
     );
   }

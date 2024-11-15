@@ -9,6 +9,7 @@ class patient_appointment_choosemember extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: FamilyMemberListScreen(activate: true), // Pass activate as needed
     );
   }

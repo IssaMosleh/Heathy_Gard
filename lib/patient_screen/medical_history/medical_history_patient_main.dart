@@ -11,6 +11,7 @@ class medical_history_patient_main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MedicalRecordScreen(),
     );
   }

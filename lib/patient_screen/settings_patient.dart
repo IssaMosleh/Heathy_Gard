@@ -15,6 +15,7 @@ class settings_patient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
       home: const SettingsScreen(),
     );
   }

@@ -9,6 +9,7 @@ class patient_appointment_typeofvist extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(56.0),

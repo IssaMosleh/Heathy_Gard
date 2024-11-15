@@ -8,6 +8,7 @@ class claim_paatient_main extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: ClaimCenterScreen(),
     );
   }

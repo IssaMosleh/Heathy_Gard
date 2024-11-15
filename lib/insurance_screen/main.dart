@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import 'package:tess/insurance_screen/Hospitals/hospitals_insurance.dart';
 import 'package:tess/insurance_screen/Patients/patients_insurance.dart';
 import 'package:tess/insurance_screen/Report/report.dart';
@@ -9,7 +8,9 @@ import 'package:tess/insurance_screen/notification_insurance.dart';
 import 'package:tess/insurance_screen/settings_insurance.dart';
 
 void main() {
-  runApp(MaterialApp(home: InsuranceRep_Screen()));
+  runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+home: InsuranceRep_Screen()));
 }
 
 class InsuranceRep_Screen extends StatefulWidget {

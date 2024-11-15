@@ -13,6 +13,7 @@ class medication_patient_refill extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: MedicationScreen(),
     );
   }

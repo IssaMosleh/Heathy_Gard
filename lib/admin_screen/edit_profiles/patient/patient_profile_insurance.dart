@@ -60,6 +60,7 @@ class _PatientProfileInsuranceState extends State<patient_profile_insurance> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: AppBar(
           leading: IconButton(onPressed: (){

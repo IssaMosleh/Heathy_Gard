@@ -64,6 +64,7 @@ class _MainAppState extends State<patient_insurance> {
     double balanceMeterSize = screenWidth * 0.25; // 25% of screen width
 
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         appBar: PreferredSize(
           preferredSize: const Size.fromHeight(56.0),

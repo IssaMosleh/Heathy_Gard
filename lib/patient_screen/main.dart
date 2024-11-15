@@ -10,7 +10,9 @@ import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_intr
 import 'package:tess/patient_screen/patient_insurance/patient_insurance.dart';
 import 'package:tess/patient_screen/settings_patient.dart';
 void main() {
-  runApp(MaterialApp(home:Patient_Screen()));
+  runApp(MaterialApp(
+      debugShowCheckedModeBanner: false,
+home:Patient_Screen()));
 }
 
 class Patient_Screen extends StatefulWidget {

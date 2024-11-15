@@ -17,6 +17,7 @@ class _PatientAppointmentSelectHospitalState extends State<PatientAppointmentSel
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: HospitalListScreen(selectedLocation: selectedLocation),
     );
   }

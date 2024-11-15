@@ -7,6 +7,7 @@ class our_partners_doctor extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: PartnersScreen(),
     );
   }

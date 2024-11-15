@@ -10,6 +10,7 @@ class appointment_main_patient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: const AppointmentsScreen(),
     );
   }

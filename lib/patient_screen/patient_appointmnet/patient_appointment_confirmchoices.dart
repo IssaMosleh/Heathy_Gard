@@ -9,6 +9,7 @@ class patient_appointment_confirmchoices extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: ConfirmAppointmentScreen(
         location: "Shmeisani",
         service: "General Care",

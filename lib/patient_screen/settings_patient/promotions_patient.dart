@@ -8,6 +8,7 @@ class promotions_patient extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: PromotionScreen(),
     );
   }

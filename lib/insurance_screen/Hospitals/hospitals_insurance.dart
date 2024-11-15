@@ -11,6 +11,7 @@ class insurance_hospital_search extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: SearchScreen(),
     );
   }

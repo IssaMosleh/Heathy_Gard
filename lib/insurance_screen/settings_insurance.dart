@@ -1,12 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:tess/doctor_screen/appointment_doctor.dart';
-import 'package:tess/doctor_screen/main.dart';
-import 'package:tess/doctor_screen/notification_doctor.dart';
-import 'package:tess/doctor_screen/settings_doctor/about_us_doctor.dart';
-import 'package:tess/doctor_screen/settings_doctor/help_and_support_doctor.dart';
-import 'package:tess/doctor_screen/settings_doctor/our_partners_doctor.dart';
-import 'package:tess/doctor_screen/settings_doctor/privacy_policy_doctors.dart';
-import 'package:tess/doctor_screen/settings_doctor/terms_of_service_doctor.dart';
 import 'package:tess/insurance_screen/main.dart';
 import 'package:tess/insurance_screen/notification_insurance.dart';
 import 'package:tess/insurance_screen/settings/about_us_insurance.dart';

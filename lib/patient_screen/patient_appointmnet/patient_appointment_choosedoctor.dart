@@ -16,6 +16,7 @@ class _PatientAppointmentChooseDoctorState extends State<patient_appointment_cho
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: DoctorListScreen(),
     );
   }

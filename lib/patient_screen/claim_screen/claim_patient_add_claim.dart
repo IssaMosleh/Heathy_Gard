@@ -12,6 +12,7 @@ class claim_patient_add_claim extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: AddNewClaimScreen(),
     );
   }
