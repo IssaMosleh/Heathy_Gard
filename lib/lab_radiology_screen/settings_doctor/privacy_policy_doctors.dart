@@ -9,6 +9,7 @@ class privacy_policy_doctors_LAB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: PrivacyPolicyScreen(),
     );
   }

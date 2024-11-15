@@ -8,6 +8,7 @@ class about_us_doctor_LAB extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: AboutUsScreen(),
     );
   }
