@@ -3,7 +3,7 @@ import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:tess/pharmacy_screen/my_hospital/my_hospital_pharmacy_main.dart';
 
 class my_hospital_details extends StatelessWidget {
-  const my_hospital_details({Key? key}) : super(key: key);
+  const my_hospital_details({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +19,8 @@ class my_hospital_details extends StatelessWidget {
 }
 
 class FacilityDetailScreen extends StatefulWidget {
+  const FacilityDetailScreen({super.key});
+
   @override
   _FacilityDetailScreenState createState() => _FacilityDetailScreenState();
 }
@@ -75,7 +77,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MyPharmacy()),
+              MaterialPageRoute(builder: (context) => const MyPharmacy()),
             );
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -150,7 +152,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
                           padding: const EdgeInsets.symmetric(vertical: 2.0),
                           child: gradientText("${entry.key}: ${entry.value}", isEditable: true),
                         );
-                      }).toList(),
+                      }),
                       const SizedBox(height: 8),
                       buildLabel("Customers Served This Year"),
                       gradientText(customersServedThisYear.toString(), isEditable: false),
@@ -164,7 +166,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
                           padding: const EdgeInsets.symmetric(vertical: 2.0),
                           child: gradientText(provider, isEditable: false),
                         );
-                      }).toList(),
+                      }),
                       const SizedBox(height: 16),
                       Center(
                         child: ElevatedButton(
@@ -178,7 +180,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
                           ),
                           child: Ink(
                             decoration: BoxDecoration(
-                              gradient: LinearGradient(
+                              gradient: const LinearGradient(
                                 colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)],
                                 begin: Alignment.topLeft,
                                 end: Alignment.bottomRight,
@@ -225,7 +227,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
   Widget gradientText(String text, {bool isEditable = true}) {
     return isEditable
         ? ShaderMask(
-            shaderCallback: (bounds) => LinearGradient(
+            shaderCallback: (bounds) => const LinearGradient(
               colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)],  // Updated gradient for text to purple theme
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -253,7 +255,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
 class EditWorkingHoursDialog extends StatefulWidget {
   final Map<String, String> workingHours;
 
-  EditWorkingHoursDialog({required this.workingHours});
+  const EditWorkingHoursDialog({super.key, required this.workingHours});
 
   @override
   _EditWorkingHoursDialogState createState() => _EditWorkingHoursDialogState();
@@ -291,8 +293,12 @@ class _EditWorkingHoursDialogState extends State<EditWorkingHoursDialog> {
 
   @override
   void dispose() {
-    startControllers.values.forEach((controller) => controller.dispose());
-    endControllers.values.forEach((controller) => controller.dispose());
+    for (var controller in startControllers.values) {
+      controller.dispose();
+    }
+    for (var controller in endControllers.values) {
+      controller.dispose();
+    }
     super.dispose();
   }
 
@@ -329,7 +335,7 @@ class _EditWorkingHoursDialogState extends State<EditWorkingHoursDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Container(
+      child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.95,
         child: SingleChildScrollView(
           child: Padding(
@@ -463,7 +469,7 @@ class _EditWorkingHoursDialogState extends State<EditWorkingHoursDialog> {
                         ),
                         child: Ink(
                           decoration: BoxDecoration(
-                            gradient: LinearGradient(
+                            gradient: const LinearGradient(
                               colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)],
                               begin: Alignment.topLeft,
                               end: Alignment.bottomRight,

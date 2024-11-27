@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:tess/pharmacy_screen/main.dart';
+import 'package:tess/main.dart';
+import 'package:tess/pharmacy_screen/mainscreenpharmacy.dart';
 import 'package:tess/pharmacy_screen/notification_screen_pharmacy.dart';
 import 'package:tess/pharmacy_screen/settings/about_us_pharmacy.dart';
 import 'package:tess/pharmacy_screen/settings/help_support_pharmacy.dart';
@@ -8,19 +9,19 @@ import 'package:tess/pharmacy_screen/settings/terms_of_service_pharmacy.dart';
 
 
 class settings_pharmacy extends StatelessWidget {
-  const settings_pharmacy({Key? key}) : super(key: key);
+  const settings_pharmacy({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const SettingsScreen(),
+      home: SettingsScreen(),
     );
   }
 }
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -63,7 +64,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
                Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => AboutUsScreen()),
+                    MaterialPageRoute(builder: (context) => const AboutUsScreen()),
                     ); 
             },
           ),
@@ -74,7 +75,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => PharmacyPrivacyPolicyScreen()),
+                    MaterialPageRoute(builder: (context) => const PharmacyPrivacyPolicyScreen()),
                     ); 
             },
           ),
@@ -85,7 +86,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => PharmacyTermsOfServiceScreen()),
+                    MaterialPageRoute(builder: (context) => const PharmacyTermsOfServiceScreen()),
                     ); 
             },
           ),
@@ -118,7 +119,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'Sign Out',
             iconColor: Colors.red,
             onTap: () {
-              // Sign out action
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MainApp()),
+                    ); 
             },
           ),
         ],
@@ -134,7 +138,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               color: Colors.grey.withOpacity(0.2),
               spreadRadius: 5,
               blurRadius: 10,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -145,7 +149,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onPressed: () {
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Pharmacy_Screen()),
+              MaterialPageRoute(builder: (context) => const Pharmacy_Screen()),
             );
               },
               icon: Image.asset('images/icon1.png'), // Replace with desired icon
@@ -163,7 +167,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onPressed: () {
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => settings_pharmacy()),
+              MaterialPageRoute(builder: (context) => const settings_pharmacy()),
             );
               },
               icon: Image.asset('images/icon4.png'), // Replace with desired icon
@@ -184,13 +188,13 @@ class SettingsTile extends StatelessWidget {
   final VoidCallback onTap;
 
   const SettingsTile({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     required this.iconColor,
     this.trailing,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

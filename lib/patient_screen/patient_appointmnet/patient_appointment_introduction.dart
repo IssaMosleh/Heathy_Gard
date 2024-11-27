@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_choosemember.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_typeofvist.dart';
 
 
 
 class patient_appointment_introduction extends StatelessWidget {
-  const patient_appointment_introduction({Key? key}) : super(key: key);
+  const patient_appointment_introduction({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -32,24 +32,24 @@ class patient_appointment_introduction extends StatelessWidget {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => FamilyMemberListScreen(activate: true),
+                  builder: (context) => const FamilyMemberListScreen(activate: true),
                 ),
               );
             } else {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => patient_appointment_typeofvist(),
+                  builder: (context) => const patient_appointment_typeofvist(),
                 ),
               );
             }
           },
+          minWidth: double.infinity,
+          height: 50,
           child: const Text(
             "I Agree",
             style: TextStyle(color: Colors.white, fontSize: 16),
           ),
-          minWidth: double.infinity,
-          height: 50,
         ),
       ),
       appBar: PreferredSize(
@@ -64,7 +64,7 @@ class patient_appointment_introduction extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Patient_Screen()),
+                MaterialPageRoute(builder: (context) => const Patient_Screen()),
               );
             },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -182,6 +182,8 @@ class patient_appointment_introduction extends StatelessWidget {
 
 // Define AccessDeniedScreen as the alternative screen if access is denied
 class AccessDeniedScreen extends StatelessWidget {
+  const AccessDeniedScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

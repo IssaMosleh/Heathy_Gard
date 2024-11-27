@@ -4,7 +4,7 @@ import 'package:tess/lab_radiology_screen/main.dart';
 
 
 class AcceptedAppointment_LAB extends StatelessWidget {
-  const AcceptedAppointment_LAB({Key? key}) : super(key: key);
+  const AcceptedAppointment_LAB({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class AcceptedAppointment_LAB extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: AcceptedAppointmentScreen(),
+      home: const AcceptedAppointmentScreen(),
     );
   }
 }
@@ -30,7 +30,7 @@ class Appointment {
 }
 
 class AcceptedAppointmentScreen extends StatefulWidget {
-  const AcceptedAppointmentScreen({Key? key}) : super(key: key);
+  const AcceptedAppointmentScreen({super.key});
 
   @override
   _AcceptedAppointmentScreenState createState() => _AcceptedAppointmentScreenState();
@@ -72,7 +72,7 @@ class _AcceptedAppointmentScreenState extends State<AcceptedAppointmentScreen> {
         // Update the appointment with the new date and time
         setState(() {
           appointment.date = "${pickedDate.day}/${pickedDate.month}/${pickedDate.year}";
-          appointment.time = "${pickedTime.format(context)}";
+          appointment.time = pickedTime.format(context);
         });
 
         // Send update to the database (placeholder)
@@ -102,7 +102,7 @@ class _AcceptedAppointmentScreenState extends State<AcceptedAppointmentScreen> {
           onPressed: () {
             Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Doctor_LAB()),
+          MaterialPageRoute(builder: (context) => const Doctor_LAB()),
         );
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -159,7 +159,7 @@ class _AcceptedAppointmentScreenState extends State<AcceptedAppointmentScreen> {
                           children: [
                             Text(
                               "Name: ${appointment.name}",
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontSize: 16,
                                 fontWeight: FontWeight.bold,
                               ),

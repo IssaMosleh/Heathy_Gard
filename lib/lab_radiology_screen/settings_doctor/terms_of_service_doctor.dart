@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tess/lab_radiology_screen/settings_doctor.dart';
 
 class terms_of_service_doctor_LAB extends StatelessWidget {
-  const terms_of_service_doctor_LAB({Key? key}) : super(key: key);
+  const terms_of_service_doctor_LAB({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: TermsOfServiceScreen(),
     );
@@ -14,7 +14,7 @@ class terms_of_service_doctor_LAB extends StatelessWidget {
 }
 
 class TermsOfServiceScreen extends StatelessWidget {
-  const TermsOfServiceScreen({Key? key}) : super(key: key);
+  const TermsOfServiceScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,9 +24,9 @@ class TermsOfServiceScreen extends StatelessWidget {
         leading: IconButton(onPressed: (){
           Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => settings_doctor_LAB()),
+                  MaterialPageRoute(builder: (context) => const settings_doctor_LAB()),
             );
-        }, icon: Icon(Icons.arrow_back_ios),color: Colors.white,),
+        }, icon: const Icon(Icons.arrow_back_ios),color: Colors.white,),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -53,109 +53,109 @@ class TermsOfServiceScreen extends StatelessWidget {
             ],
           ),
           padding: const EdgeInsets.all(16.0),
-          child: SingleChildScrollView(
+          child: const SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text(
+                Text(
                   "Terms of Service",
                   style: TextStyle(
                     fontSize: 24,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 16),
-                const Text(
+                SizedBox(height: 16),
+                Text(
                   "1. Introduction",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
-                const Text(
+                SizedBox(height: 8),
+                Text(
                   "By using our app, you agree to be bound by these Terms of Service. Please read them carefully.",
                   style: TextStyle(fontSize: 16),
                 ),
-                const SizedBox(height: 16),
-                const Text(
+                SizedBox(height: 16),
+                Text(
                   "2. User Responsibilities",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
-                const Text(
+                SizedBox(height: 8),
+                Text(
                   "Users are expected to use the app responsibly and comply with all applicable laws. You agree not to misuse our services.",
                   style: TextStyle(fontSize: 16),
                 ),
-                const SizedBox(height: 16),
-                const Text(
+                SizedBox(height: 16),
+                Text(
                   "3. Account Security",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
-                const Text(
+                SizedBox(height: 8),
+                Text(
                   "You are responsible for safeguarding your account credentials. Please notify us immediately of any unauthorized use.",
                   style: TextStyle(fontSize: 16),
                 ),
-                const SizedBox(height: 16),
-                const Text(
+                SizedBox(height: 16),
+                Text(
                   "4. Limitation of Liability",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
-                const Text(
+                SizedBox(height: 8),
+                Text(
                   "We are not liable for any damages resulting from the use of our app. The app is provided on an 'as-is' basis.",
                   style: TextStyle(fontSize: 16),
                 ),
-                const SizedBox(height: 16),
-                const Text(
+                SizedBox(height: 16),
+                Text(
                   "5. Termination",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
-                const Text(
+                SizedBox(height: 8),
+                Text(
                   "We reserve the right to suspend or terminate your access to the app if you violate these Terms of Service.",
                   style: TextStyle(fontSize: 16),
                 ),
-                const SizedBox(height: 16),
-                const Text(
+                SizedBox(height: 16),
+                Text(
                   "6. Changes to Terms",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
-                const Text(
+                SizedBox(height: 8),
+                Text(
                   "We may update these Terms of Service from time to time. Your continued use of the app after changes indicates acceptance.",
                   style: TextStyle(fontSize: 16),
                 ),
-                const SizedBox(height: 16),
-                const Text(
+                SizedBox(height: 16),
+                Text(
                   "7. Contact Us",
                   style: TextStyle(
                     fontSize: 20,
                     fontWeight: FontWeight.bold,
                   ),
                 ),
-                const SizedBox(height: 8),
-                const Text(
+                SizedBox(height: 8),
+                Text(
                   "If you have any questions or concerns about these Terms of Service, please contact us at support@example.com.",
                   style: TextStyle(fontSize: 16),
                 ),
-                const SizedBox(height: 24),
+                SizedBox(height: 24),
               ],
             ),
           ),

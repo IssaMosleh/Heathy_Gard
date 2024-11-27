@@ -1,27 +1,28 @@
 import 'package:flutter/material.dart';
 import 'package:tess/doctor_screen/appointment_doctor.dart';
-import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/mainscreendoctor.dart';
 import 'package:tess/doctor_screen/notification_doctor.dart';
 import 'package:tess/doctor_screen/settings_doctor/about_us_doctor.dart';
 import 'package:tess/doctor_screen/settings_doctor/help_and_support_doctor.dart';
 import 'package:tess/doctor_screen/settings_doctor/our_partners_doctor.dart';
 import 'package:tess/doctor_screen/settings_doctor/privacy_policy_doctors.dart';
 import 'package:tess/doctor_screen/settings_doctor/terms_of_service_doctor.dart';
+import 'package:tess/main.dart';
 
 class settings_doctor extends StatelessWidget {
-  const settings_doctor({Key? key}) : super(key: key);
+  const settings_doctor({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const SettingsScreen(),
+      home: SettingsScreen(),
     );
   }
 }
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -64,7 +65,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => about_us_doctor()),
+                  MaterialPageRoute(builder: (context) => const about_us_doctor()),
             );
             },
           ),
@@ -75,7 +76,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => our_partners_doctor()),
+                  MaterialPageRoute(builder: (context) => const our_partners_doctor()),
             );
             },
           ),
@@ -86,7 +87,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => privacy_policy_doctors()),
+                  MaterialPageRoute(builder: (context) => const privacy_policy_doctors()),
             );
             },
           ),
@@ -97,7 +98,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => terms_of_service_doctor()),
+                  MaterialPageRoute(builder: (context) => const terms_of_service_doctor()),
             );
             },
           ),
@@ -121,7 +122,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => help_and_support_doctor()),
+                  MaterialPageRoute(builder: (context) => const help_and_support_doctor()),
             );
             },
           ),
@@ -130,7 +131,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'Sign Out',
             iconColor: Colors.red,
             onTap: () {
-              // Sign out action
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MainApp()),
+                    ); 
             },
           ),
         ],
@@ -146,7 +150,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 color: Colors.grey.withOpacity(0.2),
                 spreadRadius: 5,
                 blurRadius: 10,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
@@ -157,7 +161,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onPressed: () {
                   Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Doctor_Screen()),
+                MaterialPageRoute(builder: (context) => const Doctor_Screen()),
             );
                 },
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
@@ -166,7 +170,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => appointment_doctor()),
+                  MaterialPageRoute(builder: (context) => const appointment_doctor()),
             );
                 },
                 icon: Image.asset('images/icon2.png', width: 30, height: 30),
@@ -174,7 +178,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               IconButton(
                 onPressed: () {Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => notification_doctor()),
+                  MaterialPageRoute(builder: (context) => const notification_doctor()),
             );},
                 icon: Image.asset('images/icon3.png', width: 30, height: 30),
               ),
@@ -182,7 +186,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => settings_doctor()),
+                  MaterialPageRoute(builder: (context) => const settings_doctor()),
             );
                 },
                 icon: Image.asset('images/icon4.png', width: 30, height: 30),
@@ -203,13 +207,13 @@ class SettingsTile extends StatelessWidget {
   final VoidCallback onTap;
 
   const SettingsTile({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     required this.iconColor,
     this.trailing,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

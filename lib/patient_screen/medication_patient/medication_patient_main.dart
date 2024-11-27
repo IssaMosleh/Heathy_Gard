@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 import 'package:tess/patient_screen/medication_patient/medication_patient_refill.dart';
 import 'package:tess/patient_screen/medication_patient/medication_screen_patient.dart';
 
 
 class medication_patient_main extends StatelessWidget {
-  const medication_patient_main({Key? key}) : super(key: key);
+  const medication_patient_main({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MedicalRecordScreen(),
     );
@@ -17,7 +17,7 @@ class medication_patient_main extends StatelessWidget {
 }
 
 class MedicalRecordScreen extends StatelessWidget {
-  const MedicalRecordScreen({Key? key}) : super(key: key);
+  const MedicalRecordScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,7 +34,7 @@ class MedicalRecordScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Patient_Screen()),
+                    MaterialPageRoute(builder: (context) => const Patient_Screen()),
                     );         
             },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -63,7 +63,7 @@ class MedicalRecordScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => medication_patient_patient()),
+                    MaterialPageRoute(builder: (context) => const medication_patient_patient()),
                     );         
               },
             ),
@@ -76,7 +76,7 @@ class MedicalRecordScreen extends StatelessWidget {
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => medication_patient_refill()),
+                    MaterialPageRoute(builder: (context) => const medication_patient_refill()),
                     );         
               },
             ),

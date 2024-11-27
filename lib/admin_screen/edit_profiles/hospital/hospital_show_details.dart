@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:tess/admin_screen/edit_profiles/hospital/edit_hospital.dart';
 
 class HospitalShowDetails extends StatelessWidget {
-  const HospitalShowDetails({Key? key}) : super(key: key);
+  const HospitalShowDetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,8 @@ class HospitalShowDetails extends StatelessWidget {
 }
 
 class FacilityDetailScreen extends StatefulWidget {
+  const FacilityDetailScreen({super.key});
+
   @override
   _FacilityDetailScreenState createState() => _FacilityDetailScreenState();
 }
@@ -90,7 +92,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
         hospitalName = nameController.text;
         Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => EditHospital()),
+              MaterialPageRoute(builder: (context) => const EditHospital()),
             );
       });
     }
@@ -108,7 +110,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
           onPressed: () {
               Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => EditHospital()),
+              MaterialPageRoute(builder: (context) => const EditHospital()),
             );
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -176,7 +178,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
                             right: 8,
                             top: 8,
                             child: IconButton(
-                              icon: Icon(Icons.edit, color: Colors.white),
+                              icon: const Icon(Icons.edit, color: Colors.white),
                               onPressed: _pickImage,
                             ),
                           ),
@@ -230,11 +232,11 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
                         return ListTile(
                           title: gradientText(company),
                           trailing: IconButton(
-                            icon: Icon(Icons.delete, color: Colors.red),
+                            icon: const Icon(Icons.delete, color: Colors.red),
                             onPressed: () => deleteInsuranceCompany(company),
                           ),
                         );
-                      }).toList(),
+                      }),
                       const SizedBox(height: 16),
                       
                       // Add Insurance Company Button
@@ -247,7 +249,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                           ),
-                          child: const Text("Add Insurance Company"),
+                          child: const Text("Add Insurance Company",style: TextStyle(color: Colors.white),),
                         ),
                       ),
                       const SizedBox(height: 16),
@@ -262,7 +264,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
                               borderRadius: BorderRadius.circular(12),
                             ),
                           ),
-                          child: const Text("Save Changes"),
+                          child: const Text("Save Changes",style: TextStyle(color: Colors.white)),
                         ),
                       ),
                     ],
@@ -290,7 +292,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
 
   Widget gradientText(String text) {
     return ShaderMask(
-      shaderCallback: (bounds) => LinearGradient(
+      shaderCallback: (bounds) => const LinearGradient(
         colors: [Colors.blue, Colors.purple],
         begin: Alignment.topLeft,
         end: Alignment.bottomRight,
@@ -310,7 +312,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
 class AddInsuranceDialog extends StatelessWidget {
   final List<String> predefinedCompanies;
   
-  AddInsuranceDialog({required this.predefinedCompanies});
+  const AddInsuranceDialog({super.key, required this.predefinedCompanies});
 
   @override
   Widget build(BuildContext context) {
@@ -325,7 +327,7 @@ class AddInsuranceDialog extends StatelessWidget {
         onChanged: (value) {
           selectedCompany = value;
         },
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           labelText: "Choose Company",
           border: OutlineInputBorder(),
         ),

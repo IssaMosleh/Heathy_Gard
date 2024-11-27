@@ -10,7 +10,7 @@ class Patient {
 }
 
 class PatientSearchScreen_delete extends StatefulWidget {
-  const PatientSearchScreen_delete({Key? key}) : super(key: key);
+  const PatientSearchScreen_delete({super.key});
 
   @override
   _PatientSearchScreenState createState() => _PatientSearchScreenState();
@@ -42,7 +42,7 @@ class _PatientSearchScreenState extends State<PatientSearchScreen_delete> {
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         title: const Text(
           "Search Patients",
@@ -193,7 +193,7 @@ class _PatientSearchScreenState extends State<PatientSearchScreen_delete> {
                         ],
                       ),
                       trailing: IconButton(
-                        icon: Icon(Icons.delete, color: Colors.red),
+                        icon: const Icon(Icons.delete, color: Colors.red),
                         onPressed: () {
                           setState(() {
                             patients.remove(patient);

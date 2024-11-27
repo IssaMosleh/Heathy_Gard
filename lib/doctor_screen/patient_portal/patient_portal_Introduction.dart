@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/mainscreendoctor.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_patients.dart';
 
 
 class patient_portal_Introduction extends StatelessWidget {
-  const patient_portal_Introduction({Key? key}) : super(key: key);
+  const patient_portal_Introduction({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +14,13 @@ class patient_portal_Introduction extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: IntroductionScreen(),
+      home: const IntroductionScreen(),
     );
   }
 }
 
 class IntroductionScreen extends StatefulWidget {
-  const IntroductionScreen({Key? key}) : super(key: key);
+  const IntroductionScreen({super.key});
 
   @override
   _IntroductionScreenState createState() => _IntroductionScreenState();
@@ -37,9 +37,9 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             context,
             MaterialPageRoute(builder: (context) => const Doctor_Screen()),);
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
-        title: Text(
+        title: const Text(
           'Patient Center',
           style: TextStyle(color: Colors.white),
         ),
@@ -63,7 +63,7 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(
+              const Text(
                 "Welcome to Your Patient Portal",
                 style: TextStyle(
                   fontSize: 28,
@@ -93,9 +93,9 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                 ),
                 child: Column(
                   children: [
-                    Icon(Icons.health_and_safety, color: Colors.blue, size: 60),
+                    const Icon(Icons.health_and_safety, color: Colors.blue, size: 60),
                     const SizedBox(height: 12),
-                    Text(
+                    const Text(
                       "Access Patient Data",
                       style: TextStyle(
                         fontSize: 18,
@@ -124,13 +124,13 @@ class _IntroductionScreenState extends State<IntroductionScreen> {
                   MaterialPageRoute(builder: (context) => const patient_portal_patients()),);
                 },
                 style: ElevatedButton.styleFrom(
-                  padding: EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),
                   ),
                   backgroundColor: Colors.blue,
                 ),
-                child: Text(
+                child: const Text(
                   "Get Started",
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),

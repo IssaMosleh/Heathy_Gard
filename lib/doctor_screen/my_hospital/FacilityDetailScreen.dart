@@ -3,7 +3,7 @@ import 'package:flutter_masked_text2/flutter_masked_text2.dart';
 import 'package:tess/doctor_screen/my_hospital/my_hospital.dart';
 
 class MainApp extends StatelessWidget {
-  const MainApp({Key? key}) : super(key: key);
+  const MainApp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,6 +19,8 @@ class MainApp extends StatelessWidget {
 }
 
 class FacilityDetailScreen extends StatefulWidget {
+  const FacilityDetailScreen({super.key});
+
   @override
   _FacilityDetailScreenState createState() => _FacilityDetailScreenState();
 }
@@ -75,7 +77,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => MyHospital()),
+              MaterialPageRoute(builder: (context) => const MyHospital()),
             );
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -150,7 +152,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
                           padding: const EdgeInsets.symmetric(vertical: 2.0),
                           child: gradientText("${entry.key}: ${entry.value}", isEditable: true),
                         );
-                      }).toList(),
+                      }),
                       const SizedBox(height: 8),
                       buildLabel("Visits This Year"),
                       gradientText(visitsThisYear.toString(), isEditable: false), // Set to grey
@@ -164,7 +166,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
                           padding: const EdgeInsets.symmetric(vertical: 2.0),
                           child: gradientText(company, isEditable: false), // Set to grey
                         );
-                      }).toList(),
+                      }),
                       const SizedBox(height: 16),
                       Center(
                         child: ElevatedButton(
@@ -204,7 +206,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
   Widget gradientText(String text, {bool isEditable = true}) {
     return isEditable
         ? ShaderMask(
-            shaderCallback: (bounds) => LinearGradient(
+            shaderCallback: (bounds) => const LinearGradient(
               colors: [Colors.blue, Colors.purple],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
@@ -232,7 +234,7 @@ class _FacilityDetailScreenState extends State<FacilityDetailScreen> {
 class EditWorkingHoursDialog extends StatefulWidget {
   final Map<String, String> workingHours;
 
-  EditWorkingHoursDialog({required this.workingHours});
+  const EditWorkingHoursDialog({super.key, required this.workingHours});
 
   @override
   _EditWorkingHoursDialogState createState() => _EditWorkingHoursDialogState();
@@ -270,8 +272,12 @@ class _EditWorkingHoursDialogState extends State<EditWorkingHoursDialog> {
 
   @override
   void dispose() {
-    startControllers.values.forEach((controller) => controller.dispose());
-    endControllers.values.forEach((controller) => controller.dispose());
+    for (var controller in startControllers.values) {
+      controller.dispose();
+    }
+    for (var controller in endControllers.values) {
+      controller.dispose();
+    }
     super.dispose();
   }
 
@@ -308,7 +314,7 @@ class _EditWorkingHoursDialogState extends State<EditWorkingHoursDialog> {
   Widget build(BuildContext context) {
     return Dialog(
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(16)),
-      child: Container(
+      child: SizedBox(
         width: MediaQuery.of(context).size.width * 0.95,
         child: SingleChildScrollView(
           child: Padding(

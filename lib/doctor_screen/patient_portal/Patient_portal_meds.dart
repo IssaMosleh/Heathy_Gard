@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/mainscreendoctor.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_labs.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_patient_profile_write_prescription.dart';
 
@@ -10,7 +10,7 @@ class Patient_portal_meds extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: SelectMedicineScreen(doctorSpecialty: 'Cardiology'),
     );
@@ -88,8 +88,8 @@ class _SelectMedicineScreenState extends State<SelectMedicineScreen> {
         leading: IconButton(onPressed: (){
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => patient_portal_patient_profile_write_prescription(patientData: {},)),);
-        }, icon: Icon(Icons.arrow_back_ios),color: Colors.white,),
+            MaterialPageRoute(builder: (context) => patient_portal_patient_profile_write_prescription(patientData: const {},)),);
+        }, icon: const Icon(Icons.arrow_back_ios),color: Colors.white,),
         actions: [
           IconButton(onPressed: (){
             Navigator.push(
@@ -198,7 +198,6 @@ class _SelectMedicineScreenState extends State<SelectMedicineScreen> {
                             _showConfirmationDialog();
                           }
                         : null,
-                    child: const Text("Request Medications"),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.blue,
                       foregroundColor: Colors.white,
@@ -208,6 +207,7 @@ class _SelectMedicineScreenState extends State<SelectMedicineScreen> {
                       ),
                       disabledBackgroundColor: Colors.grey.shade300,
                     ),
+                    child: const Text("Request Medications"),
                   ),
                 ),
                 const SizedBox(width: 16),
@@ -218,7 +218,6 @@ class _SelectMedicineScreenState extends State<SelectMedicineScreen> {
                       context,
                       MaterialPageRoute(builder: (context) =>  patient_portal_labs()),);
                     },
-                    child: const Text("Continue"),
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
                       foregroundColor: Colors.white,
@@ -227,6 +226,7 @@ class _SelectMedicineScreenState extends State<SelectMedicineScreen> {
                         borderRadius: BorderRadius.circular(12),
                       ),
                     ),
+                    child: const Text("Continue"),
                   ),
                 ),
               ],

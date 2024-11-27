@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tess/doctor_screen/appointment_doctor.dart';
-import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/mainscreendoctor.dart';
 import 'package:tess/doctor_screen/settings_doctor.dart';
 
 
 
 class notification_doctor extends StatefulWidget {
-  const notification_doctor({Key? key}) : super(key: key);
+  const notification_doctor({super.key});
 
   @override
   _NotificationScreenState createState() => _NotificationScreenState();
@@ -76,7 +76,7 @@ class _NotificationScreenState extends State<notification_doctor> {
                 color: Colors.grey.withOpacity(0.2),
                 spreadRadius: 5,
                 blurRadius: 10,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
@@ -87,7 +87,7 @@ class _NotificationScreenState extends State<notification_doctor> {
                 onPressed: () {
                   Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Doctor_Screen()),
+                MaterialPageRoute(builder: (context) => const Doctor_Screen()),
             );
                 },
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
@@ -96,7 +96,7 @@ class _NotificationScreenState extends State<notification_doctor> {
                 onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => appointment_doctor()),
+                  MaterialPageRoute(builder: (context) => const appointment_doctor()),
             );
                 },
                 icon: Image.asset('images/icon2.png', width: 30, height: 30),
@@ -104,7 +104,7 @@ class _NotificationScreenState extends State<notification_doctor> {
               IconButton(
                 onPressed: () {Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => notification_doctor()),
+                  MaterialPageRoute(builder: (context) => const notification_doctor()),
             );},
                 icon: Image.asset('images/icon3.png', width: 30, height: 30),
               ),
@@ -112,7 +112,7 @@ class _NotificationScreenState extends State<notification_doctor> {
                 onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => settings_doctor()),
+                  MaterialPageRoute(builder: (context) => const settings_doctor()),
             );
                 },
                 icon: Image.asset('images/icon4.png', width: 30, height: 30),

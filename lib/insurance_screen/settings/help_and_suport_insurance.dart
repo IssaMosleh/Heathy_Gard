@@ -3,11 +3,11 @@ import 'package:url_launcher/url_launcher.dart';
 import 'package:tess/insurance_screen/settings_insurance.dart';
 
 class HelpAndSupportInsurance extends StatelessWidget {
-  const HelpAndSupportInsurance({Key? key}) : super(key: key);
+  const HelpAndSupportInsurance({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HelpSupportScreen(),
     );
@@ -15,7 +15,7 @@ class HelpAndSupportInsurance extends StatelessWidget {
 }
 
 class HelpSupportScreen extends StatelessWidget {
-  const HelpSupportScreen({Key? key}) : super(key: key);
+  const HelpSupportScreen({super.key});
 
   Future<void> _launchPhoneDialer() async {
     const phoneNumber = 'tel:0795334901';
@@ -38,7 +38,7 @@ class HelpSupportScreen extends StatelessWidget {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => settings_insurance()),
+              MaterialPageRoute(builder: (context) => const settings_insurance()),
             );
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -113,8 +113,8 @@ class HelpSupportScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Icon(Icons.email, color: Colors.blue),
                     SizedBox(width: 8),
                     Expanded(
@@ -126,8 +126,8 @@ class HelpSupportScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Icon(Icons.phone, color: Colors.blue),
                     SizedBox(width: 8),
                     Expanded(

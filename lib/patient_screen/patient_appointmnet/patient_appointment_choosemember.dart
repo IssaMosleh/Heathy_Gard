@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_introduction.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_typeofvist.dart';
 
 class patient_appointment_choosemember extends StatelessWidget {
-  const patient_appointment_choosemember({Key? key}) : super(key: key);
+  const patient_appointment_choosemember({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: FamilyMemberListScreen(activate: true), // Pass activate as needed
     );
@@ -18,8 +18,7 @@ class patient_appointment_choosemember extends StatelessWidget {
 class FamilyMemberListScreen extends StatelessWidget {
   final bool activate; // Parameter to control access
 
-  const FamilyMemberListScreen({Key? key, required this.activate})
-      : super(key: key);
+  const FamilyMemberListScreen({super.key, required this.activate});
 
   // Mock function to simulate fetching data from a database
   Future<List<Map<String, String>>> fetchFamilyMembers() async {
@@ -57,7 +56,7 @@ class FamilyMemberListScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Patient_Screen()),
+                    MaterialPageRoute(builder: (context) => const Patient_Screen()),
                     );
               },
               icon: Image.asset('images/icon1.png'),
@@ -85,7 +84,7 @@ class FamilyMemberListScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => patient_appointment_introduction()),
+                    MaterialPageRoute(builder: (context) => const patient_appointment_introduction()),
                     );
             },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
@@ -142,7 +141,7 @@ class FamilyMemberListScreen extends StatelessWidget {
                               onTap: () {
                                 Navigator.push(
                                 context,
-                                MaterialPageRoute(builder: (context) => patient_appointment_typeofvist()),
+                                MaterialPageRoute(builder: (context) => const patient_appointment_typeofvist()),
                                 );
                               },
                               child: Card(

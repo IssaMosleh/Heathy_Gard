@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_choosedoctor.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_selecthospital.dart';
 
 
 class patient_appointment_selecthospital_search extends StatelessWidget {
-  const patient_appointment_selecthospital_search({Key? key}) : super(key: key);
+  const patient_appointment_selecthospital_search({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +17,8 @@ class patient_appointment_selecthospital_search extends StatelessWidget {
 }
 
 class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -103,7 +105,7 @@ class _SearchScreenState extends State<SearchScreen> {
   void _onCardTap(Map<String, String> hospital) {
     Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => patient_appointment_choosedoctor()),
+          MaterialPageRoute(builder: (context) => const patient_appointment_choosedoctor()),
         );
     print("Tapped on ${hospital['name']}");
   }
@@ -136,7 +138,7 @@ class _SearchScreenState extends State<SearchScreen> {
             onPressed: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => PatientAppointmentSelectHospital()),
+                  MaterialPageRoute(builder: (context) => const PatientAppointmentSelectHospital()),
             );
             },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
@@ -146,7 +148,7 @@ class _SearchScreenState extends State<SearchScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Patient_Screen()),
+                  MaterialPageRoute(builder: (context) => const Patient_Screen()),
             );
               },
               icon: Image.asset('images/icon1.png'),
@@ -177,7 +179,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.blue),
+                  borderSide: const BorderSide(color: Colors.blue),
                 ),
               ),
               onSubmitted: _onSearchSubmitted,

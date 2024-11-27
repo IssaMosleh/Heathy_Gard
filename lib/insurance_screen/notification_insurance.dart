@@ -1,22 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tess/insurance_screen/main.dart';
+import 'package:tess/insurance_screen/maininsurancescreen.dart';
 import 'package:tess/insurance_screen/settings_insurance.dart';
 
 class InsuranceNotificationScreen extends StatelessWidget {
-  const InsuranceNotificationScreen({Key? key}) : super(key: key);
+  const InsuranceNotificationScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const NotificationsScreen(),
+      home: NotificationsScreen(),
     );
   }
 }
 
 class NotificationsScreen extends StatefulWidget {
-  const NotificationsScreen({Key? key}) : super(key: key);
+  const NotificationsScreen({super.key});
 
   @override
   _NotificationsScreenState createState() => _NotificationsScreenState();
@@ -108,7 +108,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               color: Colors.grey.withOpacity(0.2),
               spreadRadius: 5,
               blurRadius: 10,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -120,7 +120,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => InsuranceRep_Screen()),
+                      builder: (context) => const InsuranceRep_Screen()),
                 );
               },
               icon: Image.asset('images/icon1.png', width: 30, height: 30),
@@ -130,7 +130,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 Navigator.push(
                   context,
                   MaterialPageRoute(
-                      builder: (context) => NotificationsScreen()),
+                      builder: (context) => const NotificationsScreen()),
                 );
               },
               icon: Image.asset('images/icon3.png', width: 30, height: 30),
@@ -140,7 +140,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => settings_insurance()),
+                        builder: (context) => const settings_insurance()),
                   );
               },
               icon: Image.asset('images/icon4.png', width: 30, height: 30),
@@ -199,7 +199,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             color: Colors.grey.withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 6,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
         border: Border.all(color: Colors.grey[300]!),

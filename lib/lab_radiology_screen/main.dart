@@ -11,12 +11,9 @@ import 'package:tess/lab_radiology_screen/patient_portal/patient_portal_Introduc
 import 'package:tess/lab_radiology_screen/settings_doctor.dart';
 
 
-void main() {
-  runApp(const Doctor_LAB());
-}
 
 class Doctor_LAB extends StatefulWidget {
-  const Doctor_LAB({Key? key}) : super(key: key);
+  const Doctor_LAB({super.key});
 
   @override
   State<Doctor_LAB> createState() => _MainAppState();
@@ -270,7 +267,7 @@ class _MainAppState extends State<Doctor_LAB> {
                                                     child: Column(
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
-                                                        Container(
+                                                        SizedBox(
                                                           height: imageSize,
                                                           width: imageSize,
                                                           child: Image.asset(

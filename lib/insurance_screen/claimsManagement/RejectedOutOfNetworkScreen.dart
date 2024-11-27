@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 class RejectedOutOfNetworkScreen extends StatelessWidget {
   final Map<String, dynamic> claim;
 
-  RejectedOutOfNetworkScreen({required this.claim});
+  const RejectedOutOfNetworkScreen({super.key, required this.claim});
 
   final String rejectionReason = 'Out-of-Network Provider';
   final String rejectionDescription = 'This claim was rejected because it involves services provided by an out-of-network provider. Claims for out-of-network providers are not covered under the current insurance policy.';
@@ -19,7 +19,7 @@ class RejectedOutOfNetworkScreen extends StatelessWidget {
           context,
           MaterialPageRoute(builder: (context) => ClaimsManagementScreen()),
         );
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -29,7 +29,7 @@ class RejectedOutOfNetworkScreen extends StatelessWidget {
             ),
           ),
         ),
-        title: Text('Out-of-Network Rejected Claim Details',style:TextStyle(color: Colors.white),),
+        title: const Text('Out-of-Network Rejected Claim Details',style:TextStyle(color: Colors.white),),
         backgroundColor: Colors.blueAccent,
       ),
       body: Padding(
@@ -42,7 +42,7 @@ class RejectedOutOfNetworkScreen extends StatelessWidget {
             buildInfoRow('Patient Name', claim['patientName']),
             buildInfoRow('Date', claim['date']),
             buildInfoRow('Network', claim['network'], color: Colors.red),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Provider Information
             buildSectionTitle('Provider Information'),
@@ -61,12 +61,12 @@ class RejectedOutOfNetworkScreen extends StatelessWidget {
               label: 'Total Amount Claimed',
               value: claim['totalAmount'] != null ? '\$${claim['totalAmount']}' : 'Not Available',
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Rejection Details
             buildSectionTitle('Rejection Details'),
             buildRejectionCard(rejectionReason, rejectionDescription),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Supporting Documents
             buildSectionTitle('Supporting Documents'),
@@ -92,7 +92,7 @@ class RejectedOutOfNetworkScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Text(
         title,
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -102,7 +102,7 @@ class RejectedOutOfNetworkScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Text(
         subtitle,
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -115,7 +115,7 @@ class RejectedOutOfNetworkScreen extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
           Text(
             value?.toString() ?? 'N/A',
@@ -136,16 +136,16 @@ class RejectedOutOfNetworkScreen extends StatelessWidget {
       child: Row(
         children: [
           Icon(icon, color: Colors.blueAccent),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Expanded(
             child: Text(
               label,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
           ),
           Text(
             value,
-            style: TextStyle(fontSize: 16, color: Colors.black87, fontWeight: FontWeight.w400),
+            style: const TextStyle(fontSize: 16, color: Colors.black87, fontWeight: FontWeight.w400),
           ),
         ],
       ),
@@ -154,7 +154,7 @@ class RejectedOutOfNetworkScreen extends StatelessWidget {
 
   Widget buildRejectionCard(String reason, String description) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       color: Colors.red[50],
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -163,16 +163,16 @@ class RejectedOutOfNetworkScreen extends StatelessWidget {
           children: [
             Text(
               'Reason: $reason',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.red,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               description,
-              style: TextStyle(fontSize: 15, color: Colors.black87),
+              style: const TextStyle(fontSize: 15, color: Colors.black87),
             ),
           ],
         ),
@@ -182,8 +182,8 @@ class RejectedOutOfNetworkScreen extends StatelessWidget {
 
   Widget buildDocumentContainer(String title) {
     return Container(
-      padding: EdgeInsets.all(12),
-      margin: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(8),
@@ -194,10 +194,10 @@ class RejectedOutOfNetworkScreen extends StatelessWidget {
         children: [
           Text(
             '$title (PDF)',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
           IconButton(
-            icon: Icon(Icons.download_rounded),
+            icon: const Icon(Icons.download_rounded),
             onPressed: () async {
               const url = 'https://example.com';
               if (await canLaunch(url)) {

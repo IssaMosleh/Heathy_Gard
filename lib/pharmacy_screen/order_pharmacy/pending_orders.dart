@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tess/pharmacy_screen/main.dart';
+import 'package:tess/pharmacy_screen/mainscreenpharmacy.dart';
 import 'package:tess/pharmacy_screen/order_pharmacy/ChangeMedication.dart';
 import 'package:tess/pharmacy_screen/order_pharmacy/pending_order_introduction.dart';
 
 class MedicationDispenseScreen extends StatefulWidget {
+  const MedicationDispenseScreen({super.key});
+
   @override
   _MedicationDispenseScreenState createState() => _MedicationDispenseScreenState();
 }
@@ -45,7 +47,7 @@ class _MedicationDispenseScreenState extends State<MedicationDispenseScreen> {
 
   void _requestMedicationChange() {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Medication change request sent. Patient needs to revisit doctor.")),
+      const SnackBar(content: Text("Medication change request sent. Patient needs to revisit doctor.")),
     );
     
     // Navigate to the PendingOrderIntroduction screen for a medication change request
@@ -57,13 +59,13 @@ class _MedicationDispenseScreenState extends State<MedicationDispenseScreen> {
 
   void _confirmDispense() {
     ScaffoldMessenger.of(context).showSnackBar(
-      SnackBar(content: Text("Medication dispensing confirmed.")),
+      const SnackBar(content: Text("Medication dispensing confirmed.")),
     );
     
     // Navigate to the PendingOrderIntroduction screen to finalize the dispense
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Pharmacy_Screen()),
+      MaterialPageRoute(builder: (context) => const Pharmacy_Screen()),
     );
   }
 
@@ -71,13 +73,13 @@ class _MedicationDispenseScreenState extends State<MedicationDispenseScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Medication Dispense", style: TextStyle(color: Colors.white)),
+        title: const Text("Medication Dispense", style: TextStyle(color: Colors.white)),
         leading: IconButton(
           onPressed: () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => PharmacyDispenseIntroduction()),
+            MaterialPageRoute(builder: (context) => const PharmacyDispenseIntroduction()),
           ),
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -91,33 +93,33 @@ class _MedicationDispenseScreenState extends State<MedicationDispenseScreen> {
         centerTitle: true,
       ),
       body: SingleChildScrollView(
-        padding: EdgeInsets.all(16.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildReadOnlyTextField("Patient Name", _patientNameController),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField("Patient ID", _patientIdController),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField("Doctor Name", _doctorNameController),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField("Doctor ID", _doctorIdController),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField("Pharmacy Name", _pharmacyNameController),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField("Pharmacy ID", _pharmacyIdController),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField("Insurance Company", _insuranceCompanyController),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField("Insurance ID", _insuranceIdController),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField("Medication Status", _medicationStatusController, hintText: "Medication has been dispensed"),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField("GTIN Codes", _gtinCodesController, hintText: "GTIN123456789012, GTIN987654321098"),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
 
             // Display each medication with GTIN code, medication name, and dose
-            Text("Medications:", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+            const Text("Medications:", style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
             ...medications.map((medication) {
               return Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -125,30 +127,30 @@ class _MedicationDispenseScreenState extends State<MedicationDispenseScreen> {
                   Text("GTIN: ${medication['gtinCode']}"),
                   Text("Medication: ${medication['medicationName']}"),
                   Text("Dose: ${medication['dose']}"),
-                  SizedBox(height: 12),
+                  const SizedBox(height: 12),
                 ],
               );
-            }).toList(),
+            }),
 
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 ElevatedButton(
                   onPressed: _requestMedicationChange,
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
                     backgroundColor: Colors.orange,
                   ),
-                  child: Text("Change Medication", style: TextStyle(color: Colors.white)),
+                  child: const Text("Change Medication", style: TextStyle(color: Colors.white)),
                 ),
                 ElevatedButton(
                   onPressed: _confirmDispense,
                   style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+                    padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
                     backgroundColor: Colors.green,
                   ),
-                  child: Text("Confirm Dispense", style: TextStyle(color: Colors.white)),
+                  child: const Text("Confirm Dispense", style: TextStyle(color: Colors.white)),
                 ),
               ],
             ),
@@ -169,7 +171,7 @@ class _MedicationDispenseScreenState extends State<MedicationDispenseScreen> {
           borderRadius: BorderRadius.circular(8.0),
         ),
         isDense: true,
-        contentPadding: EdgeInsets.all(12),
+        contentPadding: const EdgeInsets.all(12),
       ),
     );
   }

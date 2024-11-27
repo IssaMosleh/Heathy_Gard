@@ -4,7 +4,7 @@ import 'package:intl/intl.dart' as intl;
 import 'package:tess/admin_screen/edit_profiles/patient/patient_insirance_main.dart';
 
 class patient_profile_insurance extends StatefulWidget {
-  const patient_profile_insurance({Key? key}) : super(key: key);
+  const patient_profile_insurance({super.key});
 
   @override
   State<patient_profile_insurance> createState() => _PatientProfileInsuranceState();
@@ -67,10 +67,10 @@ class _PatientProfileInsuranceState extends State<patient_profile_insurance> {
              Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PatientSearchScreen(),
+                            builder: (context) => const PatientSearchScreen(),
                           ),
                         );
-          }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+          }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
           centerTitle: true,
           title: const Text("Insurance Center",style: TextStyle(color: Colors.white),),
           flexibleSpace: Container(
@@ -184,7 +184,7 @@ class _PatientProfileInsuranceState extends State<patient_profile_insurance> {
                        Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PatientSearchScreen(),
+                            builder: (context) => const PatientSearchScreen(),
                           ),
                         );
                     }
@@ -206,7 +206,7 @@ class _PatientProfileInsuranceState extends State<patient_profile_insurance> {
         controller: controller,
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         ),
         validator: validator,
         maxLines: isLongText ? null : 1,
@@ -222,7 +222,7 @@ class _PatientProfileInsuranceState extends State<patient_profile_insurance> {
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
@@ -299,7 +299,7 @@ class _PatientProfileInsuranceState extends State<patient_profile_insurance> {
 class BalanceMeter extends StatelessWidget {
   final double balance;
 
-  const BalanceMeter({Key? key, required this.balance}) : super(key: key);
+  const BalanceMeter({super.key, required this.balance});
 
   @override
   Widget build(BuildContext context) {

@@ -12,7 +12,7 @@ class Doctor {
 }
 
 class DoctorSearchScreen extends StatefulWidget {
-  const DoctorSearchScreen({Key? key}) : super(key: key);
+  const DoctorSearchScreen({super.key});
 
   @override
   _DoctorSearchScreenState createState() => _DoctorSearchScreenState();
@@ -47,7 +47,7 @@ class _DoctorSearchScreenState extends State<DoctorSearchScreen> {
               MaterialPageRoute(builder: (context) => const edit_profiles_main()),
             );
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         title: const Text(
           "Search Doctors",

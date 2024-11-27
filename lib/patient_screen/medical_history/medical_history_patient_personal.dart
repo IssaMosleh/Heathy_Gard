@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tess/patient_screen/medical_history/medical_history_patient_main.dart';
 
 class medical_history_patient_personal extends StatelessWidget {
-  const medical_history_patient_personal({Key? key}) : super(key: key);
+  const medical_history_patient_personal({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MedicalRecordScreen(),
     );
@@ -14,7 +14,7 @@ class medical_history_patient_personal extends StatelessWidget {
 }
 
 class MedicalRecordScreen extends StatelessWidget {
-  const MedicalRecordScreen({Key? key}) : super(key: key);
+  const MedicalRecordScreen({super.key});
 
   Future<Map<String, dynamic>> fetchMedicalData() async {
     await Future.delayed(const Duration(seconds: 2)); // Simulate network delay
@@ -61,7 +61,7 @@ class MedicalRecordScreen extends StatelessWidget {
           onPressed: () {
             Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => medical_history_patient_main()),
+                    MaterialPageRoute(builder: (context) => const medical_history_patient_main()),
                     );         
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -83,9 +83,9 @@ class MedicalRecordScreen extends StatelessWidget {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: CircularProgressIndicator());
           } else if (snapshot.hasError) {
-            return Center(child: Text("Error loading data"));
+            return const Center(child: Text("Error loading data"));
           } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-            return Center(child: Text("No data available"));
+            return const Center(child: Text("No data available"));
           }
 
           final data = snapshot.data!;

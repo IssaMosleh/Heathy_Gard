@@ -4,10 +4,10 @@ import 'package:tess/admin_screen/edit_profiles/hospital/edit_hospital.dart';
 import 'package:tess/admin_screen/edit_profiles/insurance/edit_insurance.dart';
 import 'package:tess/admin_screen/edit_profiles/insurance_represenitive/insurance_represenitive_main.dart';
 import 'package:tess/admin_screen/edit_profiles/patient/patient_insirance_main.dart';
-import 'package:tess/admin_screen/main.dart';
+import 'package:tess/admin_screen/mainadminscreen.dart';
 
 class edit_profiles_main extends StatelessWidget {
-  const edit_profiles_main({Key? key}) : super(key: key);
+  const edit_profiles_main({super.key});
 
   @override
   Widget build(BuildContext context) {

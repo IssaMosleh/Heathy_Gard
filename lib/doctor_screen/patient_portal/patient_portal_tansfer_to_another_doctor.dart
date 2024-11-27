@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/mainscreendoctor.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_date_picker.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_labs.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_show_doctor_profile.dart';
 
 class patient_portal_tansfer_to_another_doctor extends StatelessWidget {
-  const patient_portal_tansfer_to_another_doctor({Key? key}) : super(key: key);
+  const patient_portal_tansfer_to_another_doctor({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +17,8 @@ class patient_portal_tansfer_to_another_doctor extends StatelessWidget {
 }
 
 class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -126,7 +128,7 @@ class _SearchScreenState extends State<SearchScreen> {
             context,
             MaterialPageRoute(builder: (context) => patient_portal_labs()),);
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           color: Colors.white,
         ),
         actions: [
@@ -134,20 +136,20 @@ class _SearchScreenState extends State<SearchScreen> {
             onPressed: () {
               Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Doctor_Screen()),);
+            MaterialPageRoute(builder: (context) => const Doctor_Screen()),);
             },
             icon: Image.asset('images/icon1.png'),
             color: Colors.white,
           )
         ],
-        title: Center(
+        title: const Center(
           child: Text(
             'Choose Doctor',
             style: TextStyle(color: Colors.white),
           ),
         ),
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [Colors.purple, Colors.blue],
               begin: Alignment.topLeft,
@@ -175,7 +177,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderSide: const BorderSide(color: Colors.blue),
                       ),
                     ),
                     onSubmitted: _onSearchSubmitted,

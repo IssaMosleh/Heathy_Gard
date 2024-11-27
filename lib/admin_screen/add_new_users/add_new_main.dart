@@ -4,10 +4,10 @@ import 'package:tess/admin_screen/add_new_users/hospital/new_hospital.dart';
 import 'package:tess/admin_screen/add_new_users/insurance/insurance_add.dart';
 import 'package:tess/admin_screen/add_new_users/insurance_represenitive/insurance_represenitive_add.dart';
 import 'package:tess/admin_screen/add_new_users/patient/patient_add.dart';
-import 'package:tess/admin_screen/main.dart';
+import 'package:tess/admin_screen/mainadminscreen.dart';
 
 class add_new_main extends StatelessWidget {
-  const add_new_main({Key? key}) : super(key: key);
+  const add_new_main({super.key});
 
   @override
   Widget build(BuildContext context) {

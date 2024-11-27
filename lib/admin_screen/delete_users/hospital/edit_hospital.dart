@@ -2,17 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:tess/admin_screen/delete_users/delete_profiles_main.dart';
 
 class EditHospital_delete extends StatelessWidget {
-  const EditHospital_delete({Key? key}) : super(key: key);
+  const EditHospital_delete({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: SearchScreen(),
     );
   }
 }
 
 class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -97,6 +100,7 @@ class _SearchScreenState extends State<SearchScreen> {
           "Choose Hospital",
           style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
         ),
+        centerTitle: true,
         leading: IconButton(
           onPressed: () {
             Navigator.push(
@@ -155,7 +159,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.blue),
+                  borderSide: const BorderSide(color: Colors.blue),
                 ),
               ),
             ),

@@ -3,11 +3,11 @@ import 'package:tess/patient_screen/settings_patient.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 class promotions_patient extends StatelessWidget {
-  const promotions_patient({Key? key}) : super(key: key);
+  const promotions_patient({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: PromotionScreen(),
     );
@@ -15,7 +15,7 @@ class promotions_patient extends StatelessWidget {
 }
 
 class PromotionScreen extends StatefulWidget {
-  const PromotionScreen({Key? key}) : super(key: key);
+  const PromotionScreen({super.key});
 
   @override
   _PromotionScreenState createState() => _PromotionScreenState();
@@ -84,9 +84,9 @@ class _PromotionScreenState extends State<PromotionScreen> {
         leading: IconButton(onPressed: (){
            Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => settings_patient()),
+                    MaterialPageRoute(builder: (context) => const settings_patient()),
                     ); 
-        }, icon: Icon(Icons.arrow_back_ios), color: Colors.white,),
+        }, icon: const Icon(Icons.arrow_back_ios), color: Colors.white,),
         title: const Text('Insurance Promotions', style: TextStyle(color: Colors.white),),
         centerTitle: true,
         flexibleSpace: Container(
@@ -131,14 +131,14 @@ class PromotionCard extends StatelessWidget {
   final VoidCallback onLearnMore;
 
   const PromotionCard({
-    Key? key,
+    super.key,
     required this.company,
     required this.planName,
     required this.description,
     required this.customerCount,
     required this.url,
     required this.onLearnMore,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

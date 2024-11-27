@@ -3,11 +3,11 @@ import 'package:tess/patient_screen/claim_screen/claim_patient_add_claim.dart';
 import 'package:tess/patient_screen/claim_screen/claim_patient_infroduction.dart';
 
 class claim_paatient_main extends StatelessWidget {
-  const claim_paatient_main({Key? key}) : super(key: key);
+  const claim_paatient_main({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ClaimCenterScreen(),
     );
@@ -15,7 +15,7 @@ class claim_paatient_main extends StatelessWidget {
 }
 
 class ClaimCenterScreen extends StatefulWidget {
-  const ClaimCenterScreen({Key? key}) : super(key: key);
+  const ClaimCenterScreen({super.key});
 
   @override
   _ClaimCenterScreenState createState() => _ClaimCenterScreenState();
@@ -25,7 +25,7 @@ class _ClaimCenterScreenState extends State<ClaimCenterScreen> {
   void _addNewClaim() {
      Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => claim_patient_add_claim()),
+                    MaterialPageRoute(builder: (context) => const claim_patient_add_claim()),
                     );         
   }
 
@@ -39,9 +39,9 @@ class _ClaimCenterScreenState extends State<ClaimCenterScreen> {
           leading: IconButton(onPressed: (){
             Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => claim_patient_infroduction()),
+                    MaterialPageRoute(builder: (context) => const claim_patient_infroduction()),
                     );         
-          }, icon: Icon(Icons.arrow_back_ios),color: Colors.white,),
+          }, icon: const Icon(Icons.arrow_back_ios),color: Colors.white,),
           centerTitle: true,
           flexibleSpace: Container(
             decoration: const BoxDecoration(
@@ -63,7 +63,7 @@ class _ClaimCenterScreenState extends State<ClaimCenterScreen> {
             ],
           ),
         ),
-        body: TabBarView(
+        body: const TabBarView(
           children: [
             ClaimsList(claimStatus: 'Active'),
             ClaimsList(claimStatus: 'Accepted'),
@@ -83,7 +83,7 @@ class _ClaimCenterScreenState extends State<ClaimCenterScreen> {
 class ClaimsList extends StatelessWidget {
   final String claimStatus;
 
-  const ClaimsList({Key? key, required this.claimStatus}) : super(key: key);
+  const ClaimsList({super.key, required this.claimStatus});
 
   @override
   Widget build(BuildContext context) {

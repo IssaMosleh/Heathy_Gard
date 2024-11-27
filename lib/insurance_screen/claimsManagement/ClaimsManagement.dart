@@ -5,9 +5,11 @@ import 'package:tess/insurance_screen/claimsManagement/OutOfNetworkPendingScreen
 import 'package:tess/insurance_screen/claimsManagement/PendingClaimScreen.dart';
 import 'package:tess/insurance_screen/claimsManagement/RejectedClaimScreen.dart';
 import 'package:tess/insurance_screen/claimsManagement/RejectedOutOfNetworkScreen.dart';
-import 'package:tess/insurance_screen/main.dart';
+import 'package:tess/insurance_screen/maininsurancescreen.dart';
 
 class ClaimsManagementScreen extends StatefulWidget {
+  const ClaimsManagementScreen({super.key});
+
   @override
   _ClaimsManagementScreenState createState() => _ClaimsManagementScreenState();
 }
@@ -26,7 +28,7 @@ class _ClaimsManagementScreenState extends State<ClaimsManagementScreen> with Si
   }
 
   Future<void> fetchClaimsData() async {
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
 
     List<Map<String, dynamic>> fetchedClaims = [
       // Pending In-Network Example
@@ -149,9 +151,9 @@ class _ClaimsManagementScreenState extends State<ClaimsManagementScreen> with Si
         leading: IconButton(onPressed: (){
            Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => InsuranceRep_Screen()),
+          MaterialPageRoute(builder: (context) => const InsuranceRep_Screen()),
         );
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -161,12 +163,12 @@ class _ClaimsManagementScreenState extends State<ClaimsManagementScreen> with Si
             ),
           ),
         ),
-        title: Text('Claims Management',style: TextStyle(color: Colors.white),),
+        title: const Text('Claims Management',style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.blueAccent,
         bottom: TabBar(
           controller: _tabController,
           labelColor: Colors.white,
-          tabs: [
+          tabs: const [
             Tab(text: 'Pending'),
             Tab(text: 'Approved'),
             Tab(text: 'Rejected'),
@@ -174,7 +176,7 @@ class _ClaimsManagementScreenState extends State<ClaimsManagementScreen> with Si
         ),
       ),
       body: isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : Column(
               children: [
                 Padding(
@@ -187,7 +189,7 @@ class _ClaimsManagementScreenState extends State<ClaimsManagementScreen> with Si
                     },
                     decoration: InputDecoration(
                       hintText: 'Search by Patient Name or Claim ID',
-                      prefixIcon: Icon(Icons.search),
+                      prefixIcon: const Icon(Icons.search),
                       border: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(12.0),
                       ),
@@ -215,18 +217,18 @@ class _ClaimsManagementScreenState extends State<ClaimsManagementScreen> with Si
     return filteredClaims.isEmpty
         ? Center(child: Text('No claims found for "$status" status.'))
         : ListView.builder(
-            padding: EdgeInsets.all(8.0),
+            padding: const EdgeInsets.all(8.0),
             itemCount: filteredClaims.length,
             itemBuilder: (context, index) {
               final claim = filteredClaims[index];
               return Card(
                 elevation: 4,
-                margin: EdgeInsets.symmetric(vertical: 8),
+                margin: const EdgeInsets.symmetric(vertical: 8),
                 child: ListTile(
-                  contentPadding: EdgeInsets.all(16),
+                  contentPadding: const EdgeInsets.all(16),
                   title: Text(
                     'Claim ID: ${claim['id']}',
-                    style: TextStyle(fontWeight: FontWeight.bold),
+                    style: const TextStyle(fontWeight: FontWeight.bold),
                   ),
                   subtitle: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -238,7 +240,7 @@ class _ClaimsManagementScreenState extends State<ClaimsManagementScreen> with Si
                       const SizedBox(height: 6),
                       Row(
                         children: [
-                          Text(
+                          const Text(
                             'Status: ',
                             style: TextStyle(fontWeight: FontWeight.bold),
                           ),
@@ -256,7 +258,7 @@ class _ClaimsManagementScreenState extends State<ClaimsManagementScreen> with Si
                       ),
                     ],
                   ),
-                  trailing: Icon(Icons.arrow_forward_ios),
+                  trailing: const Icon(Icons.arrow_forward_ios),
                   onTap: () => openClaimDetails(claim),
                 ),
               );

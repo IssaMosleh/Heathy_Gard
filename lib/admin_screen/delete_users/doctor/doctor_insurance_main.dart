@@ -11,7 +11,7 @@ class Doctor {
 }
 
 class DoctorSearchScreen_delete extends StatefulWidget {
-  const DoctorSearchScreen_delete({Key? key}) : super(key: key);
+  const DoctorSearchScreen_delete({super.key});
 
   @override
   _DoctorSearchScreenState createState() => _DoctorSearchScreenState();
@@ -46,7 +46,7 @@ class _DoctorSearchScreenState extends State<DoctorSearchScreen_delete> {
               MaterialPageRoute(builder: (context) => const delete_profiles_main()),
             );
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         title: const Text(
           "Search Doctors",
@@ -197,7 +197,7 @@ class _DoctorSearchScreenState extends State<DoctorSearchScreen_delete> {
                         ],
                       ),
                       trailing: IconButton(
-                        icon: Icon(Icons.delete, color: Colors.red),
+                        icon: const Icon(Icons.delete, color: Colors.red),
                         onPressed: () {
                           setState(() {
                             doctors.remove(doctor);

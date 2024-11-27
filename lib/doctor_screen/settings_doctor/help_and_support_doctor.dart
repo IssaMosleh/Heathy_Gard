@@ -4,11 +4,11 @@ import 'package:url_launcher/url_launcher.dart';
 
 
 class help_and_support_doctor extends StatelessWidget {
-  const help_and_support_doctor({Key? key}) : super(key: key);
+  const help_and_support_doctor({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HelpSupportScreen(),
     );
@@ -16,7 +16,7 @@ class help_and_support_doctor extends StatelessWidget {
 }
 
 class HelpSupportScreen extends StatelessWidget {
-  const HelpSupportScreen({Key? key}) : super(key: key);
+  const HelpSupportScreen({super.key});
 
   Future<void> _launchPhoneDialer() async {
     const phoneNumber = 'tel:0795334901';
@@ -34,8 +34,8 @@ class HelpSupportScreen extends StatelessWidget {
         title: const Text('Help & Support', style: TextStyle(color: Colors.white),),
         leading: IconButton(onPressed: (){ Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => settings_doctor()),
-            ); }, icon: Icon(Icons.arrow_back_ios), color: Colors.white,),
+                  MaterialPageRoute(builder: (context) => const settings_doctor()),
+            ); }, icon: const Icon(Icons.arrow_back_ios), color: Colors.white,),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -106,8 +106,8 @@ class HelpSupportScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Icon(Icons.email, color: Colors.blue),
                     SizedBox(width: 8),
                     Expanded(
@@ -119,8 +119,8 @@ class HelpSupportScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Icon(Icons.phone, color: Colors.blue),
                     SizedBox(width: 8),
                     Expanded(

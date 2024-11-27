@@ -3,7 +3,7 @@ import 'package:tess/patient_screen/medical_history/medical_history_patient_main
 import 'package:url_launcher/url_launcher.dart';
 
 class medical_history_patient_lab extends StatelessWidget {
-  const medical_history_patient_lab({Key? key}) : super(key: key);
+  const medical_history_patient_lab({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class medical_history_patient_lab extends StatelessWidget {
 }
 
 class LabReportsScreen extends StatefulWidget {
-  const LabReportsScreen({Key? key}) : super(key: key);
+  const LabReportsScreen({super.key});
 
   @override
   _LabReportsScreenState createState() => _LabReportsScreenState();
@@ -27,7 +27,7 @@ class LabReportsScreen extends StatefulWidget {
 
 class _LabReportsScreenState extends State<LabReportsScreen> {
   List<Map<String, dynamic>> labReports = [];
-  bool _isDownloading = false;
+  final bool _isDownloading = false;
 
   @override
   void initState() {
@@ -36,7 +36,7 @@ class _LabReportsScreenState extends State<LabReportsScreen> {
   }
 
   void fetchLabReports() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     
     setState(() {
       labReports = [
@@ -84,9 +84,9 @@ class _LabReportsScreenState extends State<LabReportsScreen> {
         leading: IconButton(onPressed: (){}, icon: IconButton(onPressed: (){
           Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => medical_history_patient_main()),
+                    MaterialPageRoute(builder: (context) => const medical_history_patient_main()),
                     );         
-        }, icon: Icon(Icons.arrow_back_ios_new), color: Colors.white,)),
+        }, icon: const Icon(Icons.arrow_back_ios_new), color: Colors.white,)),
       ),
       body: Stack(
         children: [
@@ -99,10 +99,10 @@ class _LabReportsScreenState extends State<LabReportsScreen> {
             ),
           ),
           if (_isDownloading)
-            Center(
+            const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   CircularProgressIndicator(),
                   SizedBox(height: 16),
                   Text(
@@ -157,9 +157,9 @@ class _LabReportsScreenState extends State<LabReportsScreen> {
                     ),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Icon(Icons.download, color: Colors.white),
                       SizedBox(width: 8),
                       Text(

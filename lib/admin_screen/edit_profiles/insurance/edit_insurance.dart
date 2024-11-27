@@ -11,7 +11,7 @@ class InsuranceCompany {
 }
 
 class InsuranceCompanySearchScreen extends StatefulWidget {
-  const InsuranceCompanySearchScreen({Key? key}) : super(key: key);
+  const InsuranceCompanySearchScreen({super.key});
 
   @override
   _InsuranceCompanySearchScreenState createState() => _InsuranceCompanySearchScreenState();
@@ -44,7 +44,7 @@ class _InsuranceCompanySearchScreenState extends State<InsuranceCompanySearchScr
               MaterialPageRoute(builder: (context) => const edit_profiles_main()),
             );
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         title: const Text(
           "Search Insurance Companies",

@@ -10,12 +10,9 @@ import 'package:tess/doctor_screen/notification_doctor.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_Introduction.dart';
 import 'package:tess/doctor_screen/settings_doctor.dart'; // Import for date formatting
 
-void main() {
-  runApp(const Doctor_Screen());
-}
 
 class Doctor_Screen extends StatefulWidget {
-  const Doctor_Screen({Key? key}) : super(key: key);
+  const Doctor_Screen({super.key});
 
   @override
   State<Doctor_Screen> createState() => _MainAppState();
@@ -269,7 +266,7 @@ class _MainAppState extends State<Doctor_Screen> {
                                                     child: Column(
                                                       mainAxisAlignment: MainAxisAlignment.center,
                                                       children: [
-                                                        Container(
+                                                        SizedBox(
                                                           height: imageSize,
                                                           width: imageSize,
                                                           child: Image.asset(

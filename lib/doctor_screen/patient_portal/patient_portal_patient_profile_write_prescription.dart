@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/mainscreendoctor.dart';
 import 'package:tess/doctor_screen/patient_portal/Patient_portal_meds.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_patient_profile.dart';
 
@@ -8,7 +8,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     title: 'Doctor Treatment App',
     home: patient_portal_patient_profile_write_prescription(
-      patientData: { // Specialty to filter ICD-10 codes
+      patientData: const { // Specialty to filter ICD-10 codes
       },
     ),
   ));
@@ -18,7 +18,7 @@ void main() {
 class patient_portal_patient_profile_write_prescription extends StatefulWidget {
   final Map<String, String> patientData;
 
-  patient_portal_patient_profile_write_prescription({required this.patientData});
+  const patient_portal_patient_profile_write_prescription({super.key, required this.patientData});
 
   @override
   _TreatmentFormScreenState createState() => _TreatmentFormScreenState();
@@ -112,7 +112,7 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const patient_portal_patient_profile()),);
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,),color: Colors.white,),
+        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,),color: Colors.white,),
         actions: [
           IconButton(onPressed: (){
             Navigator.push(
@@ -120,9 +120,9 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
             MaterialPageRoute(builder: (context) => const Doctor_Screen()),);
           }, icon: Image.asset('images/icon1.png'),color: Colors.white,)
         ],
-        title: Center(child: Text('Treatment Form',style: TextStyle(color: Colors.white),)),
+        title: const Center(child: Text('Treatment Form',style: TextStyle(color: Colors.white),)),
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [Colors.purple, Colors.blue],
               begin: Alignment.topLeft,
@@ -148,13 +148,13 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
                 treatment = value!;
               }),
 
-              SizedBox(height: 16), // Add some spacing before the button
+              const SizedBox(height: 16), // Add some spacing before the button
 
               Container(
                 width: double.infinity,
                 height: 50,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [Colors.purple, Colors.blue],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
@@ -175,7 +175,7 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Continue',
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
@@ -195,7 +195,7 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
         controller: TextEditingController(text: initialValue),
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         ),
         enabled: false,
       ),
@@ -210,7 +210,7 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
         maxLength: maxLength,
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           floatingLabelBehavior: FloatingLabelBehavior.always,
         ),
         validator: (value) {
@@ -229,7 +229,7 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: DropdownButtonFormField<String>(
         isExpanded: true,
-        decoration: InputDecoration(
+        decoration: const InputDecoration(
           labelText: 'Select ICD-10 Code',
           border: OutlineInputBorder(),
         ),
@@ -253,12 +253,12 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Continue'),
-        content: Text('You have successfully completed this step.'),
+        title: const Text('Continue'),
+        content: const Text('You have successfully completed this step.'),
         actions: [
           TextButton(onPressed: () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => const Patient_portal_meds()),), child: Text('OK')),
+            MaterialPageRoute(builder: (context) => const Patient_portal_meds()),), child: const Text('OK')),
         ],
       ),
     );

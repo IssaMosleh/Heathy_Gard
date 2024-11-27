@@ -1,26 +1,28 @@
 import 'package:flutter/material.dart';
-import 'package:tess/admin_screen/main.dart';
+import 'package:tess/admin_screen/mainadminscreen.dart';
 import 'package:tess/admin_screen/notification_admin.dart';
 import 'package:tess/admin_screen/settings/about_us_admin.dart';
 import 'package:tess/admin_screen/settings/help_support_admin.dart';
 import 'package:tess/admin_screen/settings/privacy_policy_admin.dart';
 import 'package:tess/admin_screen/settings/terms_of_service_admin.dart';
+import 'package:tess/main.dart';
 
 
 
 class settings_admin extends StatelessWidget {
-  const settings_admin({Key? key}) : super(key: key);
+  const settings_admin({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: const SettingsScreen(),
+    return const MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: SettingsScreen(),
     );
   }
 }
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -63,7 +65,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
                Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => about_us_admin()),
+                    MaterialPageRoute(builder: (context) => const about_us_admin()),
                     ); 
             },
           ),
@@ -74,7 +76,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => privacy_policy_admin()),
+                    MaterialPageRoute(builder: (context) => const privacy_policy_admin()),
                     ); 
             },
           ),
@@ -85,7 +87,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => terms_of_service_admin()),
+                    MaterialPageRoute(builder: (context) => const terms_of_service_admin()),
                     ); 
             },
           ),
@@ -118,7 +120,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'Sign Out',
             iconColor: Colors.red,
             onTap: () {
-              // Sign out action
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MainApp()),
+                    ); 
             },
           ),
         ],
@@ -134,7 +139,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               color: Colors.grey.withOpacity(0.2),
               spreadRadius: 5,
               blurRadius: 10,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -145,7 +150,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onPressed: () {
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => AdminScreen()),
+              MaterialPageRoute(builder: (context) => const AdminScreen()),
             );
               },
               icon: Image.asset('images/icon1.png'), // Replace with desired icon
@@ -163,7 +168,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               onPressed: () {
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => settings_admin()),
+              MaterialPageRoute(builder: (context) => const settings_admin()),
             );
               },
               icon: Image.asset('images/icon4.png'), // Replace with desired icon
@@ -184,13 +189,13 @@ class SettingsTile extends StatelessWidget {
   final VoidCallback onTap;
 
   const SettingsTile({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     required this.iconColor,
     this.trailing,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

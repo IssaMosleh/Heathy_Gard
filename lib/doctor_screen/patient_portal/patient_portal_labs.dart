@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/mainscreendoctor.dart';
 import 'package:tess/doctor_screen/patient_portal/Patient_portal_meds.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_payment.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_tansfer_to_another_doctor.dart';
@@ -13,6 +13,8 @@ void main() {
 }
 
 class patient_portal_labs extends StatefulWidget {
+  const patient_portal_labs({super.key});
+
   @override
   _RequestTestScreenState createState() => _RequestTestScreenState();
 }
@@ -39,7 +41,7 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
 
   Future<void> _fetchDataFromDatabase() async {
     // Simulate fetching doctor specialty and test codes from the database
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
 
     setState(() {
       doctorSpecialty = 'Cardiology'; // Example specialty, replace with fetched data
@@ -109,7 +111,7 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => const Patient_portal_meds()),);
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,),color: Colors.white,),
+        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,),color: Colors.white,),
         actions: [
           IconButton(onPressed: (){
             Navigator.push(
@@ -117,9 +119,9 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
             MaterialPageRoute(builder: (context) => const Doctor_Screen()),);
           }, icon: Image.asset('images/icon1.png'),color: Colors.white,)
         ],
-        title: Center(child: Text('Treatment Form',style: TextStyle(color: Colors.white),)),
+        title: const Center(child: Text('Treatment Form',style: TextStyle(color: Colors.white),)),
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [Colors.purple, Colors.blue],
               begin: Alignment.topLeft,
@@ -133,7 +135,7 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
         child: ListView(
           children: [
             CheckboxListTile(
-              title: Text("Activate Lab Test Request"),
+              title: const Text("Activate Lab Test Request"),
               value: labTestActivated,
               onChanged: (value) {
                 setState(() {
@@ -146,11 +148,11 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Request Lab Tests',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   _buildMultiSelectDropdown(
                     title: 'Select Lab Tests',
                     items: labTests,
@@ -158,9 +160,9 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
                   ),
                 ],
               ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             CheckboxListTile(
-              title: Text("Activate Radiology Test Request"),
+              title: const Text("Activate Radiology Test Request"),
               value: radiologyTestActivated,
               onChanged: (value) {
                 setState(() {
@@ -173,11 +175,11 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
+                  const Text(
                     'Request Radiology Tests',
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                   ),
-                  SizedBox(height: 8),
+                  const SizedBox(height: 8),
                   _buildMultiSelectDropdown(
                     title: 'Select Radiology Tests (CPT Codes)',
                     items: radiologyTests,
@@ -185,13 +187,13 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
                   ),
                 ],
               ),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             // Submit Request Button
             Container(
               width: double.infinity,
               height: 50,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [Colors.purple, Colors.blue],
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
@@ -212,19 +214,19 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   'Submit Request',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             // Continue Button (Always Enabled)
             Container(
               width: double.infinity,
               height: 50,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [Colors.blue, Colors.green],
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
@@ -244,19 +246,19 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   'Continue',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
               ),
             ),
-            SizedBox(height: 16),
+            const SizedBox(height: 16),
             // Transfer to Another Doctor Button
             Container(
               width: double.infinity,
               height: 50,
               decoration: BoxDecoration(
-                gradient: LinearGradient(
+                gradient: const LinearGradient(
                   colors: [Colors.orange, Colors.red],
                   begin: Alignment.centerLeft,
                   end: Alignment.centerRight,
@@ -272,7 +274,7 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
                     borderRadius: BorderRadius.circular(8.0),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   'Transfer to Another Doctor',
                   style: TextStyle(fontSize: 18, color: Colors.white),
                 ),
@@ -290,7 +292,7 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
     required List<String> selectedItems,
   }) {
     return Container(
-      padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
         border: Border.all(color: Colors.grey),
         borderRadius: BorderRadius.circular(8.0),
@@ -298,7 +300,7 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(title, style: TextStyle(fontSize: 16)),
+          Text(title, style: const TextStyle(fontSize: 16)),
           ...items.map((item) {
             return CheckboxListTile(
               title: Text(item),
@@ -313,7 +315,7 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
                 });
               },
             );
-          }).toList(),
+          }),
         ],
       ),
     );
@@ -327,14 +329,14 @@ class _RequestTestScreenState extends State<patient_portal_labs> {
         final radiologyRequests = selectedRadiologyTests.isNotEmpty ? selectedRadiologyTests.join(", ") : "None";
 
         return AlertDialog(
-          title: Text('Request Submitted'),
+          title: const Text('Request Submitted'),
           content: Text(
             'Lab Tests: $labRequests\nRadiology Tests: $radiologyRequests',
           ),
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text('OK'),
+              child: const Text('OK'),
             ),
           ],
         );

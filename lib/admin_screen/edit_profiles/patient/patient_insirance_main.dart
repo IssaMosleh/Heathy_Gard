@@ -12,7 +12,7 @@ class Patient {
 }
 
 class PatientSearchScreen extends StatefulWidget {
-  const PatientSearchScreen({Key? key}) : super(key: key);
+  const PatientSearchScreen({super.key});
 
   @override
   _PatientSearchScreenState createState() => _PatientSearchScreenState();
@@ -47,7 +47,7 @@ class _PatientSearchScreenState extends State<PatientSearchScreen> {
               MaterialPageRoute(builder: (context) => const edit_profiles_main()),
             );
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         title: const Text(
           "Search Patients",
@@ -206,7 +206,7 @@ class _PatientSearchScreenState extends State<PatientSearchScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => patient_profile_insurance(),
+                            builder: (context) => const patient_profile_insurance(),
                           ),
                         );
                       },

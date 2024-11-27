@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 
 void main() {
   runApp(const patient_insurance());
 }
 
 class patient_insurance extends StatefulWidget {
-  const patient_insurance({Key? key}) : super(key: key);
+  const patient_insurance({super.key});
 
   @override
   State<patient_insurance> createState() => _MainAppState();
@@ -78,7 +78,7 @@ class _MainAppState extends State<patient_insurance> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Patient_Screen()),
+                  MaterialPageRoute(builder: (context) => const Patient_Screen()),
             );
               },
               icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -348,7 +348,7 @@ class _MainAppState extends State<patient_insurance> {
 class BalanceMeter extends StatelessWidget {
   final double balance;
 
-  const BalanceMeter({Key? key, required this.balance}) : super(key: key);
+  const BalanceMeter({super.key, required this.balance});
 
   @override
   Widget build(BuildContext context) {

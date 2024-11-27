@@ -5,7 +5,7 @@ import 'package:url_launcher/url_launcher.dart';
 class ApprovedOutOfNetworkScreen extends StatelessWidget {
   final Map<String, dynamic> claim;
 
-  ApprovedOutOfNetworkScreen({required this.claim});
+  const ApprovedOutOfNetworkScreen({super.key, required this.claim});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class ApprovedOutOfNetworkScreen extends StatelessWidget {
           context,
           MaterialPageRoute(builder: (context) => ClaimsManagementScreen()),
         );
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -26,7 +26,7 @@ class ApprovedOutOfNetworkScreen extends StatelessWidget {
             ),
           ),
         ),
-        title: Text('Out-of-Network Claim Details',style: TextStyle(color: Colors.white),),
+        title: const Text('Out-of-Network Claim Details',style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.blueAccent,
       ),
       body: Padding(
@@ -39,7 +39,7 @@ class ApprovedOutOfNetworkScreen extends StatelessWidget {
             buildInfoRow('Patient Name', claim['patientName']),
             buildInfoRow('Date', claim['date']),
             buildInfoRow('Network', claim['network'], color: Colors.red),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Enhanced Provider Information Section
             buildSectionTitle('Provider Information'),
@@ -58,7 +58,7 @@ class ApprovedOutOfNetworkScreen extends StatelessWidget {
               label: 'Total Amount Claimed',
               value: claim['totalAmount'] != null ? '\$${claim['totalAmount']}' : 'Not Available',
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Supporting Documents
             buildSectionTitle('Supporting Documents'),
@@ -84,7 +84,7 @@ class ApprovedOutOfNetworkScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Text(
         title,
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -94,7 +94,7 @@ class ApprovedOutOfNetworkScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Text(
         subtitle,
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -107,7 +107,7 @@ class ApprovedOutOfNetworkScreen extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
           Text(
             value?.toString() ?? 'N/A',
@@ -128,16 +128,16 @@ class ApprovedOutOfNetworkScreen extends StatelessWidget {
       child: Row(
         children: [
           Icon(icon, color: Colors.blueAccent),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Expanded(
             child: Text(
               label,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
           ),
           Text(
             value,
-            style: TextStyle(fontSize: 16, color: Colors.black87, fontWeight: FontWeight.w400),
+            style: const TextStyle(fontSize: 16, color: Colors.black87, fontWeight: FontWeight.w400),
           ),
         ],
       ),
@@ -146,8 +146,8 @@ class ApprovedOutOfNetworkScreen extends StatelessWidget {
 
   Widget buildDocumentContainer(String title) {
     return Container(
-      padding: EdgeInsets.all(12),
-      margin: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(8),
@@ -158,10 +158,10 @@ class ApprovedOutOfNetworkScreen extends StatelessWidget {
         children: [
           Text(
             '$title (PDF)',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
           IconButton(
-            icon: Icon(Icons.download_rounded),
+            icon: const Icon(Icons.download_rounded),
             onPressed: () async {
               const url = 'https://example.com';
               if (await canLaunch(url)) {

@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tess/patient_screen/medical_history/medical_history_patient_main.dart';
 
 class medical_history_patient_history extends StatelessWidget {
-  const medical_history_patient_history({Key? key}) : super(key: key);
+  const medical_history_patient_history({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HistoryScreen(),
     );
@@ -14,7 +14,7 @@ class medical_history_patient_history extends StatelessWidget {
 }
 
 class HistoryScreen extends StatefulWidget {
-  const HistoryScreen({Key? key}) : super(key: key);
+  const HistoryScreen({super.key});
 
   @override
   State<HistoryScreen> createState() => _HistoryScreenState();

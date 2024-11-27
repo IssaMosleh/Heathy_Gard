@@ -3,11 +3,11 @@ import 'package:intl/intl.dart';
 import 'package:tess/patient_screen/medication_patient/medication_patient_main.dart';
 
 class medication_patient_patient extends StatelessWidget {
-  const medication_patient_patient({Key? key}) : super(key: key);
+  const medication_patient_patient({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MedicationScreen(),
     );
@@ -15,7 +15,7 @@ class medication_patient_patient extends StatelessWidget {
 }
 
 class MedicationScreen extends StatefulWidget {
-  const MedicationScreen({Key? key}) : super(key: key);
+  const MedicationScreen({super.key});
 
   @override
   _MedicationScreenState createState() => _MedicationScreenState();
@@ -32,7 +32,7 @@ class _MedicationScreenState extends State<MedicationScreen> {
       'dosageInstruction': 'Take 1 tablet daily',
       'refillLimit': 3,
       'refillCount': 3,
-      'nextRefillDate': DateTime.now().add(Duration(days: 7)),
+      'nextRefillDate': DateTime.now().add(const Duration(days: 7)),
     },
     {
       'image': 'images/panadol.png',
@@ -65,7 +65,7 @@ class _MedicationScreenState extends State<MedicationScreen> {
       'dosageInstruction': 'Inject 10 units twice daily',
       'refillLimit': 5,
       'refillCount': 4,
-      'nextRefillDate': DateTime.now().add(Duration(days: 1)),
+      'nextRefillDate': DateTime.now().add(const Duration(days: 1)),
     },
   ];
 
@@ -84,7 +84,7 @@ class _MedicationScreenState extends State<MedicationScreen> {
     } else {
       setState(() {
         medications[index]['refillCount'] += 1;
-        medications[index]['nextRefillDate'] = now.add(Duration(days: 30));
+        medications[index]['nextRefillDate'] = now.add(const Duration(days: 30));
       });
       _showDialog("Refill Successful", "Your refill request for ${medications[index]['name']} has been processed.");
     }
@@ -125,7 +125,7 @@ class _MedicationScreenState extends State<MedicationScreen> {
             onPressed: () {
               Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => medication_patient_main()),
+                    MaterialPageRoute(builder: (context) => const medication_patient_main()),
                     );         
             },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -163,7 +163,7 @@ class MedicationCard extends StatelessWidget {
   final Map<String, dynamic> medication;
   final VoidCallback onRequestRefill;
 
-  const MedicationCard({Key? key, required this.medication, required this.onRequestRefill}) : super(key: key);
+  const MedicationCard({super.key, required this.medication, required this.onRequestRefill});
 
   @override
   Widget build(BuildContext context) {

@@ -5,7 +5,7 @@ import 'package:tess/admin_screen/add_new_users/add_new_main.dart';
 import 'package:tess/admin_screen/edit_profiles/patient/patient_insirance_main.dart';
 
 class patient_add extends StatefulWidget {
-  const patient_add({Key? key}) : super(key: key);
+  const patient_add({super.key});
 
   @override
   State<patient_add> createState() => _PatientProfileInsuranceState();
@@ -70,11 +70,11 @@ class _PatientProfileInsuranceState extends State<patient_add> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => add_new_main(),
+                  builder: (context) => const add_new_main(),
                 ),
               );
             },
-            icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+            icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           ),
           centerTitle: true,
           title: const Text("Insurance Center", style: TextStyle(color: Colors.white)),
@@ -189,7 +189,7 @@ class _PatientProfileInsuranceState extends State<patient_add> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => add_new_main(),
+                          builder: (context) => const add_new_main(),
                         ),
                       );
                     }
@@ -211,7 +211,7 @@ class _PatientProfileInsuranceState extends State<patient_add> {
         controller: controller,
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         ),
         validator: validator,
         maxLines: isLongText ? null : 1,
@@ -227,7 +227,7 @@ class _PatientProfileInsuranceState extends State<patient_add> {
         keyboardType: TextInputType.number,
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) {
@@ -304,7 +304,7 @@ class _PatientProfileInsuranceState extends State<patient_add> {
 class BalanceMeter extends StatelessWidget {
   final double balance;
 
-  const BalanceMeter({Key? key, required this.balance}) : super(key: key);
+  const BalanceMeter({super.key, required this.balance});
 
   @override
   Widget build(BuildContext context) {

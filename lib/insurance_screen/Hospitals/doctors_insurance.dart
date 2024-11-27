@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tess/insurance_screen/Hospitals/hospital_info.dart';
 import 'package:tess/insurance_screen/Hospitals/show_profile_doctor.dart';
-import 'package:tess/insurance_screen/main.dart';
+import 'package:tess/insurance_screen/maininsurancescreen.dart';
 
 class doctors_insurance extends StatelessWidget {
   final String hospitalName;
 
-  const doctors_insurance({Key? key, required this.hospitalName}) : super(key: key);
+  const doctors_insurance({super.key, required this.hospitalName});
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +20,7 @@ class doctors_insurance extends StatelessWidget {
 class SearchScreen extends StatefulWidget {
   final String hospitalName;
 
-  const SearchScreen({Key? key, required this.hospitalName}) : super(key: key);
+  const SearchScreen({super.key, required this.hospitalName});
 
   @override
   _SearchScreenState createState() => _SearchScreenState();
@@ -83,7 +83,7 @@ class _SearchScreenState extends State<SearchScreen> {
   void _showSpecialtyFilterDialog() {
     showModalBottomSheet(
       context: context,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (BuildContext context) {
@@ -153,7 +153,7 @@ class _SearchScreenState extends State<SearchScreen> {
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => HospitalStatsScreen( hospitalName: "Jordan Hospital",
+              MaterialPageRoute(builder: (context) => const HospitalStatsScreen( hospitalName: "Jordan Hospital",
       totalClaims: 120,
       approvedClaims: 90,
       rejectedClaims: 30,
@@ -189,7 +189,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.blue),
                 ),
               ),
@@ -217,7 +217,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => show_profile_doctor(),
+                              builder: (context) => const show_profile_doctor(),
                             ),
                           );
                         },
@@ -227,7 +227,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => show_profile_doctor(),
+                            builder: (context) => const show_profile_doctor(),
                           ),
                         );
                       },
@@ -247,7 +247,7 @@ class _SearchScreenState extends State<SearchScreen> {
 class DoctorProfileScreen extends StatelessWidget {
   final Map<String, dynamic> doctor;
 
-  const DoctorProfileScreen({Key? key, required this.doctor}) : super(key: key);
+  const DoctorProfileScreen({super.key, required this.doctor});
 
   @override
   Widget build(BuildContext context) {
@@ -264,7 +264,7 @@ class DoctorProfileScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
+      body: const Center(
         child: Text("Doctor profile details go here."),
       ),
     );

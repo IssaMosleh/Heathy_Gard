@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
 
-import 'package:tess/pharmacy_screen/main.dart';
+import 'package:tess/pharmacy_screen/mainscreenpharmacy.dart';
 
 class pharmacy_money extends StatefulWidget {
-  const pharmacy_money({Key? key}) : super(key: key);
+  const pharmacy_money({super.key});
 
   @override
   _PharmacyMoneyScreenState createState() => _PharmacyMoneyScreenState();
@@ -90,7 +90,7 @@ class _PharmacyMoneyScreenState extends State<pharmacy_money> {
             Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Pharmacy_Screen(),
+                        builder: (context) => const Pharmacy_Screen(),
                       ),
                     );
           },

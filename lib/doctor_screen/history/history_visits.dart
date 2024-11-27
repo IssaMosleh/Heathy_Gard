@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:tess/doctor_screen/history/patient_history.dart';
-import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/mainscreendoctor.dart';
 
 
 class history_visits extends StatefulWidget {
-  const history_visits({Key? key}) : super(key: key);
+  const history_visits({super.key});
 
   @override
   _HistoryScreenState createState() => _HistoryScreenState();
@@ -73,7 +73,7 @@ class _HistoryScreenState extends State<history_visits> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => patient_history_same_doctor(),
+        builder: (context) => const patient_history_same_doctor(),
       ),
     );
   }
@@ -86,7 +86,7 @@ class _HistoryScreenState extends State<history_visits> {
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Doctor_Screen()),)
+            MaterialPageRoute(builder: (context) => const Doctor_Screen()),)
         ),
         title: const Text("Patient History",style: TextStyle(color: Colors.white),),
         centerTitle: true,
@@ -108,14 +108,14 @@ class _HistoryScreenState extends State<history_visits> {
               controller: _searchController,
               decoration: InputDecoration(
                 hintText: "Search patients",
-                prefixIcon: Icon(Icons.search, color: Colors.blue),
+                prefixIcon: const Icon(Icons.search, color: Colors.blue),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.blue),
+                  borderSide: const BorderSide(color: Colors.blue),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.blue),
+                  borderSide: const BorderSide(color: Colors.blue),
                 ),
               ),
             ),

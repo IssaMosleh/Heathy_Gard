@@ -4,7 +4,7 @@ import 'package:tess/insurance_screen/claimsManagement/ClaimsManagement.dart';
 class RejectedClaimScreen extends StatelessWidget {
   final Map<String, dynamic> claim;
 
-  RejectedClaimScreen({required this.claim});
+  RejectedClaimScreen({super.key, required this.claim});
 
   final String rejectionReason = 'Non-Approved Medication';
   final String rejectionDescription = 'This claim was rejected because one or more medications prescribed are not covered under the current policy. To avoid future rejections, please ensure that all treatments, medications, and services are in line with the policy coverage details.';
@@ -64,7 +64,7 @@ class RejectedClaimScreen extends StatelessWidget {
           context,
           MaterialPageRoute(builder: (context) => ClaimsManagementScreen()),
         );
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -74,7 +74,7 @@ class RejectedClaimScreen extends StatelessWidget {
             ),
           ),
         ),
-        title: Text('Rejected Claim Details',style: TextStyle(color: Colors.white),),
+        title: const Text('Rejected Claim Details',style: TextStyle(color: Colors.white),),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -87,40 +87,40 @@ class RejectedClaimScreen extends StatelessWidget {
             buildInfoRow('Doctor', claim['doctorName'] ?? 'Dr. Sarah Thompson'),
             buildInfoRow('Hospital', claim['hospitalName'] ?? 'HealthPlus Hospital'),
             buildInfoRow('Date', claim['date']),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Rejection Details
             buildSectionTitle('Rejection Details'),
             buildRejectionCard(rejectionReason, rejectionDescription),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Visit Cost
             buildSectionTitle('Visit Cost'),
             Text(
               'Total Cost: \$${calculateTotalCost().toStringAsFixed(2)}',
-              style: TextStyle(fontSize: 16, color: Colors.blueGrey),
+              style: const TextStyle(fontSize: 16, color: Colors.blueGrey),
             ),
-            Divider(height: 24, thickness: 2),
+            const Divider(height: 24, thickness: 2),
 
             // Medications Section
             if (medications.isNotEmpty) ...[
               buildSectionTitle('Medications'),
-              ...medications.map((med) => buildMedicationCard(context, med)).toList(),
-              Divider(height: 24, thickness: 2),
+              ...medications.map((med) => buildMedicationCard(context, med)),
+              const Divider(height: 24, thickness: 2),
             ],
 
             // Labs Section
             if (labTests.isNotEmpty) ...[
               buildSectionTitle('Lab Tests'),
-              ...labTests.map((lab) => buildLabCard(context, lab)).toList(),
-              Divider(height: 24, thickness: 2),
+              ...labTests.map((lab) => buildLabCard(context, lab)),
+              const Divider(height: 24, thickness: 2),
             ],
 
             // Radiology Section
             if (radiologyTests.isNotEmpty) ...[
               buildSectionTitle('Radiology Tests'),
-              ...radiologyTests.map((rad) => buildRadiologyCard(context, rad)).toList(),
-              Divider(height: 24, thickness: 2),
+              ...radiologyTests.map((rad) => buildRadiologyCard(context, rad)),
+              const Divider(height: 24, thickness: 2),
             ],
           ],
         ),
@@ -133,7 +133,7 @@ class RejectedClaimScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Text(
         title,
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -144,12 +144,12 @@ class RejectedClaimScreen extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(label, style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
+          Text(label, style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500)),
           Expanded(
             child: Text(
               value,
               textAlign: TextAlign.right,
-              style: TextStyle(fontSize: 16, color: Colors.black87),
+              style: const TextStyle(fontSize: 16, color: Colors.black87),
             ),
           ),
         ],
@@ -159,7 +159,7 @@ class RejectedClaimScreen extends StatelessWidget {
 
   Widget buildRejectionCard(String reason, String description) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       color: Colors.red[50],
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -168,16 +168,16 @@ class RejectedClaimScreen extends StatelessWidget {
           children: [
             Text(
               'Reason: $reason',
-              style: TextStyle(
+              style: const TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
                 color: Colors.red,
               ),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               description,
-              style: TextStyle(fontSize: 15, color: Colors.black87),
+              style: const TextStyle(fontSize: 15, color: Colors.black87),
             ),
           ],
         ),
@@ -187,11 +187,11 @@ class RejectedClaimScreen extends StatelessWidget {
 
   Widget buildMedicationCard(BuildContext context, Map<String, dynamic> med) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         title: Text(med['name']),
         subtitle: Text('GTIN: ${med['GTIN']}, Dosage: ${med['dosage']}'),
-        trailing: Text(
+        trailing: const Text(
           'Rejected',
           style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
         ),
@@ -201,11 +201,11 @@ class RejectedClaimScreen extends StatelessWidget {
 
   Widget buildLabCard(BuildContext context, Map<String, dynamic> lab) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         title: Text(lab['name']),
         subtitle: Text('CPT: ${lab['CPT']}, ${lab['description']}'),
-        trailing: Text(
+        trailing: const Text(
           'Rejected',
           style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
         ),
@@ -215,11 +215,11 @@ class RejectedClaimScreen extends StatelessWidget {
 
   Widget buildRadiologyCard(BuildContext context, Map<String, dynamic> rad) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         title: Text(rad['name']),
         subtitle: Text('CPT: ${rad['CPT']}, ${rad['description']}'),
-        trailing: Text(
+        trailing: const Text(
           'Rejected',
           style: TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
         ),

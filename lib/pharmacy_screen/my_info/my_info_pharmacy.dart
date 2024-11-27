@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'dart:math';
-import 'package:tess/pharmacy_screen/main.dart';
+import 'package:tess/pharmacy_screen/mainscreenpharmacy.dart';
 
 class MyInfoPharmacyDoctor extends StatelessWidget {
-  const MyInfoPharmacyDoctor({Key? key}) : super(key: key);
+  const MyInfoPharmacyDoctor({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -20,6 +20,8 @@ class MyInfoPharmacyDoctor extends StatelessWidget {
 
 // Pharmacy Doctor Screen
 class PharmacyDoctorScreen extends StatefulWidget {
+  const PharmacyDoctorScreen({super.key});
+
   @override
   _PharmacyDoctorScreenState createState() => _PharmacyDoctorScreenState();
 }
@@ -63,7 +65,7 @@ class _PharmacyDoctorScreenState extends State<PharmacyDoctorScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Edit Information"),
+          title: const Text("Edit Information"),
           content: Form(
             key: _formKey,
             child: Column(
@@ -71,7 +73,7 @@ class _PharmacyDoctorScreenState extends State<PharmacyDoctorScreen> {
               children: [
                 TextFormField(
                   controller: emailController,
-                  decoration: InputDecoration(labelText: "Email"),
+                  decoration: const InputDecoration(labelText: "Email"),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter an email';
@@ -85,7 +87,7 @@ class _PharmacyDoctorScreenState extends State<PharmacyDoctorScreen> {
                 ),
                 TextFormField(
                   controller: phoneController,
-                  decoration: InputDecoration(labelText: "Phone Number"),
+                  decoration: const InputDecoration(labelText: "Phone Number"),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a phone number';
@@ -104,7 +106,7 @@ class _PharmacyDoctorScreenState extends State<PharmacyDoctorScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
             ),
             TextButton(
               onPressed: () {
@@ -116,7 +118,7 @@ class _PharmacyDoctorScreenState extends State<PharmacyDoctorScreen> {
                   Navigator.of(context).pop();
                 }
               },
-              child: Text("Save"),
+              child: const Text("Save"),
             ),
           ],
         );
@@ -134,8 +136,8 @@ class _PharmacyDoctorScreenState extends State<PharmacyDoctorScreen> {
         leading: IconButton(onPressed: (){
           Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Pharmacy_Screen()),);
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+                MaterialPageRoute(builder: (context) => const Pharmacy_Screen()),);
+        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
         centerTitle: true,
         title: const Text(
           "Pharmacy Doctor's Portal",
@@ -235,7 +237,7 @@ class _PharmacyDoctorScreenState extends State<PharmacyDoctorScreen> {
                 ),
                 child: Ink(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)],
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
@@ -244,7 +246,7 @@ class _PharmacyDoctorScreenState extends State<PharmacyDoctorScreen> {
                   ),
                   child: Container(
                     alignment: Alignment.center,
-                    constraints: BoxConstraints(minHeight: 50, minWidth: 150),
+                    constraints: const BoxConstraints(minHeight: 50, minWidth: 150),
                     child: const Text(
                       "Edit",
                       style: TextStyle(
@@ -269,7 +271,7 @@ class _PharmacyDoctorScreenState extends State<PharmacyDoctorScreen> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          if (icon != null) Icon(icon, size: 16, color: Color(0xFF8E2DE2)),
+          if (icon != null) Icon(icon, size: 16, color: const Color(0xFF8E2DE2)),
           if (icon != null) const SizedBox(width: 8),
           Expanded(
             child: Column(
@@ -298,7 +300,7 @@ class InfoContainer extends StatelessWidget {
   final String title;
   final List<Widget> children;
 
-  const InfoContainer({Key? key, required this.title, required this.children}) : super(key: key);
+  const InfoContainer({super.key, required this.title, required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -342,7 +344,7 @@ class InfoContainer extends StatelessWidget {
 class BalanceMeter extends StatelessWidget {
   final double balance;
 
-  const BalanceMeter({Key? key, required this.balance}) : super(key: key);
+  const BalanceMeter({super.key, required this.balance});
 
   @override
   Widget build(BuildContext context) {
@@ -382,7 +384,7 @@ class BalanceMeterPainter extends CustomPainter {
     );
 
     final balanceGradient = Paint()
-      ..shader = LinearGradient(
+      ..shader = const LinearGradient(
         colors: [Colors.cyanAccent, Colors.deepPurpleAccent, Colors.pinkAccent],
       ).createShader(Rect.fromCircle(center: center, radius: radius))
       ..strokeWidth = 12

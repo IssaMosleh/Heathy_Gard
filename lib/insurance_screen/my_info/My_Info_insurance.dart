@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:tess/insurance_screen/main.dart';
+import 'package:tess/insurance_screen/maininsurancescreen.dart';
 
 class My_Info_insurance extends StatelessWidget {
-  const My_Info_insurance({Key? key}) : super(key: key);
+  const My_Info_insurance({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,8 +22,7 @@ class InfoContainer extends StatelessWidget {
   final String title;
   final List<Widget> children;
 
-  const InfoContainer({Key? key, required this.title, required this.children})
-      : super(key: key);
+  const InfoContainer({super.key, required this.title, required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -64,6 +63,8 @@ class InfoContainer extends StatelessWidget {
 }
 
 class InsuranceRepresentativeScreen extends StatefulWidget {
+  const InsuranceRepresentativeScreen({super.key});
+
   @override
   _InsuranceRepresentativeScreenState createState() => _InsuranceRepresentativeScreenState();
 }
@@ -97,7 +98,7 @@ class _InsuranceRepresentativeScreenState extends State<InsuranceRepresentativeS
 
   // Simulate fetching data from a database
   Future<void> fetchData() async {
-    await Future.delayed(Duration(seconds: 2)); // Simulate network delay
+    await Future.delayed(const Duration(seconds: 2)); // Simulate network delay
     setState(() {});
   }
 
@@ -109,7 +110,7 @@ class _InsuranceRepresentativeScreenState extends State<InsuranceRepresentativeS
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Edit Information"),
+          title: const Text("Edit Information"),
           content: Form(
             key: _formKey,
             child: Column(
@@ -117,7 +118,7 @@ class _InsuranceRepresentativeScreenState extends State<InsuranceRepresentativeS
               children: [
                 TextFormField(
                   controller: emailController,
-                  decoration: InputDecoration(labelText: "Email"),
+                  decoration: const InputDecoration(labelText: "Email"),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter an email';
@@ -131,7 +132,7 @@ class _InsuranceRepresentativeScreenState extends State<InsuranceRepresentativeS
                 ),
                 TextFormField(
                   controller: phoneController,
-                  decoration: InputDecoration(labelText: "Phone Number"),
+                  decoration: const InputDecoration(labelText: "Phone Number"),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a phone number';
@@ -150,7 +151,7 @@ class _InsuranceRepresentativeScreenState extends State<InsuranceRepresentativeS
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
             ),
             TextButton(
               onPressed: () {
@@ -162,7 +163,7 @@ class _InsuranceRepresentativeScreenState extends State<InsuranceRepresentativeS
                   Navigator.of(context).pop();
                 }
               },
-              child: Text("Save"),
+              child: const Text("Save"),
             ),
           ],
         );
@@ -183,7 +184,7 @@ class _InsuranceRepresentativeScreenState extends State<InsuranceRepresentativeS
           onPressed: () => Navigator.push(
             context,
             MaterialPageRoute(
-              builder: (context) => InsuranceRep_Screen(),
+              builder: (context) => const InsuranceRep_Screen(),
             ),
           ),
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -246,7 +247,7 @@ class _InsuranceRepresentativeScreenState extends State<InsuranceRepresentativeS
                 ),
                 child: Ink(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)],
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
@@ -255,7 +256,7 @@ class _InsuranceRepresentativeScreenState extends State<InsuranceRepresentativeS
                   ),
                   child: Container(
                     alignment: Alignment.center,
-                    constraints: BoxConstraints(minHeight: 50, minWidth: 150),
+                    constraints: const BoxConstraints(minHeight: 50, minWidth: 150),
                     child: const Text(
                       "Edit",
                       style: TextStyle(

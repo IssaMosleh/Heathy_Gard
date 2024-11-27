@@ -4,11 +4,11 @@ import 'package:url_launcher/url_launcher.dart';
 
 
 class help_and_support_patient extends StatelessWidget {
-  const help_and_support_patient({Key? key}) : super(key: key);
+  const help_and_support_patient({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HelpSupportScreen(),
     );
@@ -16,7 +16,7 @@ class help_and_support_patient extends StatelessWidget {
 }
 
 class HelpSupportScreen extends StatelessWidget {
-  const HelpSupportScreen({Key? key}) : super(key: key);
+  const HelpSupportScreen({super.key});
 
   // Function to launch the phone dialer with a specific number
   Future<void> _launchPhoneDialer() async {
@@ -36,9 +36,9 @@ class HelpSupportScreen extends StatelessWidget {
         leading: IconButton(onPressed: (){
           Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => settings_patient()),
+                    MaterialPageRoute(builder: (context) => const settings_patient()),
                     ); 
-        }, icon: Icon(Icons.arrow_back_ios), color: Colors.white,),
+        }, icon: const Icon(Icons.arrow_back_ios), color: Colors.white,),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -109,8 +109,8 @@ class HelpSupportScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 8),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Icon(Icons.email, color: Colors.blue),
                     SizedBox(width: 8),
                     Expanded(
@@ -122,8 +122,8 @@ class HelpSupportScreen extends StatelessWidget {
                   ],
                 ),
                 const SizedBox(height: 8),
-                Row(
-                  children: const [
+                const Row(
+                  children: [
                     Icon(Icons.phone, color: Colors.blue),
                     SizedBox(width: 8),
                     Expanded(

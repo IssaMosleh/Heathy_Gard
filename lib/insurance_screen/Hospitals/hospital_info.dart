@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:tess/insurance_screen/Hospitals/doctors_insurance.dart';
 import 'package:tess/insurance_screen/Hospitals/hospitals_insurance.dart';
-import 'package:tess/insurance_screen/main.dart';
+import 'package:tess/insurance_screen/maininsurancescreen.dart';
 
 class HospitalStatsScreen extends StatelessWidget {
   final String hospitalName;
@@ -13,7 +13,7 @@ class HospitalStatsScreen extends StatelessWidget {
   final double totalMoneySpent;
 
   const HospitalStatsScreen({
-    Key? key,
+    super.key,
     required this.hospitalName,
     required this.totalClaims,
     required this.approvedClaims,
@@ -21,7 +21,7 @@ class HospitalStatsScreen extends StatelessWidget {
     required this.totalBookings,
     required this.totalDoctors,
     required this.totalMoneySpent,
-  }) : super(key: key);
+  });
 
   void navigateToDoctorsScreen(BuildContext context) {
     Navigator.push(
@@ -39,9 +39,9 @@ class HospitalStatsScreen extends StatelessWidget {
         leading: IconButton(onPressed: (){
           Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => insurance_hospital_search()),
+              MaterialPageRoute(builder: (context) => const insurance_hospital_search()),
             );
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
         title: Text(
           '$hospitalName - Statistics',
           style: const TextStyle(color: Colors.white,fontSize: 22, fontWeight: FontWeight.bold),
@@ -75,7 +75,7 @@ class HospitalStatsScreen extends StatelessWidget {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
-                padding: EdgeInsets.symmetric(vertical: 15),
+                padding: const EdgeInsets.symmetric(vertical: 15),
                 backgroundColor: Colors.transparent,
                 elevation: 0,
               ),
@@ -117,8 +117,8 @@ class HospitalStatsScreen extends StatelessWidget {
           children: [
             Container(
               padding: const EdgeInsets.all(12),
-              decoration: BoxDecoration(
-                gradient: const LinearGradient(
+              decoration: const BoxDecoration(
+                gradient: LinearGradient(
                   colors: [Colors.blueAccent, Colors.purpleAccent],
                   begin: Alignment.topLeft,
                   end: Alignment.bottomRight,
@@ -153,7 +153,7 @@ class HospitalStatsScreen extends StatelessWidget {
 class DoctorsScreen extends StatelessWidget {
   final String hospitalName;
 
-  const DoctorsScreen({Key? key, required this.hospitalName}) : super(key: key);
+  const DoctorsScreen({super.key, required this.hospitalName});
 
   @override
   Widget build(BuildContext context) {

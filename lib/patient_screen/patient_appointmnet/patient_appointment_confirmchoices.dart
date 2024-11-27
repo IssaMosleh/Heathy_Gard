@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_payment.dart';
 
 
@@ -8,7 +8,7 @@ class patient_appointment_confirmchoices extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ConfirmAppointmentScreen(
         location: "Shmeisani",
@@ -51,7 +51,7 @@ class ConfirmAppointmentScreen extends StatelessWidget {
               onPressed: () {
                   Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Patient_Screen()),
+                            MaterialPageRoute(builder: (context) => const Patient_Screen()),
                           );
               },
               icon: Image.asset('images/icon1.png'),
@@ -79,7 +79,7 @@ class ConfirmAppointmentScreen extends StatelessWidget {
             onPressed: () {
               Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => patient_appointment_payment(doctorSpecialty: 'Dermatologist',)),
+                    MaterialPageRoute(builder: (context) => const patient_appointment_payment(doctorSpecialty: 'Dermatologist',)),
                     );
             },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
@@ -164,7 +164,7 @@ class ConfirmAppointmentScreen extends StatelessWidget {
             onTap: () {
                Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => Patient_Screen()),
+                            MaterialPageRoute(builder: (context) => const Patient_Screen()),
                           );
             },
             child: Container(

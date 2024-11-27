@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class DoctorMoneyScreen_LAB extends StatefulWidget {
-  const DoctorMoneyScreen_LAB({Key? key}) : super(key: key);
+  const DoctorMoneyScreen_LAB({super.key});
 
   @override
   _DoctorMoneyScreenState createState() => _DoctorMoneyScreenState();

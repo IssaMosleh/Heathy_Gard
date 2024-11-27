@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:tess/pharmacy_screen/main.dart';
+import 'package:tess/pharmacy_screen/mainscreenpharmacy.dart';
 import 'package:tess/pharmacy_screen/my_hospital/my_hospital_details.dart';
 
 class MyPharmacy extends StatelessWidget {
-  const MyPharmacy({Key? key}) : super(key: key);
+  const MyPharmacy({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -13,13 +13,13 @@ class MyPharmacy extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.deepPurple,
       ),
-      home: MyPharmaciesScreen(),
+      home: const MyPharmaciesScreen(),
     );
   }
 }
 
 class MyPharmaciesScreen extends StatefulWidget {
-  const MyPharmaciesScreen({Key? key}) : super(key: key);
+  const MyPharmaciesScreen({super.key});
 
   @override
   _MyPharmaciesScreenState createState() => _MyPharmaciesScreenState();
@@ -51,7 +51,7 @@ class _MyPharmaciesScreenState extends State<MyPharmaciesScreen> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => PharmacyScreen()),
+              MaterialPageRoute(builder: (context) => const PharmacyScreen()),
             );
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -83,7 +83,7 @@ class _MyPharmaciesScreenState extends State<MyPharmaciesScreen> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => my_hospital_details(),
+                        builder: (context) => const my_hospital_details(),
                       ),
                     );
                   },

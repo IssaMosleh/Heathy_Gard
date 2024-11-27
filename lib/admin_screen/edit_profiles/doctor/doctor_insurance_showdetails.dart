@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tess/admin_screen/edit_profiles/doctor/doctor_insurance_main.dart';
 
 class doctor_insurance_showdetails extends StatelessWidget {
-  const doctor_insurance_showdetails({Key? key}) : super(key: key);
+  const doctor_insurance_showdetails({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,8 @@ class doctor_insurance_showdetails extends StatelessWidget {
 }
 
 class DoctorScreen extends StatefulWidget {
+  const DoctorScreen({super.key});
+
   @override
   _DoctorScreenState createState() => _DoctorScreenState();
 }
@@ -104,7 +106,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
               context,
               MaterialPageRoute(builder: (context) => const DoctorSearchScreen()),
             );
-        }, icon: Icon(Icons.arrow_back_ios),color: Colors.white,),
+        }, icon: const Icon(Icons.arrow_back_ios),color: Colors.white,),
         centerTitle: true,
         title: const Text(
           "Doctor's Portal",
@@ -166,7 +168,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                       children: [
                         Expanded(child: buildEditableField("Certification", controller)),
                         IconButton(
-                          icon: Icon(Icons.delete, color: Colors.red),
+                          icon: const Icon(Icons.delete, color: Colors.red),
                           onPressed: () => removeCertification(index),
                         ),
                       ],
@@ -174,8 +176,8 @@ class _DoctorScreenState extends State<DoctorScreen> {
                   }),
                   TextButton.icon(
                     onPressed: addCertification,
-                    icon: Icon(Icons.add, color: Colors.blue),
-                    label: Text("Add Certification", style: TextStyle(color: Colors.blue)),
+                    icon: const Icon(Icons.add, color: Colors.blue),
+                    label: const Text("Add Certification", style: TextStyle(color: Colors.blue)),
                   ),
                 ],
               ),
@@ -192,7 +194,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                       children: [
                         Expanded(child: buildEditableField("Achievement", controller)),
                         IconButton(
-                          icon: Icon(Icons.delete, color: Colors.red),
+                          icon: const Icon(Icons.delete, color: Colors.red),
                           onPressed: () => removeAchievement(index),
                         ),
                       ],
@@ -200,8 +202,8 @@ class _DoctorScreenState extends State<DoctorScreen> {
                   }),
                   TextButton.icon(
                     onPressed: addAchievement,
-                    icon: Icon(Icons.add, color: Colors.blue),
-                    label: Text("Add Achievement", style: TextStyle(color: Colors.blue)),
+                    icon: const Icon(Icons.add, color: Colors.blue),
+                    label: const Text("Add Achievement", style: TextStyle(color: Colors.blue)),
                   ),
                 ],
               ),
@@ -235,7 +237,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                                   affiliatedHospitals[index] = newValue!;
                                 });
                               },
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 labelText: "Affiliated Hospital",
                                 border: OutlineInputBorder(),
                                 contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
@@ -243,17 +245,17 @@ class _DoctorScreenState extends State<DoctorScreen> {
                             ),
                           ),
                           IconButton(
-                            icon: Icon(Icons.delete, color: Colors.red),
+                            icon: const Icon(Icons.delete, color: Colors.red),
                             onPressed: () => removeAffiliatedHospital(index),
                           ),
                         ],
                       ),
                     );
-                  }).toList(),
+                  }),
                   TextButton.icon(
                     onPressed: addAffiliatedHospital,
-                    icon: Icon(Icons.add, color: Colors.blue),
-                    label: Text("Add Affiliated Hospital", style: TextStyle(color: Colors.blue)),
+                    icon: const Icon(Icons.add, color: Colors.blue),
+                    label: const Text("Add Affiliated Hospital", style: TextStyle(color: Colors.blue)),
                   ),
                 ],
               ),
@@ -287,7 +289,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                                   affiliatedInsurances[index] = newValue!;
                                 });
                               },
-                              decoration: InputDecoration(
+                              decoration: const InputDecoration(
                                 labelText: "Affiliated Insurance",
                                 border: OutlineInputBorder(),
                                 contentPadding: EdgeInsets.symmetric(horizontal: 12, vertical: 10),
@@ -295,17 +297,17 @@ class _DoctorScreenState extends State<DoctorScreen> {
                             ),
                           ),
                           IconButton(
-                            icon: Icon(Icons.delete, color: Colors.red),
+                            icon: const Icon(Icons.delete, color: Colors.red),
                             onPressed: () => removeAffiliatedInsurance(index),
                           ),
                         ],
                       ),
                     );
-                  }).toList(),
+                  }),
                   TextButton.icon(
                     onPressed: addAffiliatedInsurance,
-                    icon: Icon(Icons.add, color: Colors.blue),
-                    label: Text("Add Affiliated Insurance", style: TextStyle(color: Colors.blue)),
+                    icon: const Icon(Icons.add, color: Colors.blue),
+                    label: const Text("Add Affiliated Insurance", style: TextStyle(color: Colors.blue)),
                   ),
                 ],
               ),
@@ -318,9 +320,13 @@ class _DoctorScreenState extends State<DoctorScreen> {
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Information saved successfully!")),
+                        const SnackBar(content: Text("Information saved successfully!")),
                       );
                     }
+                    Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const DoctorSearchScreen()),
+                    ); 
                   },
                   child: const Text("Save Changes"),
                 ),
@@ -339,7 +345,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
         controller: controller,
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         ),
         validator: (value) {
           if (value == null || value.isEmpty) return "Field can't be empty";
@@ -357,7 +363,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
         onChanged: onChanged,
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         ),
         items: items.map((item) => DropdownMenuItem(
           value: item,
@@ -375,7 +381,7 @@ class InfoContainer extends StatelessWidget {
   final String title;
   final List<Widget> children;
 
-  const InfoContainer({Key? key, required this.title, required this.children}) : super(key: key);
+  const InfoContainer({super.key, required this.title, required this.children});
 
   @override
   Widget build(BuildContext context) {

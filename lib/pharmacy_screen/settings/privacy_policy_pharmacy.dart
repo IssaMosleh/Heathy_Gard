@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tess/pharmacy_screen/settings_pharmacy.dart';
 
 class PharmacyPrivacyPolicyScreen extends StatelessWidget {
-  const PharmacyPrivacyPolicyScreen({Key? key}) : super(key: key);
+  const PharmacyPrivacyPolicyScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -11,9 +11,9 @@ class PharmacyPrivacyPolicyScreen extends StatelessWidget {
         leading: IconButton(onPressed: (){
           Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => settings_pharmacy()),
+              MaterialPageRoute(builder: (context) => const settings_pharmacy()),
             );
-        }, icon: Icon(Icons.arrow_back_ios),color: Colors.white,),
+        }, icon: const Icon(Icons.arrow_back_ios),color: Colors.white,),
         title: const Text('Privacy Policy', style: TextStyle(color: Colors.white)),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -41,36 +41,36 @@ class PharmacyPrivacyPolicyScreen extends StatelessWidget {
               ),
             ],
           ),
-          child: Column(
+          child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "At our pharmacy, we take your privacy seriously. Here's how we handle your information:",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 20),
-              const Text(
+              SizedBox(height: 20),
+              Text(
                 "• We collect personal and prescription information for processing your orders.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 12),
-              const Text(
+              SizedBox(height: 12),
+              Text(
                 "• Your information is kept secure, and is only shared with healthcare providers when necessary.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 12),
-              const Text(
+              SizedBox(height: 12),
+              Text(
                 "• We comply with privacy regulations to protect your health data.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 20),
-              const Text(
+              SizedBox(height: 20),
+              Text(
                 "We understand the importance of your privacy and are committed to protecting it. If you have any questions regarding our privacy policy, feel free to contact us.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               Center(
-                child: const Text(
+                child: Text(
                   "Thank you for trusting us!",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),

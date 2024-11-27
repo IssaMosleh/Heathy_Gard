@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/mainscreendoctor.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_Introduction.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_patient_profile.dart';
 
 class patient_portal_patients extends StatelessWidget {
-  const patient_portal_patients({Key? key}) : super(key: key);
+  const patient_portal_patients({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,7 +15,7 @@ class patient_portal_patients extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: ChoosePatientScreen(),
+      home: const ChoosePatientScreen(),
     );
   }
 }
@@ -31,7 +31,7 @@ class Patient {
 }
 
 class ChoosePatientScreen extends StatefulWidget {
-  const ChoosePatientScreen({Key? key}) : super(key: key);
+  const ChoosePatientScreen({super.key});
 
   @override
   _ChoosePatientScreenState createState() => _ChoosePatientScreenState();
@@ -59,13 +59,13 @@ class _ChoosePatientScreenState extends State<ChoosePatientScreen> {
     // Set up appointments starting from today
     patients = [
       Patient(name: "Malek Salem", date: dateFormat.format(today), time: "8:00 AM", imageUrl: "https://via.placeholder.com/100"),
-      Patient(name: "Nadia Noor", date: dateFormat.format(today.add(Duration(days: 1))), time: "10:00 AM", imageUrl: "https://via.placeholder.com/100"),
-      Patient(name: "Ahmad Ali", date: dateFormat.format(today.add(Duration(days: 2))), time: "1:00 PM", imageUrl: "https://via.placeholder.com/100"),
-      Patient(name: "Sara Khan", date: dateFormat.format(today.add(Duration(days: 3))), time: "3:00 PM", imageUrl: "https://via.placeholder.com/100"),
-      Patient(name: "John Doe", date: dateFormat.format(today.add(Duration(days: 4))), time: "9:00 AM", imageUrl: "https://via.placeholder.com/100"),
-      Patient(name: "Jane Smith", date: dateFormat.format(today.add(Duration(days: 5))), time: "11:00 AM", imageUrl: "https://via.placeholder.com/100"),
-      Patient(name: "Alex Brown", date: dateFormat.format(today.add(Duration(days: 6))), time: "2:00 PM", imageUrl: "https://via.placeholder.com/100"),
-      Patient(name: "Emily Green", date: dateFormat.format(today.add(Duration(days: 7))), time: "4:00 PM", imageUrl: "https://via.placeholder.com/100"),
+      Patient(name: "Nadia Noor", date: dateFormat.format(today.add(const Duration(days: 1))), time: "10:00 AM", imageUrl: "https://via.placeholder.com/100"),
+      Patient(name: "Ahmad Ali", date: dateFormat.format(today.add(const Duration(days: 2))), time: "1:00 PM", imageUrl: "https://via.placeholder.com/100"),
+      Patient(name: "Sara Khan", date: dateFormat.format(today.add(const Duration(days: 3))), time: "3:00 PM", imageUrl: "https://via.placeholder.com/100"),
+      Patient(name: "John Doe", date: dateFormat.format(today.add(const Duration(days: 4))), time: "9:00 AM", imageUrl: "https://via.placeholder.com/100"),
+      Patient(name: "Jane Smith", date: dateFormat.format(today.add(const Duration(days: 5))), time: "11:00 AM", imageUrl: "https://via.placeholder.com/100"),
+      Patient(name: "Alex Brown", date: dateFormat.format(today.add(const Duration(days: 6))), time: "2:00 PM", imageUrl: "https://via.placeholder.com/100"),
+      Patient(name: "Emily Green", date: dateFormat.format(today.add(const Duration(days: 7))), time: "4:00 PM", imageUrl: "https://via.placeholder.com/100"),
     ];
   }
 
@@ -143,8 +143,8 @@ class _ChoosePatientScreenState extends State<ChoosePatientScreen> {
               controller: searchController,
               decoration: InputDecoration(
                 hintText: "Search patients by name",
-                prefixIcon: Icon(Icons.search),
-                contentPadding: EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
+                prefixIcon: const Icon(Icons.search),
+                contentPadding: const EdgeInsets.symmetric(vertical: 10.0, horizontal: 20.0),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
@@ -214,7 +214,7 @@ class _ChoosePatientScreenState extends State<ChoosePatientScreen> {
                               children: [
                                 Text(
                                   "Name: ${patient.name}",
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                     fontSize: 16,
                                     fontWeight: FontWeight.bold,
                                   ),

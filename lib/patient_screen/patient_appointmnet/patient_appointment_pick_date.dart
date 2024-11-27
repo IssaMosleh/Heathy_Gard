@@ -4,7 +4,7 @@ import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_choo
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_payment.dart';
 
 class patient_appointment_pick_date extends StatefulWidget {
-  const patient_appointment_pick_date({Key? key}) : super(key: key);
+  const patient_appointment_pick_date({super.key});
 
   @override
   _DateAndTimeSelectionScreenState createState() => _DateAndTimeSelectionScreenState();
@@ -26,7 +26,7 @@ class _DateAndTimeSelectionScreenState extends State<patient_appointment_pick_da
       context: context,
       initialDate: _selectedDate!,
       firstDate: DateTime.now(),
-      lastDate: DateTime.now().add(Duration(days: 365)),
+      lastDate: DateTime.now().add(const Duration(days: 365)),
     );
     if (pickedDate != null && pickedDate != _selectedDate) {
       setState(() {
@@ -55,12 +55,12 @@ class _DateAndTimeSelectionScreenState extends State<patient_appointment_pick_da
           onPressed: () {
              Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => patient_appointment_choosedoctor_search()),
+              MaterialPageRoute(builder: (context) => const patient_appointment_choosedoctor_search()),
               );
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
-        title: Text(
+        title: const Text(
           'Select Date & Time',
           style: TextStyle(color: Colors.white),
         ),
@@ -87,14 +87,14 @@ class _DateAndTimeSelectionScreenState extends State<patient_appointment_pick_da
               onPressed: _pickDate,
               child: Text(
                 "Select Date: ${DateFormat('yMMMd').format(_selectedDate!)}",
-                style: TextStyle(fontSize: 18, color: Colors.blueAccent),
+                style: const TextStyle(fontSize: 18, color: Colors.blueAccent),
               ),
             ),
             TextButton(
               onPressed: _pickTime,
               child: Text(
                 "Select Time: ${_selectedTime!.format(context)}",
-                style: TextStyle(fontSize: 18, color: Colors.blueAccent),
+                style: const TextStyle(fontSize: 18, color: Colors.blueAccent),
               ),
             ),
             const SizedBox(height: 40),
@@ -102,16 +102,16 @@ class _DateAndTimeSelectionScreenState extends State<patient_appointment_pick_da
               onPressed: () {
                 Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => patient_appointment_payment(doctorSpecialty: 'Dermatologist',)),);
+            MaterialPageRoute(builder: (context) => const patient_appointment_payment(doctorSpecialty: 'Dermatologist',)),);
               },
               style: ElevatedButton.styleFrom(
-                padding: EdgeInsets.symmetric(vertical: 16),
+                padding: const EdgeInsets.symmetric(vertical: 16),
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30),
                 ),
                 backgroundColor: Colors.blue,
               ),
-              child: Text(
+              child: const Text(
                 "Save Selection",
                 style: TextStyle(fontSize: 18, color: Colors.white),
               ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tess/pharmacy_screen/main.dart';
+import 'package:tess/pharmacy_screen/mainscreenpharmacy.dart';
 import 'package:tess/pharmacy_screen/settings_pharmacy.dart';
 
 class PharmacyNotificationScreen extends StatelessWidget {
@@ -57,6 +57,8 @@ class PharmacyNotificationScreen extends StatelessWidget {
     },
   ];
 
+  PharmacyNotificationScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -80,7 +82,7 @@ class PharmacyNotificationScreen extends StatelessWidget {
           children: [
             // Notification list wrapped in a Container
             Container(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
@@ -113,21 +115,21 @@ class PharmacyNotificationScreen extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Icon(Icons.notifications, color: Colors.blue, size: 40),
-                            SizedBox(height: 8),
+                            const Icon(Icons.notifications, color: Colors.blue, size: 40),
+                            const SizedBox(height: 8),
                             Text(
                               notification["title"]!,
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             Text(
                               notification["description"]!,
-                              style: TextStyle(fontSize: 14, color: Colors.black54),
+                              style: const TextStyle(fontSize: 14, color: Colors.black54),
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             Text(
                               notification["timestamp"]!,
-                              style: TextStyle(fontSize: 12, color: Colors.grey),
+                              style: const TextStyle(fontSize: 12, color: Colors.grey),
                             ),
                           ],
                         ),
@@ -162,7 +164,7 @@ class PharmacyNotificationScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Pharmacy_Screen()),
+              MaterialPageRoute(builder: (context) => const Pharmacy_Screen()),
             );
               },
               icon: Image.asset('images/icon1.png'), // Replace with desired icon
@@ -180,7 +182,7 @@ class PharmacyNotificationScreen extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => settings_pharmacy()),
+              MaterialPageRoute(builder: (context) => const settings_pharmacy()),
             );
               },
               icon: Image.asset('images/icon4.png'), // Replace with desired icon

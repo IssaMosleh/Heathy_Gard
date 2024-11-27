@@ -4,7 +4,7 @@ import 'package:tess/insurance_screen/claimsManagement/ClaimsManagement.dart';
 class ApprovedClaimScreen extends StatelessWidget {
   final Map<String, dynamic> claim;
 
-  ApprovedClaimScreen({required this.claim});
+  ApprovedClaimScreen({super.key, required this.claim});
 
   final List<Map<String, dynamic>> medications = [
     {
@@ -61,7 +61,7 @@ class ApprovedClaimScreen extends StatelessWidget {
           context,
           MaterialPageRoute(builder: (context) => ClaimsManagementScreen()),
         );
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -71,73 +71,73 @@ class ApprovedClaimScreen extends StatelessWidget {
             ),
           ),
         ),
-      title: Text('Approved Claim Details',style: TextStyle(color: Colors.white),)),
+      title: const Text('Approved Claim Details',style: TextStyle(color: Colors.white),)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: ListView(
           children: [
-            Text(
+            const Text(
               'Patient Information',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             Text('Patient Name: ${claim['patientName']}'),
             Text('Claim ID: ${claim['id']}'),
-            Text('Doctor: Dr. Sarah Thompson'),
-            Text('Pharmacy: HealthPlus Pharmacy'),
-            Divider(height: 24, thickness: 2),
+            const Text('Doctor: Dr. Sarah Thompson'),
+            const Text('Pharmacy: HealthPlus Pharmacy'),
+            const Divider(height: 24, thickness: 2),
 
-            Text(
+            const Text(
               'Diagnoses Information',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
-            Text(
+            const SizedBox(height: 8),
+            const Text(
               'Treatment for acute pharyngitis with prescribed antibiotics and supportive medications.',
               style: TextStyle(color: Colors.black87),
             ),
-            SizedBox(height: 8),
-            Text(
+            const SizedBox(height: 8),
+            const Text(
               'ICD-10 Code: J02.9 - Acute Pharyngitis',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, color: Colors.blueGrey),
             ),
-            Divider(height: 24, thickness: 2),
+            const Divider(height: 24, thickness: 2),
 
-            Text(
+            const Text(
               'Visit Cost',
               style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
             ),
             Text(
               'Total Cost: \$${calculateTotalCost().toStringAsFixed(2)}',
-              style: TextStyle(fontSize: 16, color: Colors.blueGrey),
+              style: const TextStyle(fontSize: 16, color: Colors.blueGrey),
             ),
-            Divider(height: 24, thickness: 2),
+            const Divider(height: 24, thickness: 2),
 
             if (medications.isNotEmpty) ...[
-              Text(
+              const Text(
                 'Medications',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              ...medications.map((med) => buildMedicationCard(context, med)).toList(),
-              Divider(height: 24, thickness: 2),
+              ...medications.map((med) => buildMedicationCard(context, med)),
+              const Divider(height: 24, thickness: 2),
             ],
 
             if (labTests.isNotEmpty) ...[
-              Text(
+              const Text(
                 'Lab Tests',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              ...labTests.map((lab) => buildLabCard(context, lab)).toList(),
-              Divider(height: 24, thickness: 2),
+              ...labTests.map((lab) => buildLabCard(context, lab)),
+              const Divider(height: 24, thickness: 2),
             ],
 
             if (radiologyTests.isNotEmpty) ...[
-              Text(
+              const Text(
                 'Radiology Tests',
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
               ),
-              ...radiologyTests.map((rad) => buildRadiologyCard(context, rad)).toList(),
-              Divider(height: 24, thickness: 2),
+              ...radiologyTests.map((rad) => buildRadiologyCard(context, rad)),
+              const Divider(height: 24, thickness: 2),
             ],
           ],
         ),
@@ -147,11 +147,11 @@ class ApprovedClaimScreen extends StatelessWidget {
 
   Widget buildMedicationCard(BuildContext context, Map<String, dynamic> med) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         title: Text(med['name']),
         subtitle: Text('GTIN: ${med['GTIN']}, Dosage: ${med['dosage']}'),
-        trailing: Text(
+        trailing: const Text(
           'Approved',
           style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
         ),
@@ -161,11 +161,11 @@ class ApprovedClaimScreen extends StatelessWidget {
 
   Widget buildLabCard(BuildContext context, Map<String, dynamic> lab) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         title: Text(lab['name']),
         subtitle: Text('CPT: ${lab['CPT']}, ${lab['description']}'),
-        trailing: Text(
+        trailing: const Text(
           'Approved',
           style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
         ),
@@ -175,11 +175,11 @@ class ApprovedClaimScreen extends StatelessWidget {
 
   Widget buildRadiologyCard(BuildContext context, Map<String, dynamic> rad) {
     return Card(
-      margin: EdgeInsets.symmetric(vertical: 8),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       child: ListTile(
         title: Text(rad['name']),
         subtitle: Text('CPT: ${rad['CPT']}, ${rad['description']}'),
-        trailing: Text(
+        trailing: const Text(
           'Approved',
           style: TextStyle(color: Colors.green, fontWeight: FontWeight.bold),
         ),

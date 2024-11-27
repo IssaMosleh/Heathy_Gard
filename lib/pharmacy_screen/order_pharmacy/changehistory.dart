@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ChangeHistoryScreen extends StatefulWidget {
-  const ChangeHistoryScreen({Key? key}) : super(key: key);
+  const ChangeHistoryScreen({super.key});
 
   @override
   _ChangeHistoryScreenState createState() => _ChangeHistoryScreenState();
@@ -40,7 +40,7 @@ class _ChangeHistoryScreenState extends State<ChangeHistoryScreen> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white), // iOS-style back arrow icon
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white), // iOS-style back arrow icon
           onPressed: () => Navigator.of(context).pop(),
         ),
         flexibleSpace: Container(
@@ -52,7 +52,7 @@ class _ChangeHistoryScreenState extends State<ChangeHistoryScreen> {
             ),
           ),
         ),
-        title: Text("Change History", style: TextStyle(color: Colors.white)),
+        title: const Text("Change History", style: TextStyle(color: Colors.white)),
         centerTitle: true,
       ),
       body: SingleChildScrollView(
@@ -61,24 +61,24 @@ class _ChangeHistoryScreenState extends State<ChangeHistoryScreen> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             _buildReadOnlyTextField(label: "Order ID", value: order["orderId"], icon: Icons.confirmation_number),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField(label: "Order Type", value: order["orderType"], icon: Icons.assignment),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField(label: "Doctor", value: order["doctor"], icon: Icons.person),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField(label: "Specialty", value: order["specialty"], icon: Icons.local_hospital),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField(label: "Patient", value: order["patient"], icon: Icons.person_outline),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField(label: "Date", value: order["date"], icon: Icons.date_range),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField(label: "Change Date", value: order["changeDate"], icon: Icons.check_circle),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField(label: "Pharmacy Doctor ID", value: order["pharmacyDoctorId"], icon: Icons.badge),
-            SizedBox(height: 12),
+            const SizedBox(height: 12),
             _buildReadOnlyTextField(label: "Pharmacy Doctor Name", value: order["pharmacyDoctorName"], icon: Icons.person_add_alt),
             if (order.containsKey("moneyPaid")) ...[ // If "moneyPaid" exists, display it
-              SizedBox(height: 12),
+              const SizedBox(height: 12),
               _buildReadOnlyTextField(label: "Money Paid", value: order["moneyPaid"], icon: Icons.attach_money),
             ],
             const SizedBox(height: 24), // Extra spacing before Medications section
@@ -86,7 +86,7 @@ class _ChangeHistoryScreenState extends State<ChangeHistoryScreen> {
               "Medications:",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             ...order["medications"].asMap().entries.map<Widget>((entry) {
               int index = entry.key;
               String jtnCode = entry.value;
@@ -100,12 +100,12 @@ class _ChangeHistoryScreenState extends State<ChangeHistoryScreen> {
                 ),
               );
             }).toList(),
-            SizedBox(height: 24),
+            const SizedBox(height: 24),
             const Text(
               "Reason for Change:",
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
-            SizedBox(height: 8),
+            const SizedBox(height: 8),
             // Added multiline input and scrolling for the reason field
             TextFormField(
               initialValue: order["reason"] ?? "No reason provided", // Display the reason if available
@@ -114,12 +114,12 @@ class _ChangeHistoryScreenState extends State<ChangeHistoryScreen> {
               readOnly: true,
               decoration: InputDecoration(
                 labelText: "Change Reason",
-                prefixIcon: Icon(Icons.notes),
+                prefixIcon: const Icon(Icons.notes),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
                 isDense: true,
-                contentPadding: EdgeInsets.all(12),
+                contentPadding: const EdgeInsets.all(12),
               ),
             ),
           ],
@@ -143,7 +143,7 @@ class _ChangeHistoryScreenState extends State<ChangeHistoryScreen> {
           borderRadius: BorderRadius.circular(8.0),
         ),
         isDense: true,
-        contentPadding: EdgeInsets.all(12),
+        contentPadding: const EdgeInsets.all(12),
       ),
     );
   }

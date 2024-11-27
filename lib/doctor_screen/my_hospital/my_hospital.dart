@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/mainscreendoctor.dart';
 import 'package:tess/doctor_screen/my_hospital/FacilityDetailScreen.dart';
 
 
 
 class MyHospital extends StatelessWidget {
-  const MyHospital({Key? key}) : super(key: key);
+  const MyHospital({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -15,13 +15,13 @@ class MyHospital extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHospitalsScreen(),
+      home: const MyHospitalsScreen(),
     );
   }
 }
 
 class MyHospitalsScreen extends StatefulWidget {
-  const MyHospitalsScreen({Key? key}) : super(key: key);
+  const MyHospitalsScreen({super.key});
 
   @override
   _MyHospitalsScreenState createState() => _MyHospitalsScreenState();
@@ -54,7 +54,7 @@ class _MyHospitalsScreenState extends State<MyHospitalsScreen> {
           onPressed: () {
             Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Doctor_Screen()),
+          MaterialPageRoute(builder: (context) => const Doctor_Screen()),
         );
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),

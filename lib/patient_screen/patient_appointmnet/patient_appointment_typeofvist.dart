@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_introduction.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_selecthospital.dart';
 
 class patient_appointment_typeofvist extends StatelessWidget {
-  const patient_appointment_typeofvist({Key? key}) : super(key: key);
+  const patient_appointment_typeofvist({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +36,7 @@ class patient_appointment_typeofvist extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => patient_appointment_introduction()),
+                  MaterialPageRoute(builder: (context) => const patient_appointment_introduction()),
             );
               },
               icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
@@ -48,7 +48,7 @@ class patient_appointment_typeofvist extends StatelessWidget {
                   onPressed: () {
                     Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Patient_Screen()),
+                  MaterialPageRoute(builder: (context) => const Patient_Screen()),
             );
                   },
                   icon: Image.asset(
@@ -95,7 +95,7 @@ class patient_appointment_typeofvist extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PatientAppointmentSelectHospital()),
+                        MaterialPageRoute(builder: (context) => const PatientAppointmentSelectHospital()),
                         );
                       },
                     ),
@@ -106,7 +106,7 @@ class patient_appointment_typeofvist extends StatelessWidget {
                       onTap: () {
                         Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => PatientAppointmentSelectHospital()),
+                        MaterialPageRoute(builder: (context) => const PatientAppointmentSelectHospital()),
                         );
                       },
                     ),

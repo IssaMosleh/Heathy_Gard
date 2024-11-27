@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tess/lab_radiology_screen/history/history_visits.dart';
 
 class patient_history_same_doctor_LAB extends StatelessWidget {
-  const patient_history_same_doctor_LAB({Key? key}) : super(key: key);
+  const patient_history_same_doctor_LAB({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HistoryScreen(),
     );
@@ -14,7 +14,7 @@ class patient_history_same_doctor_LAB extends StatelessWidget {
 }
 
 class HistoryScreen extends StatefulWidget {
-  const HistoryScreen({Key? key}) : super(key: key);
+  const HistoryScreen({super.key});
 
   @override
   State<HistoryScreen> createState() => _HistoryScreenState();

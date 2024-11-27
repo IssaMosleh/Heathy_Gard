@@ -3,17 +3,20 @@ import 'package:tess/admin_screen/edit_profiles/edit_profiles_main.dart';
 import 'package:tess/admin_screen/edit_profiles/hospital/hospital_show_details.dart';
 
 class EditHospital extends StatelessWidget {
-  const EditHospital({Key? key}) : super(key: key);
+  const EditHospital({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: SearchScreen(),
     );
   }
 }
 
 class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -104,7 +107,7 @@ class _SearchScreenState extends State<SearchScreen> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => HospitalShowDetails()
+        builder: (context) => const HospitalShowDetails()
       ),
     );
     print("Tapped on ${hospital['name']}");
@@ -122,9 +125,11 @@ class _SearchScreenState extends State<SearchScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        centerTitle: true,
         title: const Text(
           "Choose Hospital",
           style: TextStyle(color: Colors.white, fontSize: 22, fontWeight: FontWeight.bold),
+          
         ),
         leading: IconButton(
           onPressed: () {
@@ -184,7 +189,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.blue),
+                  borderSide: const BorderSide(color: Colors.blue),
                 ),
               ),
               onSubmitted: _onSearchSubmitted,

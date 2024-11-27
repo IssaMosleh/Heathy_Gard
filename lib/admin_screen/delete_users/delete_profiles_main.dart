@@ -4,10 +4,10 @@ import 'package:tess/admin_screen/delete_users/hospital/edit_hospital.dart';
 import 'package:tess/admin_screen/delete_users/insurance/edit_insurance.dart';
 import 'package:tess/admin_screen/delete_users/insurance_represenitive/insurance_represenitive_main.dart';
 import 'package:tess/admin_screen/delete_users/patient/patient_insirance_main.dart';
-import 'package:tess/admin_screen/main.dart';
+import 'package:tess/admin_screen/mainadminscreen.dart';
 
 class delete_profiles_main extends StatelessWidget {
-  const delete_profiles_main({Key? key}) : super(key: key);
+  const delete_profiles_main({super.key});
 
   @override
   Widget build(BuildContext context) {

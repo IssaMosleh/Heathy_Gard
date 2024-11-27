@@ -3,11 +3,11 @@ import 'package:file_picker/file_picker.dart';
 import 'package:tess/lab_radiology_screen/patient_portal/payment_lab.dart';
 
 class upload_lab_screen extends StatelessWidget {
-  const upload_lab_screen({Key? key}) : super(key: key);
+  const upload_lab_screen({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Upload Lab & Radiology Reports",
       home: AddLabRadiologyScreen(),
@@ -16,7 +16,7 @@ class upload_lab_screen extends StatelessWidget {
 }
 
 class AddLabRadiologyScreen extends StatefulWidget {
-  const AddLabRadiologyScreen({Key? key}) : super(key: key);
+  const AddLabRadiologyScreen({super.key});
 
   @override
   _AddLabRadiologyScreenState createState() => _AddLabRadiologyScreenState();
@@ -63,7 +63,7 @@ class _AddLabRadiologyScreenState extends State<AddLabRadiologyScreen> {
       appBar: AppBar(
         leading: IconButton(
           onPressed: () => Navigator.pop(context),
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         title: const Text("Upload Lab & Radiology Reports", style: TextStyle(color: Colors.white)),
         centerTitle: true,
@@ -182,11 +182,13 @@ class _AddLabRadiologyScreenState extends State<AddLabRadiologyScreen> {
 }
 
 class NextScreen extends StatelessWidget {
+  const NextScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Next Screen")),
-      body: Center(child: const Text("This is the next screen.")),
+      body: const Center(child: Text("This is the next screen.")),
     );
   }
 }

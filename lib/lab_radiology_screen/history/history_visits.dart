@@ -5,7 +5,7 @@ import 'package:tess/lab_radiology_screen/main.dart';
 
 
 class history_visits_LAB extends StatefulWidget {
-  const history_visits_LAB({Key? key}) : super(key: key);
+  const history_visits_LAB({super.key});
 
   @override
   _HistoryScreenState createState() => _HistoryScreenState();
@@ -74,7 +74,7 @@ class _HistoryScreenState extends State<history_visits_LAB> {
     Navigator.push(
       context,
       MaterialPageRoute(
-        builder: (context) => patient_history_same_doctor_LAB(),
+        builder: (context) => const patient_history_same_doctor_LAB(),
       ),
     );
   }
@@ -87,7 +87,7 @@ class _HistoryScreenState extends State<history_visits_LAB> {
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () => Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Doctor_LAB()),)
+            MaterialPageRoute(builder: (context) => const Doctor_LAB()),)
         ),
         title: const Text("Patient History",style: TextStyle(color: Colors.white),),
         centerTitle: true,
@@ -109,14 +109,14 @@ class _HistoryScreenState extends State<history_visits_LAB> {
               controller: _searchController,
               decoration: InputDecoration(
                 hintText: "Search patients",
-                prefixIcon: Icon(Icons.search, color: Colors.blue),
+                prefixIcon: const Icon(Icons.search, color: Colors.blue),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.blue),
+                  borderSide: const BorderSide(color: Colors.blue),
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.blue),
+                  borderSide: const BorderSide(color: Colors.blue),
                 ),
               ),
             ),

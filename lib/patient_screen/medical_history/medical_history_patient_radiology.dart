@@ -3,7 +3,7 @@ import 'package:tess/patient_screen/medical_history/medical_history_patient_main
 import 'package:url_launcher/url_launcher.dart';
 
 class medical_history_patient_radiology extends StatelessWidget {
-  const medical_history_patient_radiology({Key? key}) : super(key: key);
+  const medical_history_patient_radiology({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class medical_history_patient_radiology extends StatelessWidget {
 }
 
 class RadiologyReportsScreen extends StatefulWidget {
-  const RadiologyReportsScreen({Key? key}) : super(key: key);
+  const RadiologyReportsScreen({super.key});
 
   @override
   _RadiologyReportsScreenState createState() => _RadiologyReportsScreenState();
@@ -27,7 +27,7 @@ class RadiologyReportsScreen extends StatefulWidget {
 
 class _RadiologyReportsScreenState extends State<RadiologyReportsScreen> {
   List<Map<String, dynamic>> radiologyReports = [];
-  bool _isDownloading = false;
+  final bool _isDownloading = false;
 
   @override
   void initState() {
@@ -36,7 +36,7 @@ class _RadiologyReportsScreenState extends State<RadiologyReportsScreen> {
   }
 
   void fetchRadiologyReports() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     
     setState(() {
       radiologyReports = [
@@ -84,9 +84,9 @@ class _RadiologyReportsScreenState extends State<RadiologyReportsScreen> {
         leading: IconButton(onPressed: (){
           Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => medical_history_patient_main()),
+                    MaterialPageRoute(builder: (context) => const medical_history_patient_main()),
                     );         
-        }, icon: Icon(Icons.arrow_back_ios), color: Colors.white,),
+        }, icon: const Icon(Icons.arrow_back_ios), color: Colors.white,),
       ),
       body: Stack(
         children: [
@@ -96,16 +96,16 @@ class _RadiologyReportsScreenState extends State<RadiologyReportsScreen> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  ...radiologyReports.map((report) => _buildRadiologyReportCard(report)).toList(),
+                  ...radiologyReports.map((report) => _buildRadiologyReportCard(report)),
                 ],
               ),
             ),
           ),
           if (_isDownloading)
-            Center(
+            const Center(
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: const [
+                children: [
                   CircularProgressIndicator(),
                   SizedBox(height: 16),
                   Text(
@@ -160,9 +160,9 @@ class _RadiologyReportsScreenState extends State<RadiologyReportsScreen> {
                     ),
                     borderRadius: BorderRadius.circular(12),
                   ),
-                  child: Row(
+                  child: const Row(
                     mainAxisAlignment: MainAxisAlignment.center,
-                    children: const [
+                    children: [
                       Icon(Icons.download, color: Colors.white),
                       SizedBox(width: 8),
                       Text(

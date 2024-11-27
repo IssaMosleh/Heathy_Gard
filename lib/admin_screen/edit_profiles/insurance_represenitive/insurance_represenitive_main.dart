@@ -12,7 +12,7 @@ class InsuranceRep {
 }
 
 class InsuranceRepSearchScreen extends StatefulWidget {
-  const InsuranceRepSearchScreen({Key? key}) : super(key: key);
+  const InsuranceRepSearchScreen({super.key});
 
   @override
   _InsuranceRepSearchScreenState createState() => _InsuranceRepSearchScreenState();
@@ -47,10 +47,10 @@ class _InsuranceRepSearchScreenState extends State<InsuranceRepSearchScreen> {
               MaterialPageRoute(builder: (context) => const edit_profiles_main()),
             );
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         title: const Text(
-          "Search Insurance Representatives",
+          "Insurance Representatives",
           style: TextStyle(color: Colors.white),
         ),
         centerTitle: true,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/mainscreendoctor.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_labs.dart';
 
 class patient_portal_payment extends StatelessWidget {
@@ -7,7 +7,7 @@ class patient_portal_payment extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: ServiceAmountScreen(patientName: 'John Doe', insuranceName: 'HealthPlus Insurance'),
     );
@@ -78,15 +78,15 @@ class _ServiceAmountScreenState extends State<ServiceAmountScreen> {
         actions: [IconButton(onPressed: (){
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => Doctor_Screen()),);
+            MaterialPageRoute(builder: (context) => const Doctor_Screen()),);
         }, icon: Image.asset('images/icon1.png'))],
         leading: IconButton(onPressed: (){
           Navigator.push(
             context,
             MaterialPageRoute(builder: (context) => patient_portal_labs()),);
-        }, icon: Icon(Icons.arrow_back_ios),color: Colors.white,),
+        }, icon: const Icon(Icons.arrow_back_ios),color: Colors.white,),
         centerTitle: true,
-        title: Text(style: TextStyle(color: Colors.white),
+        title: Text(style: const TextStyle(color: Colors.white),
           isLoading
               ? 'Loading...'
               : 'Service Amount',
@@ -102,7 +102,7 @@ class _ServiceAmountScreenState extends State<ServiceAmountScreen> {
         ),
       ),
       body: isLoading
-          ? Center(child: CircularProgressIndicator()) // Show loading indicator
+          ? const Center(child: CircularProgressIndicator()) // Show loading indicator
           : SingleChildScrollView(
               child: Padding(
                 padding: const EdgeInsets.all(16.0),
@@ -156,9 +156,8 @@ class _ServiceAmountScreenState extends State<ServiceAmountScreen> {
                         onPressed: () {
                           Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => Doctor_Screen()),);
+                        MaterialPageRoute(builder: (context) => const Doctor_Screen()),);
                         },
-                        child: const Text("Confirm Payment"),
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,
                           foregroundColor: Colors.white,
@@ -167,6 +166,7 @@ class _ServiceAmountScreenState extends State<ServiceAmountScreen> {
                             borderRadius: BorderRadius.circular(12),
                           ),
                         ),
+                        child: const Text("Confirm Payment"),
                       ),
                     ),
                   ],

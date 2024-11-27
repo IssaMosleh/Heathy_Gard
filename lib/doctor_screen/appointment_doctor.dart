@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/mainscreendoctor.dart';
 import 'package:tess/doctor_screen/notification_doctor.dart';
 import 'package:tess/doctor_screen/settings_doctor.dart';
 
 
 class appointment_doctor extends StatelessWidget {
-  const appointment_doctor({Key? key}) : super(key: key);
+  const appointment_doctor({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +22,7 @@ class appointment_doctor extends StatelessWidget {
 }
 
 class AppointmentScreen extends StatefulWidget {
-  const AppointmentScreen({Key? key}) : super(key: key);
+  const AppointmentScreen({super.key});
 
   @override
   _AppointmentScreenState createState() => _AppointmentScreenState();
@@ -59,7 +59,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 color: Colors.grey.withOpacity(0.2),
                 spreadRadius: 5,
                 blurRadius: 10,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
@@ -70,7 +70,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 onPressed: () {
                   Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Doctor_Screen()),
+                MaterialPageRoute(builder: (context) => const Doctor_Screen()),
             );
                 },
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
@@ -79,7 +79,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => appointment_doctor()),
+                  MaterialPageRoute(builder: (context) => const appointment_doctor()),
             );
                 },
                 icon: Image.asset('images/icon2.png', width: 30, height: 30),
@@ -87,7 +87,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
               IconButton(
                 onPressed: () {Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => notification_doctor()),
+                  MaterialPageRoute(builder: (context) => const notification_doctor()),
             );},
                 icon: Image.asset('images/icon3.png', width: 30, height: 30),
               ),
@@ -95,7 +95,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
                 onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => settings_doctor()),
+                  MaterialPageRoute(builder: (context) => const settings_doctor()),
             );
                 },
                 icon: Image.asset('images/icon4.png', width: 30, height: 30),
@@ -108,7 +108,7 @@ class _AppointmentScreenState extends State<AppointmentScreen> {
 }
 
 class AppointmentScreenBody extends StatefulWidget {
-  const AppointmentScreenBody({Key? key}) : super(key: key);
+  const AppointmentScreenBody({super.key});
 
   @override
   _AppointmentScreenBodyState createState() => _AppointmentScreenBodyState();
@@ -227,10 +227,10 @@ class AcceptedAppointments extends StatefulWidget {
   final Future<void> Function(Map<String, String>) onReschedule;
 
   const AcceptedAppointments({
-    Key? key,
+    super.key,
     required this.appointments,
     required this.onReschedule,
-  }) : super(key: key);
+  });
 
   @override
   _AcceptedAppointmentsState createState() => _AcceptedAppointmentsState();
@@ -262,11 +262,11 @@ class PendingAppointments extends StatefulWidget {
   final Future<void> Function(Map<String, String>) onReschedule;
 
   const PendingAppointments({
-    Key? key,
+    super.key,
     required this.appointments,
     required this.onAccept,
     required this.onReschedule,
-  }) : super(key: key);
+  });
 
   @override
   _PendingAppointmentsState createState() => _PendingAppointmentsState();
@@ -303,7 +303,7 @@ class AppointmentCard extends StatelessWidget {
   final bool isPending;
 
   const AppointmentCard({
-    Key? key,
+    super.key,
     required this.name,
     required this.date,
     required this.time,
@@ -311,7 +311,7 @@ class AppointmentCard extends StatelessWidget {
     this.onAccept,
     required this.onReschedule,
     required this.isPending,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -390,7 +390,7 @@ class AppointmentCard extends StatelessWidget {
 class PlaceholderWidget extends StatefulWidget {
   final String text;
 
-  const PlaceholderWidget({Key? key, required this.text}) : super(key: key);
+  const PlaceholderWidget({super.key, required this.text});
 
   @override
   _PlaceholderWidgetState createState() => _PlaceholderWidgetState();
@@ -411,7 +411,7 @@ class _PlaceholderWidgetState extends State<PlaceholderWidget> {
 }
 
 class DoctorScreen extends StatefulWidget {
-  const DoctorScreen({Key? key}) : super(key: key);
+  const DoctorScreen({super.key});
 
   @override
   _DoctorScreenState createState() => _DoctorScreenState();

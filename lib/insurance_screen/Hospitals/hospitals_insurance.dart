@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:tess/insurance_screen/Hospitals/hospital_info.dart';
-import 'package:tess/insurance_screen/main.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/insurance_screen/maininsurancescreen.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_choosedoctor.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_selecthospital.dart';
 
 class insurance_hospital_search extends StatelessWidget {
-  const insurance_hospital_search({Key? key}) : super(key: key);
+  const insurance_hospital_search({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +18,8 @@ class insurance_hospital_search extends StatelessWidget {
 }
 
 class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -110,7 +112,7 @@ class _SearchScreenState extends State<SearchScreen> {
     Navigator.push(
   context,
   MaterialPageRoute(
-    builder: (context) => HospitalStatsScreen(
+    builder: (context) => const HospitalStatsScreen(
       hospitalName: "Jordan Hospital",
       totalClaims: 120,
       approvedClaims: 90,
@@ -144,7 +146,7 @@ class _SearchScreenState extends State<SearchScreen> {
           onPressed: () {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => InsuranceRep_Screen()),
+              MaterialPageRoute(builder: (context) => const InsuranceRep_Screen()),
             );
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
@@ -199,7 +201,7 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
                 focusedBorder: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
-                  borderSide: BorderSide(color: Colors.blue),
+                  borderSide: const BorderSide(color: Colors.blue),
                 ),
               ),
               onSubmitted: _onSearchSubmitted,

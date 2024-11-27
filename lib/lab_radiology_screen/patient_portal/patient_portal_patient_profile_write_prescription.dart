@@ -9,7 +9,7 @@ void main() {
     debugShowCheckedModeBanner: false,
     title: 'Doctor Treatment App',
     home: patient_portal_patient_profile_write_prescription_LAB(
-      patientData: {}, // Specialty to filter codes
+      patientData: const {}, // Specialty to filter codes
     ),
   ));
 }
@@ -17,7 +17,7 @@ void main() {
 class patient_portal_patient_profile_write_prescription_LAB extends StatefulWidget {
   final Map<String, String> patientData;
 
-  patient_portal_patient_profile_write_prescription_LAB({required this.patientData});
+  const patient_portal_patient_profile_write_prescription_LAB({super.key, required this.patientData});
 
   @override
   _TreatmentFormScreenState createState() => _TreatmentFormScreenState();
@@ -100,7 +100,7 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
               MaterialPageRoute(builder: (context) => const patient_portal_patient_profile_LAB()),
             );
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         actions: [
           IconButton(
@@ -113,11 +113,11 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
             icon: Image.asset('images/icon1.png'),
           )
         ],
-        title: Center(
+        title: const Center(
           child: Text('Treatment Form', style: TextStyle(color: Colors.white)),
         ),
         flexibleSpace: Container(
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [Colors.purple, Colors.blue],
               begin: Alignment.topLeft,
@@ -142,13 +142,13 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
               _buildMultilineTextField('Treatment', 4, 200, (value) {
                 treatment = value!;
               }),
-              SizedBox(height: 16), // Add spacing before the button
+              const SizedBox(height: 16), // Add spacing before the button
 
               Container(
                 width: double.infinity,
                 height: 50,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
+                  gradient: const LinearGradient(
                     colors: [Colors.purple, Colors.blue],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
@@ -169,7 +169,7 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
                       borderRadius: BorderRadius.circular(8.0),
                     ),
                   ),
-                  child: Text(
+                  child: const Text(
                     'Continue',
                     style: TextStyle(fontSize: 18, color: Colors.white),
                   ),
@@ -189,7 +189,7 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
         controller: TextEditingController(text: initialValue),
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         ),
         enabled: false,
       ),
@@ -204,7 +204,7 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
         maxLength: maxLength,
         decoration: InputDecoration(
           labelText: label,
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
           floatingLabelBehavior: FloatingLabelBehavior.always,
         ),
         validator: (value) {
@@ -225,7 +225,7 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
         isExpanded: true,
         decoration: InputDecoration(
           labelText: doctorSpecialty == 'Lab' ? 'Select Lab CPT Code' : 'Select Radiology CPT Code',
-          border: OutlineInputBorder(),
+          border: const OutlineInputBorder(),
         ),
         items: availableCodes.map((code) {
           return DropdownMenuItem(
@@ -247,15 +247,15 @@ class _TreatmentFormScreenState extends State<patient_portal_patient_profile_wri
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
-        title: Text('Continue'),
-        content: Text('You have successfully completed this step.'),
+        title: const Text('Continue'),
+        content: const Text('You have successfully completed this step.'),
         actions: [
           TextButton(
             onPressed: () => Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => const upload_lab_screen()),
             ),
-            child: Text('OK'),
+            child: const Text('OK'),
           ),
         ],
       ),

@@ -9,14 +9,10 @@ import 'package:tess/patient_screen/notification_patient.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_introduction.dart';
 import 'package:tess/patient_screen/patient_insurance/patient_insurance.dart';
 import 'package:tess/patient_screen/settings_patient.dart';
-void main() {
-  runApp(MaterialApp(
-      debugShowCheckedModeBanner: false,
-home:Patient_Screen()));
-}
+
 
 class Patient_Screen extends StatefulWidget {
-  const Patient_Screen({Key? key}) : super(key: key);
+  const Patient_Screen({super.key});
 
   @override
   State<Patient_Screen> createState() => _MainAppState();
@@ -86,37 +82,37 @@ class _MainAppState extends State<Patient_Screen> {
       case "Insurance":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => patient_insurance()),
+          MaterialPageRoute(builder: (context) => const patient_insurance()),
         );
         break;
       case "Appointment":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => patient_appointment_introduction()),
+          MaterialPageRoute(builder: (context) => const patient_appointment_introduction()),
         );
         break;
       case "Medical Record":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => medical_history_patient_main()),
+          MaterialPageRoute(builder: (context) => const medical_history_patient_main()),
         );
         break;
       case "Family Members":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => family_members()),
+          MaterialPageRoute(builder: (context) => const family_members()),
         );
         break;
       case "Medication":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => medication_patient_main()),
+          MaterialPageRoute(builder: (context) => const medication_patient_main()),
         );
         break;
       case "Claims":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => claim_patient_infroduction()),
+          MaterialPageRoute(builder: (context) => const claim_patient_infroduction()),
         );
         break;
     }
@@ -125,6 +121,7 @@ class _MainAppState extends State<Patient_Screen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         bottomNavigationBar: Container(
           padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -137,7 +134,7 @@ class _MainAppState extends State<Patient_Screen> {
                 color: Colors.grey.withOpacity(0.2),
                 spreadRadius: 5,
                 blurRadius: 10,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
@@ -148,7 +145,7 @@ class _MainAppState extends State<Patient_Screen> {
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Patient_Screen()),
+                    MaterialPageRoute(builder: (context) => const Patient_Screen()),
                     );         
                 },
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
@@ -157,7 +154,7 @@ class _MainAppState extends State<Patient_Screen> {
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => appointment_main_patient()),
+                    MaterialPageRoute(builder: (context) => const appointment_main_patient()),
                     );         
                 },
                 icon: Image.asset('images/icon2.png', width: 30, height: 30),
@@ -166,7 +163,7 @@ class _MainAppState extends State<Patient_Screen> {
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => notification_patient()),
+                    MaterialPageRoute(builder: (context) => const notification_patient()),
                     );         
                 },
                 icon: Image.asset('images/icon3.png', width: 30, height: 30),
@@ -175,7 +172,7 @@ class _MainAppState extends State<Patient_Screen> {
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => settings_patient()),
+                    MaterialPageRoute(builder: (context) => const settings_patient()),
                     );         
                 },
                 icon: Image.asset('images/icon4.png', width: 30, height: 30),
@@ -206,7 +203,7 @@ class _MainAppState extends State<Patient_Screen> {
                                 Container(
                                   height: 75, // Profile image size
                                   width: 75,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                       image: AssetImage("images/person.jpg"),
@@ -215,9 +212,9 @@ class _MainAppState extends State<Patient_Screen> {
                                   ),
                                 ),
                                 const SizedBox(width: 8.0),
-                                Column(
+                                const Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
+                                  children: [
                                     Text(
                                       "Hi Deyya,",
                                       style: TextStyle(
@@ -241,7 +238,7 @@ class _MainAppState extends State<Patient_Screen> {
                             child: Padding(
                               padding: const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Container(
-                                constraints: BoxConstraints(maxWidth: 500),
+                                constraints: const BoxConstraints(maxWidth: 500),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(24.0),
@@ -268,7 +265,7 @@ class _MainAppState extends State<Patient_Screen> {
                                                 child: Column(
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children: [
-                                                    Container(
+                                                    SizedBox(
                                                       height: imageSize,
                                                       width: imageSize,
                                                       child: Image.asset(
@@ -307,7 +304,7 @@ class _MainAppState extends State<Patient_Screen> {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Container(
-                        constraints: BoxConstraints(maxWidth: 500),
+                        constraints: const BoxConstraints(maxWidth: 500),
                         padding: const EdgeInsets.all(16.0),
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -318,14 +315,14 @@ class _MainAppState extends State<Patient_Screen> {
                               color: Colors.grey.withOpacity(0.2),
                               spreadRadius: 2,
                               blurRadius: 6,
-                              offset: Offset(0, 2),
+                              offset: const Offset(0, 2),
                             ),
                           ],
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               "Latest News",
                               style: TextStyle(
                                 fontSize: 20,
@@ -338,8 +335,8 @@ class _MainAppState extends State<Patient_Screen> {
                               crossAxisAlignment: CrossAxisAlignment.start,
                               children: [
                                 Container(
-                                  constraints: BoxConstraints(maxHeight: 30, maxWidth: 30),
-                                  decoration: BoxDecoration(shape: BoxShape.circle),
+                                  constraints: const BoxConstraints(maxHeight: 30, maxWidth: 30),
+                                  decoration: const BoxDecoration(shape: BoxShape.circle),
                                   child: Center(
                                     child: Image.asset(
                                       "images/info.png",
@@ -348,7 +345,7 @@ class _MainAppState extends State<Patient_Screen> {
                                   ),
                                 ),
                                 const SizedBox(width: 8),
-                                Expanded(
+                                const Expanded(
                                   child: Text(
                                     "A new Health Insurance Application has launched in Jordan, be ready for a better health experience.",
                                     style: TextStyle(
@@ -368,7 +365,7 @@ class _MainAppState extends State<Patient_Screen> {
                   Center(
                     child: Container(
                       margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-                      constraints: BoxConstraints(maxWidth: 500),
+                      constraints: const BoxConstraints(maxWidth: 500),
                       padding: const EdgeInsets.all(16),
                       decoration: BoxDecoration(
                         color: Colors.white,

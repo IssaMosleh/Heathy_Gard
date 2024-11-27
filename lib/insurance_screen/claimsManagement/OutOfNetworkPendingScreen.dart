@@ -6,7 +6,7 @@ import 'package:url_launcher/url_launcher.dart';
 class OutOfNetworkPendingScreen extends StatelessWidget {
   final Map<String, dynamic> claim;
 
-  OutOfNetworkPendingScreen({required this.claim});
+  const OutOfNetworkPendingScreen({super.key, required this.claim});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
           context,
           MaterialPageRoute(builder: (context) => ClaimsManagementScreen()),
         );
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -29,7 +29,7 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
             ),
           ),
         ),
-        title: Text('Out-of-Network Claim Details',style: TextStyle(color: Colors.white),),
+        title: const Text('Out-of-Network Claim Details',style: TextStyle(color: Colors.white),),
         backgroundColor: Colors.blueAccent,
       ),
       body: Padding(
@@ -42,7 +42,7 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
             buildInfoRow('Patient Name', claim['patientName']),
             buildInfoRow('Date', claim['date']),
             buildInfoRow('Network', claim['network'], color: Colors.red),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Enhanced Provider Information Section
             buildSectionTitle('Provider Information'),
@@ -66,7 +66,7 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
               label: 'Available Balance',
               value: claim['availableBalance'] != null ? '\$${claim['availableBalance']}' : 'Not Available',
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Supporting Documents
             buildSectionTitle('Supporting Documents'),
@@ -82,25 +82,25 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
             buildSectionSubtitle('Radiology Results'),
             buildDocumentContainer('Radiology Results'),
 
-            SizedBox(height: 20),
-            Divider(),
+            const SizedBox(height: 20),
+            const Divider(),
 
             // Approved Amount Entry
             buildSectionTitle('Insurance Approved Amount'),
-            Text(
+            const Text(
               'Enter Approved Amount (Insurance Pricing):',
               style: TextStyle(fontSize: 16),
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             TextField(
               controller: approvedAmountController,
               keyboardType: TextInputType.number,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: 'Enter amount',
                 border: OutlineInputBorder(),
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
 
             // Action Buttons
             buildActionButtons(context, approvedAmountController),
@@ -115,7 +115,7 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 10.0),
       child: Text(
         title,
-        style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
+        style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
       ),
     );
   }
@@ -125,7 +125,7 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
       padding: const EdgeInsets.symmetric(vertical: 8.0),
       child: Text(
         subtitle,
-        style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
       ),
     );
   }
@@ -138,7 +138,7 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
         children: [
           Text(
             label,
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
           Text(
             value?.toString() ?? 'N/A',
@@ -159,16 +159,16 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
       child: Row(
         children: [
           Icon(icon, color: Colors.blueAccent),
-          SizedBox(width: 10),
+          const SizedBox(width: 10),
           Expanded(
             child: Text(
               label,
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
             ),
           ),
           Text(
             value,
-            style: TextStyle(fontSize: 16, color: Colors.black87, fontWeight: FontWeight.w400),
+            style: const TextStyle(fontSize: 16, color: Colors.black87, fontWeight: FontWeight.w400),
           ),
         ],
       ),
@@ -177,8 +177,8 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
 
   Widget buildDocumentContainer(String title) {
     return Container(
-      padding: EdgeInsets.all(12),
-      margin: EdgeInsets.symmetric(vertical: 8),
+      padding: const EdgeInsets.all(12),
+      margin: const EdgeInsets.symmetric(vertical: 8),
       decoration: BoxDecoration(
         color: Colors.grey[200],
         borderRadius: BorderRadius.circular(8),
@@ -189,10 +189,10 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
         children: [
           Text(
             '$title (PDF)',
-            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+            style: const TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
           ),
           IconButton(
-            icon: Icon(Icons.download_rounded),
+            icon: const Icon(Icons.download_rounded),
             onPressed: () async {
               const url = 'https://example.com';
               if (await canLaunch(url)) {
@@ -224,12 +224,12 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
               if (approvedAmount > availableBalance) {
                 // Show error if insufficient balance
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Error: Insufficient available balance')),
+                  const SnackBar(content: Text('Error: Insufficient available balance')),
                 );
               } else if (approvedAmount > requestedAmount) {
                 // Show error if amount entered is higher than requested
                 ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('Error: Approved amount must be equal to or less than the requested amount')),
+                  const SnackBar(content: Text('Error: Approved amount must be equal to or less than the requested amount')),
                 );
               } else {
                 // Proceed with approval if valid amount
@@ -241,16 +241,16 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              padding: EdgeInsets.symmetric(vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 16),
             ),
-            icon: Icon(Icons.check, color: Colors.white),
-            label: Text(
+            icon: const Icon(Icons.check, color: Colors.white),
+            label: const Text(
               'Approve',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),
           ),
         ),
-        SizedBox(height: 10),
+        const SizedBox(height: 10),
         SizedBox(
           width: double.infinity,
           child: ElevatedButton.icon(
@@ -265,10 +265,10 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(12),
               ),
-              padding: EdgeInsets.symmetric(vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 16),
             ),
-            icon: Icon(Icons.close, color: Colors.white),
-            label: Text(
+            icon: const Icon(Icons.close, color: Colors.white),
+            label: const Text(
               'Reject',
               style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
             ),

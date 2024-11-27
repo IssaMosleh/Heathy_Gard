@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:fl_chart/fl_chart.dart';
-import 'package:tess/insurance_screen/maininsurancescreen.dart';
+import 'package:tess/admin_screen/Reports/reports.dart';
 
 class ReportData {
   final String insuranceName;
@@ -51,14 +51,14 @@ class ReportData {
   }
 }
 
-class AdvancedReportsScreen extends StatefulWidget {
-  const AdvancedReportsScreen({super.key});
+class ReportsScreen extends StatefulWidget {
+  const ReportsScreen({super.key});
 
   @override
   _AdvancedReportsScreenState createState() => _AdvancedReportsScreenState();
 }
 
-class _AdvancedReportsScreenState extends State<AdvancedReportsScreen> {
+class _AdvancedReportsScreenState extends State<ReportsScreen> {
   final ReportData reportData = ReportData(
     insuranceName: "XYZ Health Insurance",
     totalMoneySpent: 250000.0,
@@ -79,7 +79,7 @@ class _AdvancedReportsScreenState extends State<AdvancedReportsScreen> {
             Navigator.push(
               context,
               MaterialPageRoute(
-                builder: (context) => const InsuranceRep_Screen(),
+                builder: (context) => Report_main(),
               ),
             );
           },

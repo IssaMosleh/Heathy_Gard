@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:tess/patient_screen/appointment_main_patient.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 import 'package:tess/patient_screen/settings_patient.dart'; // Import for date formatting
 
 class notification_patient extends StatelessWidget {
-  const notification_patient({Key? key}) : super(key: key);
+  const notification_patient({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
         debugShowCheckedModeBanner: false,
-      home: const NotificationsScreen(),
+      home: NotificationsScreen(),
     );
   }
 }
 
 class NotificationsScreen extends StatefulWidget {
-  const NotificationsScreen({Key? key}) : super(key: key);
+  const NotificationsScreen({super.key});
 
   @override
   _NotificationsScreenState createState() => _NotificationsScreenState();
@@ -109,7 +109,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
               color: Colors.grey.withOpacity(0.2),
               spreadRadius: 5,
               blurRadius: 10,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -120,7 +120,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Patient_Screen()),
+                    MaterialPageRoute(builder: (context) => const Patient_Screen()),
                     );         
                 },
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
@@ -129,7 +129,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => appointment_main_patient()),
+                    MaterialPageRoute(builder: (context) => const appointment_main_patient()),
                     );         
                 },
                 icon: Image.asset('images/icon2.png', width: 30, height: 30),
@@ -138,7 +138,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => notification_patient()),
+                    MaterialPageRoute(builder: (context) => const notification_patient()),
                     );         
                 },
                 icon: Image.asset('images/icon3.png', width: 30, height: 30),
@@ -147,7 +147,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => settings_patient()),
+                    MaterialPageRoute(builder: (context) => const settings_patient()),
                     );         
                 },
                 icon: Image.asset('images/icon4.png', width: 30, height: 30),
@@ -206,7 +206,7 @@ class _NotificationsScreenState extends State<NotificationsScreen> {
             color: Colors.grey.withOpacity(0.2),
             spreadRadius: 2,
             blurRadius: 6,
-            offset: Offset(0, 2),
+            offset: const Offset(0, 2),
           ),
         ],
         border: Border.all(color: Colors.grey[300]!),

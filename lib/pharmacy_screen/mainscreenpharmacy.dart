@@ -6,12 +6,9 @@ import 'package:tess/pharmacy_screen/notification_screen_pharmacy.dart';
 import 'package:tess/pharmacy_screen/order_pharmacy/order_pharmacy.dart';
 import 'package:tess/pharmacy_screen/settings_pharmacy.dart';
 
-void main() {
-  runApp(const Pharmacy_Screen());
-}
 
 class Pharmacy_Screen extends StatelessWidget {
-  const Pharmacy_Screen({Key? key}) : super(key: key);
+  const Pharmacy_Screen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +20,7 @@ class Pharmacy_Screen extends StatelessWidget {
 }
 
 class PharmacyScreen extends StatefulWidget {
-  const PharmacyScreen({Key? key}) : super(key: key);
+  const PharmacyScreen({super.key});
 
   @override
   State<PharmacyScreen> createState() => _PharmacyScreenState();
@@ -45,13 +42,13 @@ class _PharmacyScreenState extends State<PharmacyScreen> {
       case "My Info":
         Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => MyInfoPharmacyDoctor()),);
+                MaterialPageRoute(builder: (context) => const MyInfoPharmacyDoctor()),);
         break;
       case "My Pharmacies":
         Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => MyPharmacy(),
+                        builder: (context) => const MyPharmacy(),
                       ),
                     );
         break;
@@ -59,7 +56,7 @@ class _PharmacyScreenState extends State<PharmacyScreen> {
         Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => pharmacy_money(),
+                        builder: (context) => const pharmacy_money(),
                       ),
                     );
         break;
@@ -67,7 +64,7 @@ class _PharmacyScreenState extends State<PharmacyScreen> {
         Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => PharmacyOrderScreen(),
+                        builder: (context) => const PharmacyOrderScreen(),
                       ),
                     );
         break;
@@ -99,7 +96,7 @@ class _PharmacyScreenState extends State<PharmacyScreen> {
               onPressed: () {
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Pharmacy_Screen()),
+              MaterialPageRoute(builder: (context) => const Pharmacy_Screen()),
             );
               },
               icon: Image.asset('images/icon1.png'), // Replace with desired icon
@@ -117,7 +114,7 @@ class _PharmacyScreenState extends State<PharmacyScreen> {
               onPressed: () {
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => settings_pharmacy()),
+              MaterialPageRoute(builder: (context) => const settings_pharmacy()),
             );
               },
               icon: Image.asset('images/icon4.png'), // Replace with desired icon

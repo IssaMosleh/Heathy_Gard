@@ -3,6 +3,8 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'package:tess/insurance_screen/claimsManagement/ClaimsManagement.dart';
 
 class RejectScreen extends StatefulWidget {
+  const RejectScreen({super.key});
+
   @override
   _RejectScreenState createState() => _RejectScreenState();
 }
@@ -39,7 +41,7 @@ class _RejectScreenState extends State<RejectScreen> {
           context,
           MaterialPageRoute(builder: (context) => ClaimsManagementScreen()),
         );
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
             gradient: LinearGradient(
@@ -49,17 +51,17 @@ class _RejectScreenState extends State<RejectScreen> {
             ),
           ),
         ),
-        title: Text("Reject Claim",style: TextStyle(color: Colors.white),),
+        title: const Text("Reject Claim",style: TextStyle(color: Colors.white),),
       ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text("Reason for Rejection"),
+            const Text("Reason for Rejection"),
             DropdownButton<String>(
               value: selectedReason,
-              hint: Text("Select a reason"),
+              hint: const Text("Select a reason"),
               onChanged: (newValue) {
                 setState(() {
                   selectedReason = newValue;
@@ -72,16 +74,16 @@ class _RejectScreenState extends State<RejectScreen> {
                 );
               }).toList(),
             ),
-            SizedBox(height: 20),
-            Text("Description"),
+            const SizedBox(height: 20),
+            const Text("Description"),
             TextField(
               controller: descriptionController,
               maxLines: 4,
-              decoration: InputDecoration(
+              decoration: const InputDecoration(
                 hintText: "Provide more details...",
               ),
             ),
-            SizedBox(height: 20),
+            const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () {
                 saveRejectionData();
@@ -90,7 +92,7 @@ class _RejectScreenState extends State<RejectScreen> {
                 MaterialPageRoute(builder: (context) => ClaimsManagementScreen()),
             );
               },
-              child: Text("Submit"),
+              child: const Text("Submit"),
             ),
           ],
         ),

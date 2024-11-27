@@ -3,7 +3,7 @@ import 'package:tess/admin_screen/settings_admin.dart';
 
 
 class terms_of_service_admin extends StatelessWidget {
-  const terms_of_service_admin({Key? key}) : super(key: key);
+  const terms_of_service_admin({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -12,9 +12,9 @@ class terms_of_service_admin extends StatelessWidget {
         leading: IconButton(onPressed: (){
           Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => settings_admin()),
+              MaterialPageRoute(builder: (context) => const settings_admin()),
             );
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
         title: const Text('Terms of Service', style: TextStyle(color: Colors.white)),
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -42,36 +42,36 @@ class terms_of_service_admin extends StatelessWidget {
               ),
             ],
           ),
-          child: Column(
+          child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "By using our pharmacy services, you agree to the following terms:",
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
               ),
-              const SizedBox(height: 20),
-              const Text(
+              SizedBox(height: 20),
+              Text(
                 "• You must be 18 years or older to use our prescription services.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 12),
-              const Text(
+              SizedBox(height: 12),
+              Text(
                 "• We reserve the right to update these terms at any time.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 12),
-              const Text(
+              SizedBox(height: 12),
+              Text(
                 "• Our pharmacy is not responsible for the misuse of prescribed medication.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 20),
-              const Text(
+              SizedBox(height: 20),
+              Text(
                 "We recommend reviewing these terms regularly to stay informed about any updates.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 20),
+              SizedBox(height: 20),
               Center(
-                child: const Text(
+                child: Text(
                   "Thank you for choosing our pharmacy services!",
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),

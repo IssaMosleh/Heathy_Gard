@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tess/doctor_screen/main.dart';
+import 'package:tess/doctor_screen/mainscreendoctor.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_patient_profile_history.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_patient_profile_write_prescription.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_patients.dart';
@@ -9,7 +9,7 @@ void main() {
 }
 
 class patient_portal_patient_profile extends StatelessWidget {
-  const patient_portal_patient_profile({Key? key}) : super(key: key);
+  const patient_portal_patient_profile({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +18,7 @@ class patient_portal_patient_profile extends StatelessWidget {
       title: 'Patient Profile',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        scaffoldBackgroundColor: Color(0xFFF6F6F6), // Light grey background
+        scaffoldBackgroundColor: const Color(0xFFF6F6F6), // Light grey background
       ),
       home: const PatientProfileScreen(),
     );
@@ -26,7 +26,7 @@ class patient_portal_patient_profile extends StatelessWidget {
 }
 
 class PatientProfileScreen extends StatefulWidget {
-  const PatientProfileScreen({Key? key}) : super(key: key);
+  const PatientProfileScreen({super.key});
 
   @override
   _PatientProfileScreenState createState() => _PatientProfileScreenState();
@@ -106,7 +106,7 @@ class _PatientProfileScreenState extends State<PatientProfileScreen> {
             ),
             child: Column(
               children: [
-                CircleAvatar(
+                const CircleAvatar(
                   radius: 50,
                   backgroundColor: Colors.white,
                   child: CircleAvatar(
@@ -147,7 +147,7 @@ class _PatientProfileScreenState extends State<PatientProfileScreen> {
                     context,
                     MaterialPageRoute(
                         builder: (context) =>
-                            patient_portal_patient_profile_write_prescription(patientData: {
+                            patient_portal_patient_profile_write_prescription(patientData: const {
                               'patientName': 'John Doe',
                               'doctorName': 'Dr. Sarah Ahmed',
                               'visitDate': '2024-11-05',

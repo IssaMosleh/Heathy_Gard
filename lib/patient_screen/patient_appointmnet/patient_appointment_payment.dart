@@ -5,8 +5,7 @@ import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_pick
 class patient_appointment_payment extends StatefulWidget {
   final String doctorSpecialty; // Pass doctor specialty to fetch relevant prices
 
-  const patient_appointment_payment({Key? key, required this.doctorSpecialty})
-      : super(key: key);
+  const patient_appointment_payment({super.key, required this.doctorSpecialty});
 
   @override
   _PatientAppointmentPaymentState createState() =>
@@ -63,7 +62,7 @@ class _PatientAppointmentPaymentState extends State<patient_appointment_payment>
           onPressed: () {
              Navigator.push(
                             context,
-                            MaterialPageRoute(builder: (context) => patient_appointment_pick_date()),
+                            MaterialPageRoute(builder: (context) => const patient_appointment_pick_date()),
                           );
           },
         ),
@@ -107,10 +106,10 @@ class _PatientAppointmentPaymentState extends State<patient_appointment_payment>
                       padding: const EdgeInsets.all(16.0),
                       child: Column(
                         children: [
-                          Row(
+                          const Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              const Text(
+                              Text(
                                 "Diagnosis Service",
                                 style: TextStyle(
                                   fontSize: 16,

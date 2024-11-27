@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tess/doctor_screen/settings_doctor.dart';
 
 class our_partners_doctor extends StatelessWidget {
-  const our_partners_doctor({Key? key}) : super(key: key);
+  const our_partners_doctor({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: PartnersScreen(),
     );
@@ -14,7 +14,7 @@ class our_partners_doctor extends StatelessWidget {
 }
 
 class PartnersScreen extends StatefulWidget {
-  const PartnersScreen({Key? key}) : super(key: key);
+  const PartnersScreen({super.key});
 
   @override
   _PartnersScreenState createState() => _PartnersScreenState();
@@ -68,9 +68,9 @@ class _PartnersScreenState extends State<PartnersScreen> {
         leading: IconButton(onPressed: (){
           Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => settings_doctor()),
+                  MaterialPageRoute(builder: (context) => const settings_doctor()),
             );
-        }, icon: Icon(Icons.arrow_back_ios),color: Colors.white,),
+        }, icon: const Icon(Icons.arrow_back_ios),color: Colors.white,),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -108,11 +108,11 @@ class PartnerCard extends StatelessWidget {
   final String logoUrl;
 
   const PartnerCard({
-    Key? key,
+    super.key,
     required this.name,
     required this.description,
     required this.logoUrl,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

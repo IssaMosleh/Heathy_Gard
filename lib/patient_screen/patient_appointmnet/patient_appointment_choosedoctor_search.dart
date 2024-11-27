@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_choosedoctor.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_pick_date.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_viewdoctorprofile.dart';
 
 class patient_appointment_choosedoctor_search extends StatelessWidget {
-  const patient_appointment_choosedoctor_search({Key? key}) : super(key: key);
+  const patient_appointment_choosedoctor_search({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +17,8 @@ class patient_appointment_choosedoctor_search extends StatelessWidget {
 }
 
 class SearchScreen extends StatefulWidget {
+  const SearchScreen({super.key});
+
   @override
   _SearchScreenState createState() => _SearchScreenState();
 }
@@ -131,7 +133,7 @@ class _SearchScreenState extends State<SearchScreen> {
   void _showFilterDialog() {
     showModalBottomSheet(
       context: context,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
       ),
       builder: (BuildContext context) {
@@ -145,7 +147,7 @@ class _SearchScreenState extends State<SearchScreen> {
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
                 ),
-                borderRadius: BorderRadius.vertical(top: Radius.circular(20)),
+                borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
               ),
               child: Column(
                 mainAxisSize: MainAxisSize.min,
@@ -212,7 +214,7 @@ class _SearchScreenState extends State<SearchScreen> {
           const SizedBox(width: 10),
           Text(
             specialty,
-            style: TextStyle(fontSize: 16, color: Colors.black87),
+            style: const TextStyle(fontSize: 16, color: Colors.black87),
           ),
         ],
       ),
@@ -258,7 +260,7 @@ class _SearchScreenState extends State<SearchScreen> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                    builder: (context) => patient_appointment_choosedoctor()),
+                    builder: (context) => const patient_appointment_choosedoctor()),
               );
             },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
@@ -268,7 +270,7 @@ class _SearchScreenState extends State<SearchScreen> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => Patient_Screen()),
+                  MaterialPageRoute(builder: (context) => const Patient_Screen()),
                 );
               },
               icon: Image.asset('images/icon1.png'),
@@ -302,7 +304,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(20),
-                        borderSide: BorderSide(color: Colors.blue),
+                        borderSide: const BorderSide(color: Colors.blue),
                       ),
                     ),
                     onSubmitted: _onSearchSubmitted,
@@ -414,7 +416,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                 onPressed: () {
                                     Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => patient_appointment_pick_date()),
+                                    MaterialPageRoute(builder: (context) => const patient_appointment_pick_date()),
                                   );
                                 },
                                 child: const Text(

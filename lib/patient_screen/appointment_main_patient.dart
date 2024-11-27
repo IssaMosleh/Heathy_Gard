@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 import 'package:tess/patient_screen/notification_patient.dart';
 import 'package:tess/patient_screen/settings_patient.dart'; // Add this for date formatting
 
 class appointment_main_patient extends StatelessWidget {
-  const appointment_main_patient({Key? key}) : super(key: key);
+  const appointment_main_patient({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const AppointmentsScreen(),
+      home: AppointmentsScreen(),
     );
   }
 }
 
 class AppointmentsScreen extends StatefulWidget {
-  const AppointmentsScreen({Key? key}) : super(key: key);
+  const AppointmentsScreen({super.key});
 
   @override
   _AppointmentsScreenState createState() => _AppointmentsScreenState();
@@ -94,7 +94,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> with SingleTick
               color: Colors.grey.withOpacity(0.2),
               spreadRadius: 5,
               blurRadius: 10,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -105,7 +105,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> with SingleTick
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Patient_Screen()),
+                    MaterialPageRoute(builder: (context) => const Patient_Screen()),
                     );         
                 },
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
@@ -114,7 +114,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> with SingleTick
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => appointment_main_patient()),
+                    MaterialPageRoute(builder: (context) => const appointment_main_patient()),
                     );         
                 },
                 icon: Image.asset('images/icon2.png', width: 30, height: 30),
@@ -123,7 +123,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> with SingleTick
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => notification_patient()),
+                    MaterialPageRoute(builder: (context) => const notification_patient()),
                     );         
                 },
                 icon: Image.asset('images/icon3.png', width: 30, height: 30),
@@ -132,7 +132,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> with SingleTick
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => settings_patient()),
+                    MaterialPageRoute(builder: (context) => const settings_patient()),
                     );         
                 },
                 icon: Image.asset('images/icon4.png', width: 30, height: 30),
@@ -147,7 +147,7 @@ class _AppointmentsScreenState extends State<AppointmentsScreen> with SingleTick
 class AppointmentList extends StatefulWidget {
   final String category;
 
-  const AppointmentList({Key? key, required this.category}) : super(key: key);
+  const AppointmentList({super.key, required this.category});
 
   @override
   _AppointmentListState createState() => _AppointmentListState();
@@ -365,11 +365,11 @@ class _AppointmentListState extends State<AppointmentList> {
                                       decoration: BoxDecoration(
                                         color: Colors.white,
                                         borderRadius: BorderRadius.circular(16),
-                                        boxShadow: [
+                                        boxShadow: const [
                                           BoxShadow(
                                             color: Colors.black26,
                                             blurRadius: 10,
-                                            offset: const Offset(0, 5),
+                                            offset: Offset(0, 5),
                                           ),
                                         ],
                                       ),

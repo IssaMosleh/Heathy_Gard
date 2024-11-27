@@ -7,14 +7,9 @@ import 'package:tess/insurance_screen/my_info/My_Info_insurance.dart';
 import 'package:tess/insurance_screen/notification_insurance.dart';
 import 'package:tess/insurance_screen/settings_insurance.dart';
 
-void main() {
-  runApp(MaterialApp(
-      debugShowCheckedModeBanner: false,
-home: InsuranceRep_Screen()));
-}
 
 class InsuranceRep_Screen extends StatefulWidget {
-  const InsuranceRep_Screen({Key? key}) : super(key: key);
+  const InsuranceRep_Screen({super.key});
 
   @override
   State<InsuranceRep_Screen> createState() => _InsuranceRepScreenState();
@@ -56,20 +51,20 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
       case "My Info":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => My_Info_insurance()),
+          MaterialPageRoute(builder: (context) => const My_Info_insurance()),
         );
         break;
       case "Hospitals":
         Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => insurance_hospital_search()),
+          MaterialPageRoute(builder: (context) => const insurance_hospital_search()),
         );
         break;
       case "Patients":
         Navigator.push(
           context,
           MaterialPageRoute(
-              builder: (context) => PatientsInsurance(insuranceName: 'HealthFirst',)),
+              builder: (context) => const PatientsInsurance(insuranceName: 'HealthFirst',)),
         );
         break;
     }
@@ -78,6 +73,7 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: Scaffold(
         bottomNavigationBar: Container(
           padding: const EdgeInsets.symmetric(vertical: 12.0),
@@ -90,7 +86,7 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                 color: Colors.grey.withOpacity(0.2),
                 spreadRadius: 5,
                 blurRadius: 10,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
@@ -102,7 +98,7 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => InsuranceRep_Screen()),
+                        builder: (context) => const InsuranceRep_Screen()),
                   );
                 },
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
@@ -112,7 +108,7 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => InsuranceNotificationScreen()),
+                        builder: (context) => const InsuranceNotificationScreen()),
                   );
                 },
                 icon: Image.asset('images/icon3.png', width: 30, height: 30),
@@ -122,7 +118,7 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => settings_insurance()),
+                        builder: (context) => const settings_insurance()),
                   );
                 },
                 icon: Image.asset('images/icon4.png', width: 30, height: 30),
@@ -154,7 +150,7 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                                 Container(
                                   height: 75,
                                   width: 75,
-                                  decoration: BoxDecoration(
+                                  decoration: const BoxDecoration(
                                     shape: BoxShape.circle,
                                     image: DecorationImage(
                                       image: AssetImage("images/person.jpg"),
@@ -163,9 +159,9 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                                   ),
                                 ),
                                 const SizedBox(width: 8.0),
-                                Column(
+                                const Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  children: const [
+                                  children: [
                                     Text(
                                       "Hello, Mr. Deyaa",
                                       style: TextStyle(
@@ -190,7 +186,7 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                               padding:
                                   const EdgeInsets.symmetric(horizontal: 8.0),
                               child: Container(
-                                constraints: BoxConstraints(maxWidth: 500),
+                                constraints: const BoxConstraints(maxWidth: 500),
                                 decoration: BoxDecoration(
                                   color: Colors.white,
                                   borderRadius: BorderRadius.circular(24.0),
@@ -213,7 +209,7 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                                                   child: Column(
                                                     mainAxisAlignment: MainAxisAlignment.center,
                                                     children: [
-                                                      Container(
+                                                      SizedBox(
                                                         height: imageSize,
                                                         width: imageSize,
                                                         child: Image.asset(
@@ -258,7 +254,7 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                     child: Padding(
                       padding: const EdgeInsets.all(16.0),
                       child: Container(
-                        constraints: BoxConstraints(maxWidth: 500),
+                        constraints: const BoxConstraints(maxWidth: 500),
                         padding: const EdgeInsets.all(16.0),
                         decoration: BoxDecoration(
                           color: Colors.white,
@@ -269,14 +265,14 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                               color: Colors.grey.withOpacity(0.2),
                               spreadRadius: 2,
                               blurRadius: 6,
-                              offset: Offset(0, 2),
+                              offset: const Offset(0, 2),
                             ),
                           ],
                         ),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(
+                            const Text(
                               "Latest Updates",
                               style: TextStyle(
                                 fontSize: 20,
@@ -290,8 +286,8 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                               children: [
                                 Container(
                                   constraints:
-                                      BoxConstraints(maxHeight: 30, maxWidth: 30),
-                                  decoration: BoxDecoration(shape: BoxShape.circle),
+                                      const BoxConstraints(maxHeight: 30, maxWidth: 30),
+                                  decoration: const BoxDecoration(shape: BoxShape.circle),
                                   child: Center(
                                     child: Image.asset(
                                       "images/info.png",
@@ -300,7 +296,7 @@ class _InsuranceRepScreenState extends State<InsuranceRep_Screen> {
                                   ),
                                 ),
                                 const SizedBox(width: 8),
-                                Expanded(
+                                const Expanded(
                                   child: Text(
                                     "Keep up with new claims, reports, and policy updates!",
                                     style: TextStyle(

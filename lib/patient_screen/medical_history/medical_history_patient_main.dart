@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 import 'package:tess/patient_screen/medical_history/medical_history_patient_history.dart';
 import 'package:tess/patient_screen/medical_history/medical_history_patient_lab.dart';
 import 'package:tess/patient_screen/medical_history/medical_history_patient_personal.dart';
 import 'package:tess/patient_screen/medical_history/medical_history_patient_radiology.dart';
 
 class medical_history_patient_main extends StatelessWidget {
-  const medical_history_patient_main({Key? key}) : super(key: key);
+  const medical_history_patient_main({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MedicalRecordScreen(),
     );
@@ -18,7 +18,7 @@ class medical_history_patient_main extends StatelessWidget {
 }
 
 class MedicalRecordScreen extends StatefulWidget {
-  const MedicalRecordScreen({Key? key}) : super(key: key);
+  const MedicalRecordScreen({super.key});
 
   @override
   _MedicalRecordScreenState createState() => _MedicalRecordScreenState();
@@ -40,7 +40,7 @@ class _MedicalRecordScreenState extends State<MedicalRecordScreen> {
             onPressed: () {
                     Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Patient_Screen()),
+                    MaterialPageRoute(builder: (context) => const Patient_Screen()),
                     );            },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           ),
@@ -67,7 +67,7 @@ class _MedicalRecordScreenState extends State<MedicalRecordScreen> {
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => medical_history_patient_personal()),
+                    MaterialPageRoute(builder: (context) => const medical_history_patient_personal()),
                     );         
               },
             ),
@@ -78,7 +78,7 @@ class _MedicalRecordScreenState extends State<MedicalRecordScreen> {
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => medical_history_patient_history()),
+                    MaterialPageRoute(builder: (context) => const medical_history_patient_history()),
                     );         
               },
             ),
@@ -89,7 +89,7 @@ class _MedicalRecordScreenState extends State<MedicalRecordScreen> {
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => medical_history_patient_lab()),
+                    MaterialPageRoute(builder: (context) => const medical_history_patient_lab()),
                     );         
               },
             ),
@@ -100,7 +100,7 @@ class _MedicalRecordScreenState extends State<MedicalRecordScreen> {
               onTap: () {
                 Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => medical_history_patient_radiology()),
+                    MaterialPageRoute(builder: (context) => const medical_history_patient_radiology()),
                     );         
               },
             ),
@@ -142,7 +142,7 @@ class _MedicalRecordScreenState extends State<MedicalRecordScreen> {
                   children: [
                     Text(
                       title,
-                      style: TextStyle(
+                      style: const TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                       ),

@@ -4,7 +4,7 @@ import 'package:tess/lab_radiology_screen/main.dart';
 
 
 class My_Info_Doctor_LAB extends StatelessWidget {
-  const My_Info_Doctor_LAB({Key? key}) : super(key: key);
+  const My_Info_Doctor_LAB({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,8 +24,7 @@ class InfoContainer extends StatelessWidget {
   final String title;
   final List<Widget> children;
 
-  const InfoContainer({Key? key, required this.title, required this.children})
-      : super(key: key);
+  const InfoContainer({super.key, required this.title, required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +65,8 @@ class InfoContainer extends StatelessWidget {
 }
 
 class DoctorScreen extends StatefulWidget {
+  const DoctorScreen({super.key});
+
   @override
   _DoctorScreenState createState() => _DoctorScreenState();
 }
@@ -108,7 +109,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
 
   // Simulate fetching data for doctor's information from a database
   Future<void> fetchDoctorData() async {
-    await Future.delayed(Duration(seconds: 2)); // Simulate network delay
+    await Future.delayed(const Duration(seconds: 2)); // Simulate network delay
     setState(() {});
   }
 
@@ -126,17 +127,17 @@ class _DoctorScreenState extends State<DoctorScreen> {
   }
 
   Future<List<int>> fetchVisitsFromSources() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     return [600, 400, 200]; // Simulated data from different hospitals
   }
 
   Future<List<int>> fetchVisitsThisYearFromSources() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     return [75, 50, 25]; // Simulated data from different hospitals
   }
 
   Future<List<double>> fetchEarningsFromSources() async {
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     return [10000.0, 8000.0, 5000.0]; // Simulated earnings from different clinics
   }
 
@@ -149,7 +150,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: Text("Edit Information"),
+          title: const Text("Edit Information"),
           content: Form(
             key: _formKey,
             child: Column(
@@ -157,7 +158,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
               children: [
                 TextFormField(
                   controller: emailController,
-                  decoration: InputDecoration(labelText: "Email"),
+                  decoration: const InputDecoration(labelText: "Email"),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter an email';
@@ -171,7 +172,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 ),
                 TextFormField(
                   controller: phoneController,
-                  decoration: InputDecoration(labelText: "Phone Number"),
+                  decoration: const InputDecoration(labelText: "Phone Number"),
                   validator: (value) {
                     if (value == null || value.isEmpty) {
                       return 'Please enter a phone number';
@@ -190,7 +191,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
           actions: [
             TextButton(
               onPressed: () => Navigator.of(context).pop(),
-              child: Text("Cancel"),
+              child: const Text("Cancel"),
             ),
             TextButton(
               onPressed: () {
@@ -202,7 +203,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                   Navigator.of(context).pop();
                 }
               },
-              child: Text("Save"),
+              child: const Text("Save"),
             ),
           ],
         );
@@ -310,7 +311,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
             InfoContainer(
               title: 'Doctor Information',
               children: [
-                Text('Personal Information', style: const TextStyle(
+                const Text('Personal Information', style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.blueAccent,
@@ -328,7 +329,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 infoRow('Languages Spoken', languagesSpoken, icon: Icons.language),
 
                 const SizedBox(height: 10),
-                Text('Education', style: const TextStyle(
+                const Text('Education', style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.blueAccent,
@@ -337,7 +338,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 infoRow('Residency', residency, icon: Icons.local_hospital),
 
                 const SizedBox(height: 10),
-                Text('Certifications', style: const TextStyle(
+                const Text('Certifications', style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.blueAccent,
@@ -346,7 +347,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 infoRow('Specialty Certification', specialtyCertification, icon: Icons.verified),
 
                 const SizedBox(height: 10),
-                Text('Special Achievements', style: const TextStyle(
+                const Text('Special Achievements', style: TextStyle(
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: Colors.blueAccent,
@@ -372,7 +373,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                 ),
                 child: Ink(
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
+                    gradient: const LinearGradient(
                       colors: [Color(0xFF8E2DE2), Color(0xFF4A00E0)], // Improved gradient colors
                       begin: Alignment.centerLeft,
                       end: Alignment.centerRight,
@@ -381,7 +382,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
                   ),
                   child: Container(
                     alignment: Alignment.center,
-                    constraints: BoxConstraints(minHeight: 50, minWidth: 150),
+                    constraints: const BoxConstraints(minHeight: 50, minWidth: 150),
                     child: const Text(
                       "Edit",
                       style: TextStyle(
@@ -434,7 +435,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
 class BalanceMeter extends StatelessWidget {
   final double balance;
 
-  const BalanceMeter({Key? key, required this.balance}) : super(key: key);
+  const BalanceMeter({super.key, required this.balance});
 
   @override
   Widget build(BuildContext context) {
@@ -473,7 +474,7 @@ class BalanceMeterPainter extends CustomPainter {
     );
 
     final balanceGradient = Paint()
-      ..shader = LinearGradient(
+      ..shader = const LinearGradient(
         colors: [Colors.orange, Colors.deepOrange],
       ).createShader(Rect.fromCircle(center: center, radius: radius))
       ..strokeWidth = 12

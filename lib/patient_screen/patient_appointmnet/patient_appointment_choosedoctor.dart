@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_choosedoctor_search.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_pick_date.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_selecthospital.dart';
 import 'package:tess/patient_screen/patient_appointmnet/patient_appointment_viewdoctorprofile.dart';
 
 class patient_appointment_choosedoctor extends StatefulWidget {
-  const patient_appointment_choosedoctor({Key? key}) : super(key: key);
+  const patient_appointment_choosedoctor({super.key});
 
   @override
   _PatientAppointmentChooseDoctorState createState() => _PatientAppointmentChooseDoctorState();
@@ -15,7 +15,7 @@ class patient_appointment_choosedoctor extends StatefulWidget {
 class _PatientAppointmentChooseDoctorState extends State<patient_appointment_choosedoctor> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: DoctorListScreen(),
     );
@@ -23,7 +23,7 @@ class _PatientAppointmentChooseDoctorState extends State<patient_appointment_cho
 }
 
 class DoctorListScreen extends StatefulWidget {
-  const DoctorListScreen({Key? key}) : super(key: key);
+  const DoctorListScreen({super.key});
 
   @override
   _DoctorListScreenState createState() => _DoctorListScreenState();
@@ -76,7 +76,7 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
             onPressed: () {
               Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => PatientAppointmentSelectHospital()),
+          MaterialPageRoute(builder: (context) => const PatientAppointmentSelectHospital()),
         );
             },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.black),
@@ -88,7 +88,7 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
               icon: IconButton(onPressed: () {
                 Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Patient_Screen()),
+                MaterialPageRoute(builder: (context) => const Patient_Screen()),
                 );
               }, icon: Image.asset('images/icon1.png')),
             ),
@@ -117,11 +117,11 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
                       fontWeight: FontWeight.bold,
                     ),
                   ),
-                  Spacer(),
+                  const Spacer(),
                   IconButton(onPressed: () {
                     Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => patient_appointment_choosedoctor_search()),
+                    MaterialPageRoute(builder: (context) => const patient_appointment_choosedoctor_search()),
                     );
                   }, icon: Image.asset("images/search.png")),
                 ],
@@ -196,7 +196,7 @@ class _DoctorListScreenState extends State<DoctorListScreen> {
                                 onPressed: () {
                                    Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => patient_appointment_pick_date()),
+                                    MaterialPageRoute(builder: (context) => const patient_appointment_pick_date()),
                                     );
                                 },
                                 child: const Text(

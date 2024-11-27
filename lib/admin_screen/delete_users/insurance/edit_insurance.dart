@@ -9,7 +9,7 @@ class InsuranceCompany {
 }
 
 class InsuranceCompanySearchScreen_delete extends StatefulWidget {
-  const InsuranceCompanySearchScreen_delete({Key? key}) : super(key: key);
+  const InsuranceCompanySearchScreen_delete({super.key});
 
   @override
   _InsuranceCompanySearchScreenState createState() => _InsuranceCompanySearchScreenState();
@@ -39,7 +39,7 @@ class _InsuranceCompanySearchScreenState extends State<InsuranceCompanySearchScr
           onPressed: () {
             Navigator.pop(context);
           },
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
         ),
         title: const Text(
           "Search Insurance Companies",
@@ -131,7 +131,7 @@ class _InsuranceCompanySearchScreenState extends State<InsuranceCompanySearchScr
                         ),
                       ),
                       trailing: IconButton(
-                        icon: Icon(Icons.delete, color: Colors.red),
+                        icon: const Icon(Icons.delete, color: Colors.red),
                         onPressed: () {
                           setState(() {
                             insuranceCompanies.remove(company);

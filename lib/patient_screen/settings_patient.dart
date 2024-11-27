@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:tess/main.dart';
 import 'package:tess/patient_screen/appointment_main_patient.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 import 'package:tess/patient_screen/notification_patient.dart';
 import 'package:tess/patient_screen/settings_patient/about_us_patient.dart';
 import 'package:tess/patient_screen/settings_patient/help_and_support_patient.dart';
@@ -10,19 +11,19 @@ import 'package:tess/patient_screen/settings_patient/promotions_patient.dart';
 import 'package:tess/patient_screen/settings_patient/terms_and_service_patient.dart';
 
 class settings_patient extends StatelessWidget {
-  const settings_patient({Key? key}) : super(key: key);
+  const settings_patient({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
         debugShowCheckedModeBanner: false,
-      home: const SettingsScreen(),
+      home: SettingsScreen(),
     );
   }
 }
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -65,7 +66,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
                Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => about_us_patient()),
+                    MaterialPageRoute(builder: (context) => const about_us_patient()),
                     ); 
             },
           ),
@@ -76,7 +77,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
                Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => promotions_patient()),
+                    MaterialPageRoute(builder: (context) => const promotions_patient()),
                     ); 
             },
           ),
@@ -87,7 +88,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => our_partners_patient()),
+                    MaterialPageRoute(builder: (context) => const our_partners_patient()),
                     ); 
             },
           ),
@@ -98,7 +99,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => privacy_policy_patient()),
+                    MaterialPageRoute(builder: (context) => const privacy_policy_patient()),
                     ); 
             },
           ),
@@ -109,7 +110,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => terms_and_service_patient()),
+                    MaterialPageRoute(builder: (context) => const terms_and_service_patient()),
                     ); 
             },
           ),
@@ -133,7 +134,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => help_and_support_patient()),
+                    MaterialPageRoute(builder: (context) => const help_and_support_patient()),
                     ); 
             },
           ),
@@ -142,7 +143,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'Sign Out',
             iconColor: Colors.red,
             onTap: () {
-              // Sign out action
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MainApp()),
+                    ); 
             },
           ),
         ],
@@ -158,7 +162,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               color: Colors.grey.withOpacity(0.2),
               spreadRadius: 5,
               blurRadius: 10,
-              offset: Offset(0, 3),
+              offset: const Offset(0, 3),
             ),
           ],
         ),
@@ -169,7 +173,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Patient_Screen()),
+                    MaterialPageRoute(builder: (context) => const Patient_Screen()),
                     );         
                 },
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
@@ -178,7 +182,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => appointment_main_patient()),
+                    MaterialPageRoute(builder: (context) => const appointment_main_patient()),
                     );         
                 },
                 icon: Image.asset('images/icon2.png', width: 30, height: 30),
@@ -187,7 +191,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => notification_patient()),
+                    MaterialPageRoute(builder: (context) => const notification_patient()),
                     );         
                 },
                 icon: Image.asset('images/icon3.png', width: 30, height: 30),
@@ -196,7 +200,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onPressed: () {
                    Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => settings_patient()),
+                    MaterialPageRoute(builder: (context) => const settings_patient()),
                     );         
                 },
                 icon: Image.asset('images/icon4.png', width: 30, height: 30),
@@ -217,13 +221,13 @@ class SettingsTile extends StatelessWidget {
   final VoidCallback onTap;
 
   const SettingsTile({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     required this.iconColor,
     this.trailing,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

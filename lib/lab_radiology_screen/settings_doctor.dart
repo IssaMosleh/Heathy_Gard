@@ -7,22 +7,23 @@ import 'package:tess/lab_radiology_screen/settings_doctor/help_and_support_docto
 import 'package:tess/lab_radiology_screen/settings_doctor/our_partners_doctor.dart';
 import 'package:tess/lab_radiology_screen/settings_doctor/privacy_policy_doctors.dart';
 import 'package:tess/lab_radiology_screen/settings_doctor/terms_of_service_doctor.dart';
+import 'package:tess/main.dart';
 
 
 class settings_doctor_LAB extends StatelessWidget {
-  const settings_doctor_LAB({Key? key}) : super(key: key);
+  const settings_doctor_LAB({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: const SettingsScreen(),
+      home: SettingsScreen(),
     );
   }
 }
 
 class SettingsScreen extends StatefulWidget {
-  const SettingsScreen({Key? key}) : super(key: key);
+  const SettingsScreen({super.key});
 
   @override
   _SettingsScreenState createState() => _SettingsScreenState();
@@ -65,7 +66,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => about_us_doctor_LAB()),
+                  MaterialPageRoute(builder: (context) => const about_us_doctor_LAB()),
             );
             },
           ),
@@ -76,7 +77,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => our_partners_doctor_LAB()),
+                  MaterialPageRoute(builder: (context) => const our_partners_doctor_LAB()),
             );
             },
           ),
@@ -87,7 +88,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => privacy_policy_doctors_LAB()),
+                  MaterialPageRoute(builder: (context) => const privacy_policy_doctors_LAB()),
             );
             },
           ),
@@ -98,7 +99,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => terms_of_service_doctor_LAB()),
+                  MaterialPageRoute(builder: (context) => const terms_of_service_doctor_LAB()),
             );
             },
           ),
@@ -122,7 +123,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
             onTap: () {
               Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => help_and_support_doctor_LAB()),
+                  MaterialPageRoute(builder: (context) => const help_and_support_doctor_LAB()),
             );
             },
           ),
@@ -131,7 +132,10 @@ class _SettingsScreenState extends State<SettingsScreen> {
             title: 'Sign Out',
             iconColor: Colors.red,
             onTap: () {
-              // Sign out action
+              Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => const MainApp()),
+                    ); 
             },
           ),
         ],
@@ -147,7 +151,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 color: Colors.grey.withOpacity(0.2),
                 spreadRadius: 5,
                 blurRadius: 10,
-                offset: Offset(0, 3),
+                offset: const Offset(0, 3),
               ),
             ],
           ),
@@ -158,7 +162,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onPressed: () {
                   Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Doctor_LAB()),
+                MaterialPageRoute(builder: (context) => const Doctor_LAB()),
             );
                 },
                 icon: Image.asset('images/icon1.png', width: 30, height: 30),
@@ -167,7 +171,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => appointment_doctor_LAB()),
+                  MaterialPageRoute(builder: (context) => const appointment_doctor_LAB()),
             );
                 },
                 icon: Image.asset('images/icon2.png', width: 30, height: 30),
@@ -175,7 +179,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
               IconButton(
                 onPressed: () {Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => notification_doctor_LAB()),
+                  MaterialPageRoute(builder: (context) => const notification_doctor_LAB()),
             );},
                 icon: Image.asset('images/icon3.png', width: 30, height: 30),
               ),
@@ -183,7 +187,7 @@ class _SettingsScreenState extends State<SettingsScreen> {
                 onPressed: () {
                   Navigator.push(
                   context,
-                  MaterialPageRoute(builder: (context) => settings_doctor_LAB()),
+                  MaterialPageRoute(builder: (context) => const settings_doctor_LAB()),
             );
                 },
                 icon: Image.asset('images/icon4.png', width: 30, height: 30),
@@ -204,13 +208,13 @@ class SettingsTile extends StatelessWidget {
   final VoidCallback onTap;
 
   const SettingsTile({
-    Key? key,
+    super.key,
     required this.icon,
     required this.title,
     required this.iconColor,
     this.trailing,
     required this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {

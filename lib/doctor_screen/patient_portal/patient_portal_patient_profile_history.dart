@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:tess/doctor_screen/patient_portal/patient_portal_patient_profile.dart';
 
 class patient_portal_patient_profile_history extends StatelessWidget {
-  const patient_portal_patient_profile_history({Key? key}) : super(key: key);
+  const patient_portal_patient_profile_history({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: HistoryScreen(),
     );
@@ -14,7 +14,7 @@ class patient_portal_patient_profile_history extends StatelessWidget {
 }
 
 class HistoryScreen extends StatefulWidget {
-  const HistoryScreen({Key? key}) : super(key: key);
+  const HistoryScreen({super.key});
 
   @override
   State<HistoryScreen> createState() => _HistoryScreenState();
@@ -237,11 +237,11 @@ class _HistoryScreenState extends State<HistoryScreen> {
               child: Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Row(
+                  const Row(
                     children: [
                       Icon(Icons.medical_services, color: Colors.blue, size: 28),
-                      const SizedBox(width: 8),
-                      const Text(
+                      SizedBox(width: 8),
+                      Text(
                         "Prescription Details",
                         style: TextStyle(
                           fontSize: 20,
@@ -272,7 +272,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     const SizedBox(height: 16),
                     Row(
                       children: [
-                        Icon(Icons.analytics, color: Colors.orange, size: 24),
+                        const Icon(Icons.analytics, color: Colors.orange, size: 24),
                         const SizedBox(width: 8),
                         Text(
                           "Lab Reports",
@@ -294,7 +294,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
                     const SizedBox(height: 16),
                     Row(
                       children: [
-                        Icon(Icons.image, color: Colors.purple, size: 24),
+                        const Icon(Icons.image, color: Colors.purple, size: 24),
                         const SizedBox(width: 8),
                         Text(
                           "Radiology",

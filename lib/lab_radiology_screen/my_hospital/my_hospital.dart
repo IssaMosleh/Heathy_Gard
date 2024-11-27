@@ -6,7 +6,7 @@ import 'package:tess/lab_radiology_screen/my_hospital/FacilityDetailScreen.dart'
 
 
 class MyHospital_LAB extends StatelessWidget {
-  const MyHospital_LAB({Key? key}) : super(key: key);
+  const MyHospital_LAB({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -16,13 +16,13 @@ class MyHospital_LAB extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: MyHospitalsScreen(),
+      home: const MyHospitalsScreen(),
     );
   }
 }
 
 class MyHospitalsScreen extends StatefulWidget {
-  const MyHospitalsScreen({Key? key}) : super(key: key);
+  const MyHospitalsScreen({super.key});
 
   @override
   _MyHospitalsScreenState createState() => _MyHospitalsScreenState();
@@ -55,7 +55,7 @@ class _MyHospitalsScreenState extends State<MyHospitalsScreen> {
           onPressed: () {
             Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => Doctor_LAB()),
+          MaterialPageRoute(builder: (context) => const Doctor_LAB()),
         );
           },
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),

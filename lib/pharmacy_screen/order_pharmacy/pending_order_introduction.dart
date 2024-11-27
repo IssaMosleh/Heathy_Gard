@@ -3,7 +3,7 @@ import 'package:tess/pharmacy_screen/order_pharmacy/order_pharmacy.dart';
 import 'package:tess/pharmacy_screen/order_pharmacy/pending_orders.dart';
 
 class PharmacyDispenseIntroduction extends StatelessWidget {
-  const PharmacyDispenseIntroduction({Key? key}) : super(key: key);
+  const PharmacyDispenseIntroduction({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -26,12 +26,12 @@ class PharmacyDispenseIntroduction extends StatelessWidget {
               MaterialPageRoute(builder: (context) => MedicationDispenseScreen()),
             );
           },
+          minWidth: double.infinity,
+          height: 50,
           child: const Text(
             "I Agree",
             style: TextStyle(color: Colors.white, fontSize: 16),
           ),
-          minWidth: double.infinity,
-          height: 50,
         ),
       ),
       appBar: PreferredSize(
@@ -46,7 +46,7 @@ class PharmacyDispenseIntroduction extends StatelessWidget {
             onPressed: () {
               Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => PharmacyOrderScreen()),
+              MaterialPageRoute(builder: (context) => const PharmacyOrderScreen()),
             );
             },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.white),

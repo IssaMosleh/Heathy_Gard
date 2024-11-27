@@ -8,11 +8,11 @@ void main() {
 }
 
 class medication_patient_refill extends StatelessWidget {
-  const medication_patient_refill({Key? key}) : super(key: key);
+  const medication_patient_refill({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: MedicationScreen(),
     );
@@ -20,7 +20,7 @@ class medication_patient_refill extends StatelessWidget {
 }
 
 class MedicationScreen extends StatefulWidget {
-  const MedicationScreen({Key? key}) : super(key: key);
+  const MedicationScreen({super.key});
 
   @override
   _MedicationScreenState createState() => _MedicationScreenState();
@@ -29,7 +29,7 @@ class MedicationScreen extends StatefulWidget {
 class _MedicationScreenState extends State<MedicationScreen> {
   // Simulate a data fetch with a Future
   Future<List<Map<String, dynamic>>> fetchOrders() async {
-    await Future.delayed(Duration(seconds: 2)); // Simulate network delay
+    await Future.delayed(const Duration(seconds: 2)); // Simulate network delay
     return [
       {'medicationName': 'Aspirin', 'orderId': '1730618259765', 'status': 'Pending'},
       {'medicationName': 'Panadol Extra', 'orderId': '1730618259766', 'status': 'Completed'},
@@ -47,10 +47,10 @@ class _MedicationScreenState extends State<MedicationScreen> {
             onPressed: () {
               Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => medication_patient_main()),
+                    MaterialPageRoute(builder: (context) => const medication_patient_main()),
                     );         
             },
-            icon: Icon(Icons.arrow_back_ios),
+            icon: const Icon(Icons.arrow_back_ios),
             color: Colors.white,
           ),
           title: const Text(
@@ -68,14 +68,14 @@ class _MedicationScreenState extends State<MedicationScreen> {
             ),
           ),
           elevation: 4.0,
-          bottom: TabBar(
+          bottom: const TabBar(
             indicatorColor: Colors.white,
             indicatorWeight: 3,
             labelColor: Colors.white,
             unselectedLabelColor: Colors.white70,
-            labelStyle: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
-            unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal, fontSize: 14),
-            tabs: const [
+            labelStyle: TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+            unselectedLabelStyle: TextStyle(fontWeight: FontWeight.normal, fontSize: 14),
+            tabs: [
               Tab(text: "Pending"),
               Tab(text: "Completed"),
             ],
@@ -85,11 +85,11 @@ class _MedicationScreenState extends State<MedicationScreen> {
           future: fetchOrders(),
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
-              return Center(child: CircularProgressIndicator());
+              return const Center(child: CircularProgressIndicator());
             } else if (snapshot.hasError) {
-              return Center(child: Text('Error fetching orders'));
+              return const Center(child: Text('Error fetching orders'));
             } else if (!snapshot.hasData || snapshot.data!.isEmpty) {
-              return Center(child: Text('No orders available'));
+              return const Center(child: Text('No orders available'));
             }
 
             final orders = snapshot.data!;
@@ -109,7 +109,7 @@ class _MedicationScreenState extends State<MedicationScreen> {
 class OrderList extends StatelessWidget {
   final List<Map<String, dynamic>> orders;
 
-  const OrderList({Key? key, required this.orders}) : super(key: key);
+  const OrderList({super.key, required this.orders});
 
   @override
   Widget build(BuildContext context) {

@@ -3,15 +3,15 @@ import 'package:file_picker/file_picker.dart';
 import 'dart:math';
 
 import 'package:tess/patient_screen/claim_screen/claim_paatient_main.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 
 
 class claim_patient_add_claim extends StatelessWidget {
-  const claim_patient_add_claim({Key? key}) : super(key: key);
+  const claim_patient_add_claim({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: AddNewClaimScreen(),
     );
@@ -19,7 +19,7 @@ class claim_patient_add_claim extends StatelessWidget {
 }
 
 class AddNewClaimScreen extends StatefulWidget {
-  const AddNewClaimScreen({Key? key}) : super(key: key);
+  const AddNewClaimScreen({super.key});
 
   @override
   _AddNewClaimScreenState createState() => _AddNewClaimScreenState();
@@ -114,7 +114,7 @@ void _submitClaim() {
     // Navigate to the desired screen after submitting
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => Patient_Screen()),
+      MaterialPageRoute(builder: (context) => const Patient_Screen()),
     );
   }
 }
@@ -126,9 +126,9 @@ void _submitClaim() {
         leading: IconButton(onPressed: (){
            Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => claim_paatient_main())
+                    MaterialPageRoute(builder: (context) => const claim_paatient_main())
                     );         
-        }, icon: Icon(Icons.arrow_back_ios),color: Colors.white,),
+        }, icon: const Icon(Icons.arrow_back_ios),color: Colors.white,),
         title: const Text('Add New Claim', style: TextStyle(color: Colors.white),),
         centerTitle: true,
         flexibleSpace: Container(

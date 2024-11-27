@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:tess/patient_screen/claim_screen/claim_paatient_main.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 
 class claim_patient_infroduction extends StatelessWidget {
-  const claim_patient_infroduction({Key? key}) : super(key: key);
+  const claim_patient_infroduction({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: TermsAndConditionsScreen(),
     );
@@ -15,7 +15,7 @@ class claim_patient_infroduction extends StatelessWidget {
 }
 
 class TermsAndConditionsScreen extends StatelessWidget {
-  const TermsAndConditionsScreen({Key? key}) : super(key: key);
+  const TermsAndConditionsScreen({super.key});
 
 void _onContinuePressed(BuildContext context) {
     Navigator.push(
@@ -32,9 +32,9 @@ void _onContinuePressed(BuildContext context) {
         leading: IconButton(onPressed: (){
            Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => Patient_Screen()),
+                    MaterialPageRoute(builder: (context) => const Patient_Screen()),
                     );         
-        }, icon: Icon(Icons.arrow_back_ios),color: Colors.white,),
+        }, icon: const Icon(Icons.arrow_back_ios),color: Colors.white,),
         centerTitle: true,
         flexibleSpace: Container(
           decoration: const BoxDecoration(
@@ -61,123 +61,123 @@ void _onContinuePressed(BuildContext context) {
             ],
           ),
           padding: const EdgeInsets.all(16.0),
-          child: Column(
+          child: const Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const Text(
+              Text(
                 "Terms and Conditions for Claims",
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 16),
-              const Text(
+              SizedBox(height: 16),
+              Text(
                 "1. Introduction",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
-              const Text(
+              SizedBox(height: 8),
+              Text(
                 "This policy outlines the terms and conditions for submitting and processing claims. By submitting a claim, you agree to abide by these terms.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 16),
-              const Text(
+              SizedBox(height: 16),
+              Text(
                 "2. Eligibility for Claims",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
-              const Text(
+              SizedBox(height: 8),
+              Text(
                 "Claims are only eligible if the incident is covered under the policy. Claims for excluded items or services will be denied.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 16),
-              const Text(
+              SizedBox(height: 16),
+              Text(
                 "3. Claim Submission Process",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
-              const Text(
+              SizedBox(height: 8),
+              Text(
                 "All claims must be submitted within 30 days of the incident. Late submissions may not be eligible for processing. Ensure that all necessary documents are provided, including proof of incident and any relevant receipts.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 16),
-              const Text(
+              SizedBox(height: 16),
+              Text(
                 "4. Documentation Requirements",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
-              const Text(
+              SizedBox(height: 8),
+              Text(
                 "The following documents are required to process a claim: incident report, medical records, and receipts for any related expenses. Failure to provide these documents may result in a delay or denial of the claim.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 16),
-              const Text(
+              SizedBox(height: 16),
+              Text(
                 "5. Claim Review and Processing",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
-              const Text(
+              SizedBox(height: 8),
+              Text(
                 "Claims are reviewed within 15 business days. During this period, additional information may be requested. The outcome of the claim review will be communicated via email.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 16),
-              const Text(
+              SizedBox(height: 16),
+              Text(
                 "6. Appeal Process for Denied Claims",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
-              const Text(
+              SizedBox(height: 8),
+              Text(
                 "If a claim is denied, you have the right to appeal within 14 days of receiving the decision. Appeals should include additional documentation supporting your case.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 16),
-              const Text(
+              SizedBox(height: 16),
+              Text(
                 "7. Limitation of Liability",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
-              const Text(
+              SizedBox(height: 8),
+              Text(
                 "We are not liable for any indirect damages resulting from the denial or delay in claim processing. Our responsibility is limited to processing claims as per the terms outlined in this policy.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 16),
-              const Text(
+              SizedBox(height: 16),
+              Text(
                 "8. Policy Updates",
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.bold,
                 ),
               ),
-              const SizedBox(height: 8),
-              const Text(
+              SizedBox(height: 8),
+              Text(
                 "This policy may be updated periodically. It is the user's responsibility to review these terms regularly. Continued use of the claim service after updates indicates acceptance of the revised terms.",
                 style: TextStyle(fontSize: 16),
               ),
-              const SizedBox(height: 24),
+              SizedBox(height: 24),
               Center(
-                child: const Text(
+                child: Text(
                   "Thank you for trusting our claims process.",
                   style: TextStyle(
                     fontSize: 18,

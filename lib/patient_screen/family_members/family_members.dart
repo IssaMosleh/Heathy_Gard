@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:tess/patient_screen/main.dart';
+import 'package:tess/patient_screen/mainscreenpatient.dart';
 
 class family_members extends StatelessWidget {
-  const family_members({Key? key}) : super(key: key);
+  const family_members({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return const MaterialApp(
       debugShowCheckedModeBanner: false,
       home: FamilyMembersScreen(familyId: 'FAMILY123', isSpecialUser: true), // Pass familyId and user privilege
     );
@@ -17,7 +17,7 @@ class FamilyMembersScreen extends StatefulWidget {
   final String familyId;
   final bool isSpecialUser;
 
-  const FamilyMembersScreen({Key? key, required this.familyId, required this.isSpecialUser}) : super(key: key);
+  const FamilyMembersScreen({super.key, required this.familyId, required this.isSpecialUser});
 
   @override
   _FamilyMembersScreenState createState() => _FamilyMembersScreenState();
@@ -47,7 +47,7 @@ class _FamilyMembersScreenState extends State<FamilyMembersScreen> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => Patient_Screen()),
+                MaterialPageRoute(builder: (context) => const Patient_Screen()),
               );
             },
             icon: const Icon(Icons.arrow_back_ios, color: Colors.white),

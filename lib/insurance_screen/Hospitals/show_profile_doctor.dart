@@ -3,7 +3,7 @@ import 'dart:math';
 import 'package:tess/insurance_screen/Hospitals/doctors_insurance.dart';
 
 class show_profile_doctor extends StatefulWidget {
-  const show_profile_doctor({Key? key}) : super(key: key);
+  const show_profile_doctor({super.key});
 
   @override
   _ShowProfileDoctorState createState() => _ShowProfileDoctorState();
@@ -18,7 +18,7 @@ class _ShowProfileDoctorState extends State<show_profile_doctor> {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: DoctorScreen(),
+      home: const DoctorScreen(),
     );
   }
 }
@@ -27,8 +27,7 @@ class InfoContainer extends StatelessWidget {
   final String title;
   final List<Widget> children;
 
-  const InfoContainer({Key? key, required this.title, required this.children})
-      : super(key: key);
+  const InfoContainer({super.key, required this.title, required this.children});
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +68,7 @@ class InfoContainer extends StatelessWidget {
 }
 
 class DoctorScreen extends StatefulWidget {
-  const DoctorScreen({Key? key}) : super(key: key);
+  const DoctorScreen({super.key});
 
   @override
   _DoctorScreenState createState() => _DoctorScreenState();
@@ -269,7 +268,7 @@ class _DoctorScreenState extends State<DoctorScreen> {
 class BalanceMeter extends StatelessWidget {
   final double balance;
 
-  const BalanceMeter({Key? key, required this.balance}) : super(key: key);
+  const BalanceMeter({super.key, required this.balance});
 
   @override
   Widget build(BuildContext context) {
@@ -308,7 +307,7 @@ class BalanceMeterPainter extends CustomPainter {
     );
 
     final balanceGradient = Paint()
-      ..shader = LinearGradient(
+      ..shader = const LinearGradient(
         colors: [Colors.orange, Colors.deepOrange],
       ).createShader(Rect.fromCircle(center: center, radius: radius))
       ..strokeWidth = 12

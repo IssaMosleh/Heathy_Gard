@@ -7,12 +7,9 @@ import 'package:tess/admin_screen/notification_admin.dart';
 import 'package:tess/admin_screen/settings_admin.dart';
 
 
-void main() {
-  runApp(const AdminScreen());
-}
 
 class AdminScreen extends StatelessWidget {
-  const AdminScreen({Key? key}) : super(key: key);
+  const AdminScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +21,7 @@ class AdminScreen extends StatelessWidget {
 }
 
 class PharmacyScreen extends StatefulWidget {
-  const PharmacyScreen({Key? key}) : super(key: key);
+  const PharmacyScreen({super.key});
 
   @override
   State<PharmacyScreen> createState() => _PharmacyScreenState();
@@ -46,13 +43,13 @@ class _PharmacyScreenState extends State<PharmacyScreen> {
       case "Edit Profiles":
         Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => edit_profiles_main()),);
+                MaterialPageRoute(builder: (context) => const edit_profiles_main()),);
         break;
       case "Add New Entry":
         Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => add_new_main(),
+                        builder: (context) => const add_new_main(),
                       ),
                     );
         break;
@@ -60,7 +57,7 @@ class _PharmacyScreenState extends State<PharmacyScreen> {
         Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => delete_profiles_main(),
+                        builder: (context) => const delete_profiles_main(),
                       ),
                     );
         break;
@@ -100,7 +97,7 @@ class _PharmacyScreenState extends State<PharmacyScreen> {
               onPressed: () {
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => AdminScreen()),
+              MaterialPageRoute(builder: (context) => const AdminScreen()),
             );
               },
               icon: Image.asset('images/icon1.png'), // Replace with desired icon
@@ -118,7 +115,7 @@ class _PharmacyScreenState extends State<PharmacyScreen> {
               onPressed: () {
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => settings_admin()),
+              MaterialPageRoute(builder: (context) => const settings_admin()),
             );
               },
               icon: Image.asset('images/icon4.png'), // Replace with desired icon

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:tess/insurance_screen/Patients/view_patient_profile.dart';
-import 'package:tess/insurance_screen/main.dart';
+import 'package:tess/insurance_screen/maininsurancescreen.dart';
 
 class PatientsInsurance extends StatelessWidget {
   final String insuranceName;
 
-  const PatientsInsurance({Key? key, required this.insuranceName}) : super(key: key);
+  const PatientsInsurance({super.key, required this.insuranceName});
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +19,7 @@ class PatientsInsurance extends StatelessWidget {
 class SearchScreen extends StatefulWidget {
   final String insuranceName;
 
-  const SearchScreen({Key? key, required this.insuranceName}) : super(key: key);
+  const SearchScreen({super.key, required this.insuranceName});
 
   @override
   _SearchScreenState createState() => _SearchScreenState();
@@ -93,7 +93,7 @@ class _SearchScreenState extends State<SearchScreen> {
           icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () =>  Navigator.push(
           context,
-          MaterialPageRoute(builder: (context) => InsuranceRep_Screen()),
+          MaterialPageRoute(builder: (context) => const InsuranceRep_Screen()),
         ),
         ),
         flexibleSpace: Container(
@@ -117,10 +117,10 @@ class _SearchScreenState extends State<SearchScreen> {
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
-                focusedBorder: OutlineInputBorder(
+                focusedBorder: const OutlineInputBorder(
                   borderSide: BorderSide(color: Colors.blue),
                 ),
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
               ),
               onSubmitted: _onSearchSubmitted,
             ),
@@ -146,7 +146,7 @@ class _SearchScreenState extends State<SearchScreen> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PatientInsurance(),
+                              builder: (context) => const PatientInsurance(),
                             ),
                           );
                         },
@@ -156,7 +156,7 @@ class _SearchScreenState extends State<SearchScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => PatientInsurance(),
+                            builder: (context) => const PatientInsurance(),
                           ),
                         );
                       },
@@ -176,7 +176,7 @@ class _SearchScreenState extends State<SearchScreen> {
 class PatientProfileScreen extends StatelessWidget {
   final Map<String, dynamic> patient;
 
-  const PatientProfileScreen({Key? key, required this.patient}) : super(key: key);
+  const PatientProfileScreen({super.key, required this.patient});
 
   @override
   Widget build(BuildContext context) {

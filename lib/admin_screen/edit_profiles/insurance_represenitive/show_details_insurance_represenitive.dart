@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:tess/admin_screen/edit_profiles/insurance_represenitive/insurance_represenitive_main.dart';
 
 class show_details_insurance_represenitive extends StatefulWidget {
-  const show_details_insurance_represenitive({Key? key}) : super(key: key);
+  const show_details_insurance_represenitive({super.key});
 
   @override
   _My_Info_insuranceState createState() => _My_Info_insuranceState();
@@ -23,6 +23,8 @@ class _My_Info_insuranceState extends State<show_details_insurance_represenitive
 }
 
 class InsuranceRepresentativeScreen extends StatefulWidget {
+  const InsuranceRepresentativeScreen({super.key});
+
   @override
   _InsuranceRepresentativeScreenState createState() =>
       _InsuranceRepresentativeScreenState();
@@ -109,7 +111,7 @@ class _InsuranceRepresentativeScreenState
           actions: [
             TextButton(
               onPressed: () => Navigator.pop(context),
-              child: Text("Close"),
+              child: const Text("Close"),
             ),
           ],
         );
@@ -126,10 +128,10 @@ class _InsuranceRepresentativeScreenState
               context,
               MaterialPageRoute(builder: (context) => const InsuranceRepSearchScreen()),
             );
-        }, icon: Icon(Icons.arrow_back_ios,color: Colors.white,)),
+        }, icon: const Icon(Icons.arrow_back_ios,color: Colors.white,)),
         centerTitle: true,
         title: const Text(
-          "Insurance Representative's Portal",
+          "Insurance Representative",
           style: TextStyle(color: Colors.white),
         ),
         flexibleSpace: Container(
@@ -164,8 +166,8 @@ class _InsuranceRepresentativeScreenState
                   const SizedBox(height: 12),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    leading: Icon(Icons.map, color: Colors.blueAccent),
-                    title: Text("Assigned Regions"),
+                    leading: const Icon(Icons.map, color: Colors.blueAccent),
+                    title: const Text("Assigned Regions"),
                     subtitle: Text(selectedRegions.join(", ")),
                     onTap: () => openMultiSelectDialog(
                       "Select Assigned Regions",
@@ -176,8 +178,8 @@ class _InsuranceRepresentativeScreenState
                   const SizedBox(height: 12),
                   ListTile(
                     contentPadding: EdgeInsets.zero,
-                    leading: Icon(Icons.policy, color: Colors.blueAccent),
-                    title: Text("Specialized Policies"),
+                    leading: const Icon(Icons.policy, color: Colors.blueAccent),
+                    title: const Text("Specialized Policies"),
                     subtitle: Text(selectedPolicies.join(", ")),
                     onTap: () => openMultiSelectDialog(
                       "Select Specialized Policies",
@@ -205,17 +207,17 @@ class _InsuranceRepresentativeScreenState
                               child: buildEditableField(
                                   "Certification", controller, Icons.verified)),
                           IconButton(
-                            icon: Icon(Icons.delete, color: Colors.red),
+                            icon: const Icon(Icons.delete, color: Colors.red),
                             onPressed: () => removeCertification(index),
                           ),
                         ],
                       ),
                     );
-                  }).toList(),
+                  }),
                   TextButton.icon(
                     onPressed: addCertification,
-                    icon: Icon(Icons.add, color: Colors.blue),
-                    label: Text("Add Certification",
+                    icon: const Icon(Icons.add, color: Colors.blue),
+                    label: const Text("Add Certification",
                         style: TextStyle(color: Colors.blue)),
                   ),
                 ],
@@ -235,17 +237,17 @@ class _InsuranceRepresentativeScreenState
                               child: buildEditableField(
                                   "Achievement", controller, Icons.emoji_events)),
                           IconButton(
-                            icon: Icon(Icons.delete, color: Colors.red),
+                            icon: const Icon(Icons.delete, color: Colors.red),
                             onPressed: () => removeAchievement(index),
                           ),
                         ],
                       ),
                     );
-                  }).toList(),
+                  }),
                   TextButton.icon(
                     onPressed: addAchievement,
-                    icon: Icon(Icons.add, color: Colors.blue),
-                    label: Text("Add Achievement",
+                    icon: const Icon(Icons.add, color: Colors.blue),
+                    label: const Text("Add Achievement",
                         style: TextStyle(color: Colors.blue)),
                   ),
                 ],
@@ -257,7 +259,7 @@ class _InsuranceRepresentativeScreenState
                   onPressed: () {
                     if (_formKey.currentState!.validate()) {
                       ScaffoldMessenger.of(context).showSnackBar(
-                        SnackBar(content: Text("Information saved successfully!")),
+                        const SnackBar(content: Text("Information saved successfully!")),
                       );
                       Navigator.push(
               context,
@@ -281,7 +283,7 @@ class _InsuranceRepresentativeScreenState
       controller: controller,
       decoration: InputDecoration(
         labelText: label,
-        border: OutlineInputBorder(),
+        border: const OutlineInputBorder(),
         prefixIcon: Icon(icon, color: Colors.blueAccent),
       ),
       validator: (value) {
@@ -296,8 +298,7 @@ class InfoContainer extends StatefulWidget {
   final String title;
   final List<Widget> children;
 
-  const InfoContainer({Key? key, required this.title, required this.children})
-      : super(key: key);
+  const InfoContainer({super.key, required this.title, required this.children});
 
   @override
   _InfoContainerState createState() => _InfoContainerState();

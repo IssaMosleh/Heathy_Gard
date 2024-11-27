@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:tess/admin_screen/main.dart';
+import 'package:tess/admin_screen/mainadminscreen.dart';
 import 'package:tess/admin_screen/settings_admin.dart';
 
 
@@ -58,6 +58,8 @@ class notification_admin extends StatelessWidget {
     },
   ];
 
+  notification_admin({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -81,7 +83,7 @@ class notification_admin extends StatelessWidget {
           children: [
             // Notification list wrapped in a Container
             Container(
-              padding: EdgeInsets.all(8.0),
+              padding: const EdgeInsets.all(8.0),
               decoration: BoxDecoration(
                 color: Colors.white,
                 borderRadius: BorderRadius.circular(12),
@@ -114,21 +116,21 @@ class notification_admin extends StatelessWidget {
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Icon(Icons.notifications, color: Colors.blue, size: 40),
-                            SizedBox(height: 8),
+                            const Icon(Icons.notifications, color: Colors.blue, size: 40),
+                            const SizedBox(height: 8),
                             Text(
                               notification["title"]!,
-                              style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                              style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             Text(
                               notification["description"]!,
-                              style: TextStyle(fontSize: 14, color: Colors.black54),
+                              style: const TextStyle(fontSize: 14, color: Colors.black54),
                             ),
-                            SizedBox(height: 8),
+                            const SizedBox(height: 8),
                             Text(
                               notification["timestamp"]!,
-                              style: TextStyle(fontSize: 12, color: Colors.grey),
+                              style: const TextStyle(fontSize: 12, color: Colors.grey),
                             ),
                           ],
                         ),
@@ -163,7 +165,7 @@ class notification_admin extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => AdminScreen()),
+              MaterialPageRoute(builder: (context) => const AdminScreen()),
             );
               },
               icon: Image.asset('images/icon1.png'), // Replace with desired icon
@@ -181,7 +183,7 @@ class notification_admin extends StatelessWidget {
               onPressed: () {
                 Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => settings_admin()),
+              MaterialPageRoute(builder: (context) => const settings_admin()),
             );
               },
               icon: Image.asset('images/icon4.png'), // Replace with desired icon

@@ -3,6 +3,8 @@ import 'package:tess/doctor_screen/patient_portal/patient_portal_date_picker.dar
 import 'package:tess/doctor_screen/patient_portal/patient_portal_tansfer_to_another_doctor.dart';
 
 class patient_portal_show_doctor_profile extends StatelessWidget {
+  const patient_portal_show_doctor_profile({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -55,6 +57,8 @@ Doctor mockDoctor = Doctor(
 );
 
 class DoctorProfileScreen extends StatefulWidget {
+  const DoctorProfileScreen({super.key});
+
   @override
   _DoctorProfileScreenState createState() => _DoctorProfileScreenState();
 }
@@ -71,8 +75,8 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
           // Smaller Header with Gradient and Profile Information
           Container(
             width: double.infinity,
-            padding: EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
-            decoration: BoxDecoration(
+            padding: const EdgeInsets.symmetric(vertical: 20.0, horizontal: 20.0),
+            decoration: const BoxDecoration(
               gradient: LinearGradient(
                 colors: [Color(0xFF6A11CB), Color(0xFF2575FC)],
                 begin: Alignment.topCenter,
@@ -89,14 +93,14 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                       onTap: () {
                         Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => patient_portal_tansfer_to_another_doctor()),);
+                        MaterialPageRoute(builder: (context) => const patient_portal_tansfer_to_another_doctor()),);
                       }, // Empty function for now
-                      child: Icon(Icons.arrow_back_ios, color: Colors.white),
+                      child: const Icon(Icons.arrow_back_ios, color: Colors.white),
                     ),
                   ],
                 ),
-                SizedBox(height: 5.0),
-                CircleAvatar(
+                const SizedBox(height: 5.0),
+                const CircleAvatar(
                   radius: 50.0, // Reduced radius for smaller header
                   backgroundColor: Colors.white,
                   child: CircleAvatar(
@@ -104,19 +108,19 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                     backgroundImage: AssetImage('assets/doctor_image.png'),
                   ),
                 ),
-                SizedBox(height: 10.0),
+                const SizedBox(height: 10.0),
                 Text(
                   doctor.name,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 22.0,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
                 ),
-                SizedBox(height: 3.0),
+                const SizedBox(height: 3.0),
                 Text(
                   doctor.specialty,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontSize: 16.0,
                     color: Colors.white70,
                   ),
@@ -129,35 +133,35 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
           Expanded(
             child: SingleChildScrollView(
               child: Container(
-                padding: EdgeInsets.all(16.0),
-                decoration: BoxDecoration(
+                padding: const EdgeInsets.all(16.0),
+                decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.vertical(top: Radius.circular(20.0)),
                 ),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     _buildSectionTitle('Introduction'),
                     Text(
                       doctor.introduction,
                       textAlign: TextAlign.left,
-                      style: TextStyle(fontSize: 16.0),
+                      style: const TextStyle(fontSize: 16.0),
                     ),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     _buildSectionTitle('Qualifications'),
                     for (var qualification in doctor.qualifications)
                       _buildBulletPoint(qualification),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     _buildSectionTitle('Contact Information'),
                     _buildBulletPoint('Phone Number: ${doctor.phoneNumber}'),
                     _buildBulletPoint('Email: ${doctor.email}'),
                     _buildBulletPoint('Office Address: ${doctor.address}'),
-                    SizedBox(height: 20.0),
+                    const SizedBox(height: 20.0),
                     _buildSectionTitle('Working Hours'),
                     for (var entry in doctor.workingHours.entries)
                       _buildBulletPoint('${entry.key}: ${entry.value}'),
-                    SizedBox(height: 30.0),
+                    const SizedBox(height: 30.0),
                   ],
                 ),
               ),
@@ -166,7 +170,7 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
         ],
       ),
       bottomNavigationBar: BottomAppBar(
-        child: Container(
+        child: SizedBox(
           height: 60.0,
           child: Center(
             child: ElevatedButton(
@@ -174,15 +178,15 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(30.0),
                 ),
-                padding: EdgeInsets.symmetric(horizontal: 100.0, vertical: 12.0),
+                padding: const EdgeInsets.symmetric(horizontal: 100.0, vertical: 12.0),
                 backgroundColor: Colors.blueAccent,
               ),
               onPressed: () {
                 Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => patient_portal_date_picker()),);
+            MaterialPageRoute(builder: (context) => const patient_portal_date_picker()),);
               },
-              child: Text(
+              child: const Text(
                 'continue',
                 style: TextStyle(
                   fontSize: 18.0,
@@ -202,7 +206,7 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
       alignment: Alignment.centerLeft,
       child: Text(
         title,
-        style: TextStyle(
+        style: const TextStyle(
           fontSize: 18.0,
           fontWeight: FontWeight.bold,
         ),
@@ -216,12 +220,12 @@ class _DoctorProfileScreenState extends State<DoctorProfileScreen> {
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text('•', style: TextStyle(fontSize: 18.0)),
-          SizedBox(width: 8.0),
+          const Text('•', style: TextStyle(fontSize: 18.0)),
+          const SizedBox(width: 8.0),
           Expanded(
             child: Text(
               text,
-              style: TextStyle(fontSize: 16.0),
+              style: const TextStyle(fontSize: 16.0),
             ),
           ),
         ],

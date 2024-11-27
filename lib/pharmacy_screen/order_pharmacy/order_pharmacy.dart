@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:tess/pharmacy_screen/main.dart';
+import 'package:tess/pharmacy_screen/mainscreenpharmacy.dart';
 import 'package:tess/pharmacy_screen/order_pharmacy/changehistory.dart';
 import 'package:tess/pharmacy_screen/order_pharmacy/completed_orders.dart';
 import 'package:tess/pharmacy_screen/order_pharmacy/pending_order_introduction.dart';
 
 class PharmacyOrderScreen extends StatefulWidget {
-  const PharmacyOrderScreen({Key? key}) : super(key: key);
+  const PharmacyOrderScreen({super.key});
 
   @override
   _PharmacyOrderScreenState createState() => _PharmacyOrderScreenState();
@@ -13,7 +13,7 @@ class PharmacyOrderScreen extends StatefulWidget {
 
 class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTickerProviderStateMixin {
   late TabController _tabController;
-  TextEditingController _searchController = TextEditingController();
+  final TextEditingController _searchController = TextEditingController();
   String _searchText = "";
   String _orderTypeFilter = "All";
 
@@ -42,7 +42,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
   }
 
   Future<void> _fetchOrders() async {
-    await Future.delayed(Duration(seconds: 2)); // Simulate network delay
+    await Future.delayed(const Duration(seconds: 2)); // Simulate network delay
     setState(() {
       activeOrders = List.generate(10, (index) {
         return {
@@ -128,10 +128,10 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white), // iOS-style back arrow icon
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white), // iOS-style back arrow icon
           onPressed: () => Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => Pharmacy_Screen()),
+              MaterialPageRoute(builder: (context) => const Pharmacy_Screen()),
             ),
         ),
         title: const Text(
@@ -141,7 +141,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
         centerTitle: true,
         actions: [
           IconButton(
-            icon: Icon(Icons.filter_list, color: Colors.white),
+            icon: const Icon(Icons.filter_list, color: Colors.white),
             onPressed: _showFilterDialog,
           ),
         ],
@@ -173,7 +173,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
               controller: _searchController,
               decoration: InputDecoration(
                 hintText: "Search by Order ID, Patient Name, or Order Type",
-                prefixIcon: Icon(Icons.search),
+                prefixIcon: const Icon(Icons.search),
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(8.0),
                 ),
@@ -211,7 +211,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
                   Navigator.push(
                     context,
                     MaterialPageRoute(
-                      builder: (context) => PharmacyDispenseIntroduction(),
+                      builder: (context) => const PharmacyDispenseIntroduction(),
                     ),
                   );
                 } else if (order["status"] == "Completed") {
@@ -292,7 +292,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
                 onTap: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => ChangeHistoryScreen()), // Navigate to Change History Screen
+                    MaterialPageRoute(builder: (context) => const ChangeHistoryScreen()), // Navigate to Change History Screen
                   );
                 },
                 borderRadius: BorderRadius.circular(12),
@@ -353,7 +353,7 @@ class _PharmacyOrderScreenState extends State<PharmacyOrderScreen> with SingleTi
 // Filter Dialog for Order Type
 class FilterDialog extends StatefulWidget {
   final String initialFilter;
-  const FilterDialog({required this.initialFilter, Key? key}) : super(key: key);
+  const FilterDialog({required this.initialFilter, super.key});
 
   @override
   _FilterDialogState createState() => _FilterDialogState();
@@ -371,12 +371,12 @@ class _FilterDialogState extends State<FilterDialog> {
   @override
   Widget build(BuildContext context) {
     return AlertDialog(
-      title: Text("Filter by Order Type"),
+      title: const Text("Filter by Order Type"),
       content: Column(
         mainAxisSize: MainAxisSize.min,
         children: [
           RadioListTile<String>(
-            title: Text("All"),
+            title: const Text("All"),
             value: "All",
             groupValue: _selectedFilter,
             onChanged: (value) {
@@ -386,7 +386,7 @@ class _FilterDialogState extends State<FilterDialog> {
             },
           ),
           RadioListTile<String>(
-            title: Text("Doctor Order"),
+            title: const Text("Doctor Order"),
             value: "Doctor Order",
             groupValue: _selectedFilter,
             onChanged: (value) {
@@ -396,7 +396,7 @@ class _FilterDialogState extends State<FilterDialog> {
             },
           ),
           RadioListTile<String>(
-            title: Text("Refill Order"),
+            title: const Text("Refill Order"),
             value: "Refill Order",
             groupValue: _selectedFilter,
             onChanged: (value) {
@@ -410,11 +410,11 @@ class _FilterDialogState extends State<FilterDialog> {
       actions: [
         TextButton(
           onPressed: () => Navigator.of(context).pop(),
-          child: Text("Cancel"),
+          child: const Text("Cancel"),
         ),
         TextButton(
           onPressed: () => Navigator.of(context).pop(_selectedFilter),
-          child: Text("Apply"),
+          child: const Text("Apply"),
         ),
       ],
     );
