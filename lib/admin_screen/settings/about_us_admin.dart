@@ -8,6 +8,7 @@ class about_us_admin extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const MaterialApp(
+      debugShowCheckedModeBanner: false,
       home: AboutUsScreen(),
     );
   }

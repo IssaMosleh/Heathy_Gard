@@ -214,27 +214,10 @@ class OutOfNetworkPendingScreen extends StatelessWidget {
           width: double.infinity,
           child: ElevatedButton.icon(
             onPressed: () {
-              String approvedAmountText = approvedAmountController.text;
-              double requestedAmount = claim['totalAmount'];
-              double availableBalance = claim['availableBalance'];
-              double approvedAmount = approvedAmountText.isEmpty
-                  ? requestedAmount
-                  : double.tryParse(approvedAmountText) ?? requestedAmount;
-
-              if (approvedAmount > availableBalance) {
-                // Show error if insufficient balance
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Error: Insufficient available balance')),
-                );
-              } else if (approvedAmount > requestedAmount) {
-                // Show error if amount entered is higher than requested
-                ScaffoldMessenger.of(context).showSnackBar(
-                  const SnackBar(content: Text('Error: Approved amount must be equal to or less than the requested amount')),
-                );
-              } else {
-                // Proceed with approval if valid amount
-                Navigator.pop(context, {'status': 'Approved', 'amount': approvedAmount.toString()});
-              }
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => ClaimsManagementScreen()),
+            );
             },
             style: ElevatedButton.styleFrom(
               backgroundColor: Colors.green,
